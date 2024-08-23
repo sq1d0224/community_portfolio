@@ -1,0 +1,25 @@
+<h1>投稿一覧</h1>
+
+<% if user_signed_in? %>
+  <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+<% else %>
+  <p>投稿するにはログインしてください。</p>
+  <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary' %>
+<% end %>
+
+<hr>
+
+<div class="posts-grid">
+  <% @posts.each do |post| %>
+    <div class="post-item">
+      <h3><%= link_to post.title, post_path(post) %></h3>
+      <p><%= post.description %></p>
+      <% if post.image.attached? %>
+        <%= image_tag post.display_image %>
+      <% end %>
+      <p>投稿者: <%= post.user.username %></p>
+      <p>投稿日時: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
+    </div>
+  <% end %>
+</div>
+

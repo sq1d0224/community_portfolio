@@ -1,0 +1,74 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "削除できません。関連する%{record}が存在します。"
+          has_many: "削除できません。関連する%{record}が存在します。"
+        not_saved:
+          one: "%{resource}を保存できませんでした: 1つのエラーがあります。"
+          other: "%{resource}を保存できませんでした: %{count}つのエラーがあります。"
+      models:
+        user:
+          attributes:
+            username:
+              blank: "ユーザーネームを入力してください"
+              taken: "このユーザーネームはすでに使用されています"
+            email:
+              blank: "メールアドレスを入力してください"
+              invalid: "メールアドレスの形式が正しくありません"
+              taken: "このメールアドレスはすでに使用されています"
+            password:
+              blank: "パスワードを入力してください"
+              too_short: "パスワードは%{count}文字以上で入力してください"
+              confirmation: "パスワード（確認）が一致しません"
+  devise:
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+        invalid: "ログイン情報が正しくありません。"
+    registrations:
+      user:
+        signed_up: "アカウント登録が完了しました。"
+        updated: "アカウント情報を更新しました。"
+        destroyed: "アカウントを削除しました。"
+        password_change: "パスワードを変更しました。"
+    passwords:
+      user:
+        send_instructions: "パスワードリセットの案内を送信しました。"
+        updated: "パスワードが変更されました。"
+    confirmations:
+      user:
+        confirmed: "メールアドレスが確認されました。"
+        send_instructions: "確認メールを送信しました。"
+        already_confirmed: "すでに確認済みです。"
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+      invalid: "は不正な値です"
+      taken: "はすでに使用されています"
+      too_short: "は%{count}文字以上で入力してください"
+      too_long: "は%{count}文字以内で入力してください"
+      confirmation: "と一致しません"
+      not_saved: "保存に失敗しました"
+  date:
+    order:
+      - :year
+      - :month
+      - :day
+    month_names:
+      - ~
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月

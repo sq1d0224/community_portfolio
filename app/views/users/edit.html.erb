@@ -1,0 +1,40 @@
+<h1>プロフィールを編集</h1>
+
+<%= form_for(@user, url: user_path(@user)) do |f| %>
+  <div class="field">
+    ユーザーネーム:<%= @user.username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, '性別' %>
+    <%= f.select :gender, [['男性', '男性'], ['女性', '女性'], ['その他', 'その他']], include_blank: '選択してください' %>
+  </div>
+  
+  <div class="field">
+    年齢:誕生日を設定すると自動計算されます。
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate, '誕生日' %>
+    <%= f.date_select :birthdate, start_year: 1900, end_year: Time.now.year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio, '自己紹介' %>
+    <%= f.text_area :bio, placeholder: '300文字以内' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :profile_image, 'プロフィール画像' %>
+    <%= f.file_field :profile_image %>
+    <% if @user.profile_image.attached? %>
+      <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]), class: "profile-image-preview" %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit '更新する', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'キャンセル', user_profile_path, class: 'btn btn-secondary' %>

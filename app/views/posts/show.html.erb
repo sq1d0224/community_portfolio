@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @post.title %></h1>
+<p><%= @post.description %></p>
+<% if @post.image.attached? %>
+  <%= image_tag @post.display_image %>
+<% else %>
+  <p>画像はありません。</p>
+<% end %>
+<p>投稿者: <%= @post.user.username %></p>
+<p>投稿日時: <%= @post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
+
+<% if @post.user == current_user %> <!-- 現在のユーザーが投稿者であれば表示 -->
+  <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary' %>
+  <%= link_to '投稿を削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+<% end %>
+
+<%= link_to 'Topへ', top_path, class: 'btn btn-secondary' %>
