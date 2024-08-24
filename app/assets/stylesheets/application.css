@@ -1,29 +1,30 @@
-/* 全体のリセット */
+/* 全体リセット */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ヘッダー設定 */
 .header {
-  padding: 0px 150px 0px 150px;
+  padding: 0px 150px;
   background-color: silver; /* ナビゲーションバーの背景色をシルバーに設定 */
 }
 
-/* コンテナの設定 */
+/* コンテナ設定 */
 .container {
-
+  /* 現時点で特別なスタイルなし */
 }
 
-/* ナビゲーションバーの設定 */
+/* ナビゲーションバー設定 */
 nav {
   display: flex;
   justify-content: space-between; /* タイトルとリンクを左右に配置 */
   align-items: center;
-  padding: 10px 20px; /* パディング */
+  padding: 10px 20px;
 }
 
-/* タイトルのスタイル */
+/* タイトルスタイル */
 .navbar-title a {
   font-size: 24px; /* タイトルの文字サイズ */
   color: black; /* タイトルの文字色を黒に設定 */
@@ -31,7 +32,7 @@ nav {
   font-weight: bold; /* 太字 */
 }
 
-/* ナビゲーションのリンクリスト */
+/* ナビゲーションリンクリスト */
 nav ul {
   list-style-type: none; /* リストのマーカーを削除 */
   margin: 0;
@@ -40,7 +41,7 @@ nav ul {
   justify-content: flex-end;
 }
 
-/* リンクの設定 */
+/* ナビゲーションリンク設定 */
 nav ul li {
   margin-left: 20px; /* リンク間のスペース */
 }
@@ -59,7 +60,7 @@ nav ul li a:hover {
   color: white; /* ホバー時の文字色を白に設定 */
 }
 
-/* ボタンのスタイル */
+/* ボタンスタイル */
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -80,11 +81,12 @@ nav ul li a:hover {
   color: white;
 }
 
+/* ボタンホバースタイル */
 .btn-primary:hover, .btn-secondary:hover {
   opacity: 0.8;
 }
 
-/* ユーザー情報のスタイル */
+/* ユーザー情報スタイル */
 .user-info {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -97,7 +99,7 @@ nav ul li a:hover {
   background-color: white; /* 縁と画像の間に白い背景を追加 */
 }
 
-/* 新規投稿リンクのスタイル */
+/* 新規投稿リンクスタイル */
 .new-post-link {
   margin-top: 20px;
 }
@@ -110,7 +112,7 @@ nav ul li a:hover {
   margin-top: 20px;
 }
 
-/* 投稿アイテムのスタイル */
+/* 投稿アイテムスタイル */
 .post-item {
   border: 1px solid #ccc;
   padding: 15px;
@@ -123,7 +125,7 @@ nav ul li a:hover {
   height: auto;
 }
 
-/* ホーム画面の背景画像設定 */
+/* ホーム画面背景設定 */
 .home-background {
   background-image: url('golfcourse.jpg'); /* 画像のパスを指定 */
   background-size: cover; /* 背景画像を画面全体に表示 */
@@ -147,34 +149,61 @@ nav ul li a:hover {
 
 /* フォームフィールドのスタイル */
 .field {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* 下部の余白を小さくして間隔を狭くする */
 }
 
-.field label {
-  display: block;
-}
 
 .field input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  width: 100%; /* 入力フィールドを幅いっぱいに */
+  padding: 8px; /* 内側の余白を少し小さめに調整 */
+  margin: 0; /* デフォルトのマージンをリセット */
 }
 
+/* チェックボックスとテキストの配置 */
+.remember-me {
+  display: flex;
+  align-items: center; /* 縦方向に中央揃え */
+  justify-content: center; /* 横方向に中央揃え */
+  gap: 5px; /* チェックボックスとテキストの間隔を調整 */
+  margin-top: 10px; /* 必要に応じて上部に余白を追加 */
+}
+
+.field input[type="checkbox"] {
+  width: auto; /* チェックボックスの幅を自動に */
+  margin-right: 5px; /* チェックボックスとテキストの間隔を調整 */
+  vertical-align: middle; /* 縦方向の中央揃え */
+}
+
+/* アクションボタンスタイル */
 .actions {
   margin-top: 20px;
 }
 
-.btn-primary {
+.actions .btn-primary {
   background-color: #007bff;
-  color: white;
+  border-color: #007bff;
   padding: 10px 20px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.btn-primary:hover {
-  opacity: 0.8;
+.actions .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* テキスト入力フィールドのスタイル */
+.field input[type="text"],
+.field input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.log {
+  margin-bottom: 10px;
 }

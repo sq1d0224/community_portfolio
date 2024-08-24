@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
   
   # GET /posts or /posts.json
-  def index
-    @posts = Post.includes(:user).all
-    @post = Post.new if user_signed_in?
-    @posts = Post.order(created_at: :desc)
-  end
+  #def index
+    #@posts = Post.includes(:user).all
+    #@post = Post.new if user_signed_in?
+    #@posts = Post.order(created_at: :desc)
+  #end
 
   # GET /posts/1 or /posts/1.json
   def show

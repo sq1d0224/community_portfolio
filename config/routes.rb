@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'users/show'
   # Deviseによるユーザー認証
-  devise_for :users
+  devise_for :users, controllers: {
+  sessions: 'devise/sessions',
+  passwords: 'devise/passwords'
+}
 
   # 投稿に関するルーティング
   resources :posts
@@ -14,7 +17,11 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
 
   # 静的ページやホームページに関連するルーティング
-  root to: 'home#index'
+  # devise_scopeでログイン画面をrootに設定
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
+  
   get 'about', to: 'pages#about'
   
   devise_scope :user do
@@ -22,5 +29,8 @@ Rails.application.routes.draw do
   end
 
   get 'top', to: 'users#top', as: 'top'
+  
+  
+
 
 end
