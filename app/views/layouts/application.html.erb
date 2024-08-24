@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title>CommunityPortfolio</title>
+    <title><%= t('site_title', default: 'CommunityPortfolio') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,26 +11,54 @@
   </head>
 
   <body>
-      <header class="header">
-        <nav>
-          <div class="navbar-title">
-            <%= link_to 'GOLVAVI', root_path %>
-          </div>
-          <ul>
-            <li><%= link_to 'GOLNAVIとは', about_path %></li>
-            <% if user_signed_in? %>
-              <li><%= link_to 'Top', top_path %></li> <!-- ログイン後に表示 -->
-              <li><%= link_to 'Profile', user_profile_path %></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Sign up', new_user_registration_path %></li>
-              <li><%= link_to 'Log in', new_user_session_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </header>
-    <div class="container">
+    <header class="header">
+      <nav aria-label="Main navigation">
+        <div class="navbar-title">
+          <%= link_to t('site_name', default: 'GOLVAVI'), root_path %>
+        </div>
+        <ul role="menu">
+          <li role="menuitem"><%= link_to t('about', default: 'GOLNAVIとは'), about_path %></li>
+          <% if user_signed_in? %>
+            <li role="menuitem"><%= link_to t('top', default: 'トップ'), top_path %></li>
+            <li role="menuitem"><%= link_to t('profile', default: 'プロフィール'), user_profile_path %></li>
+            <li role="menuitem"><%= link_to t('log_out', default: 'ログアウト'), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li role="menuitem"><%= link_to t('sign_up', default: '新規登録'), new_user_registration_path %></li>
+            <li role="menuitem"><%= link_to t('log_in', default: 'ログイン'), new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
       <%= yield %>
-    </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; <%= Time.now.year %> <%= t('site_name', default: 'CommunityPortfolio') %>. <%= t('all_rights_reserved', default: 'All rights reserved.') %></p>
+      <nav aria-label="Footer navigation">
+        <ul role="menu">
+          <li role="menuitem"><%= link_to t('privacy_policy', default: 'プライバシーポリシー'), privacy_policy_path %></li>
+          <li role="menuitem"><%= link_to t('terms_of_service', default: '利用規約'), terms_of_service_path %></li>
+          <li role="menuitem"><%= link_to t('contact', default: 'お問い合わせ'), contact_path %></li>
+        </ul>
+      </nav>
+    </footer>
+
+    <style>
+      /* レスポンシブデザイン強化 */
+      @media (max-width: 768px) {
+        .header, .footer {
+          padding: 10px;
+        }
+        .navbar-title a {
+          font-size: 18px;
+        }
+        nav ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
   </body>
 </html>

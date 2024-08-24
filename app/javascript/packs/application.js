@@ -4,13 +4,23 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs";
+import Turbolinks from "turbolinks";
+import * as ActiveStorage from "@rails/activestorage";
+import "channels";
+
+// Rails関連の初期化
 Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
 
+// CSSのインポート（必要に応じて）
+import "../stylesheets/application"; 
 
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+// カスタムJavaScriptやモジュールのインポート
+// import "../scripts/custom";
 
-
-Turbolinks.start()
-ActiveStorage.start()
+// Turbolinksのロード時に実行する処理
+document.addEventListener("turbolinks:load", () => {
+  console.log("Turbolinks loaded!");
+  // 追加のJavaScriptコード
+});

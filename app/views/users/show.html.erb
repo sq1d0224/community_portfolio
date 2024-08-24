@@ -6,29 +6,32 @@
   <%= image_tag 'no_image.jpg', size: "150x150", class: "profile-image" %>
 <% end %>
 
-<p><strong>ユーザーネーム:</strong> <%= @user.username %></p>
-<p><strong>性別:</strong> <%= @user.gender %></p>
-<p><strong>年齢:</strong> <%= @user.age %></p> <!-- 年齢を計算する方法を後述します -->
-<p><strong>誕生日:</strong> <%= @user.birthdate %></p>
-<p><strong>自己紹介:</strong> <%= @user.bio %></p>
+<p><strong>ユーザーネーム:</strong> <%= @user.username.presence || '未設定' %></p>
+<p><strong>性別:</strong> <%= @user.gender.presence || '未設定' %></p>
+<p><strong>年齢:</strong> <%= @user.age.presence || '未設定' %></p>
+<p><strong>誕生日:</strong> <%= @user.birthdate.presence || '未設定' %></p>
+<p><strong>自己紹介:</strong> <%= @user.bio.presence || '未設定' %></p>
 
 <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-primary' %>
 
-
-
 <h2>あなたの投稿一覧</h2>
 <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+
 <div class="posts-grid">
-<% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <div class="post-item">
-      <h3><%= link_to post.title, post_path(post) %></h3>
-      <p><%= post.description %></p>
-      <p><%= image_tag post.display_image if post.image.attached? %></p>
-      <p>投稿日時: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
-    </div>
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="post-item">
+        <h3><%= link_to post.title, post_path(post) %></h3>
+        <p><%= post.description %></p>
+        <% if post.image.attached? %>
+          <p><%= image_tag post.display_image %></p>
+        <% else %>
+          <p>画像はありません。</p>
+        <% end %>
+        <p>投稿日時: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="no-posts">まだ投稿はありません。</p>
   <% end %>
-<% else %>
-  <p>まだ投稿はありません。</p>
-<% end %>
 </div>

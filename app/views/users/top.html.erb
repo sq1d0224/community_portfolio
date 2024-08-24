@@ -13,16 +13,20 @@
 
 <h2>投稿一覧</h2>
 
-<div class="posts-grid">
-  <% @posts.each do |post| %>
-    <div class="post-item">
-      <h3><%= link_to post.title, post_path(post) %></h3>
-      <p><%= post.description %></p>
-      <% if post.image.attached? %>
-        <%= image_tag post.display_image %>
-      <% end %>
-      <p>投稿者: <%= post.user.username %></p>
-      <p>投稿日時: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
-    </div>
-  <% end %>
-</div>
+<% if @posts.any? %>
+  <div class="posts-grid">
+    <% @posts.each do |post| %>
+      <div class="post-item">
+        <h3><%= link_to post.title, post_path(post) %></h3>
+        <p><%= post.description %></p>
+        <% if post.image.attached? %>
+          <%= image_tag post.display_image %>
+        <% end %>
+        <p>投稿者: <%= post.user.username %></p>
+        <p>投稿日時: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>まだ投稿はありません。</p>
+<% end %>

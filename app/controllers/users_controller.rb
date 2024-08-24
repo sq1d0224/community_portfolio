@@ -5,12 +5,17 @@ class UsersController < ApplicationController
     @user = current_user
     @posts = Post.order(created_at: :desc) # すべての投稿を取得
   end
+  
+  def index
+    
+  end
 
   def show
     @user = current_user
     @post = Post.new
     @posts = @user.posts.order(created_at: :desc)
   end
+
 
   def edit
     @user = current_user
@@ -28,6 +33,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :name, :gender, :birthdate, :bio, :profile_image) # プロフィール画像を許可
+    params.require(:user).permit(:name, :gender, :birthdate, :bio, :profile_image, :remove_profile_image) # プロフィール画像を許可
   end
 end

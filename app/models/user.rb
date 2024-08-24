@@ -2,14 +2,12 @@ class User < ApplicationRecord
   # Deviseのモジュール設定
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :authentication_keys => [:login]
+         authentication_keys: [:login]
 
+  # アソシエーション
+  has_many :posts, dependent: :destroy   # ユーザーが削除されたら、関連する投稿も削除
+  has_one_attached :profile_image        # Active Storageによるプロフィール画像
 
-  has_many :posts, dependent: :destroy
-  
-  # Active Storageによるプロフィール画像の設定
-  has_one_attached :profile_image
-  
   # 年齢を計算するメソッド
   def age
     return unless birthdate
@@ -17,11 +15,17 @@ class User < ApplicationRecord
     now = Time.now.utc.to_date
     now.year - birthdate.year - (birthdate.to_date.change(year: now.year) > now ? 1 : 0)
   end
-  
-  # 仮想属性loginを追加
-  attr_writer :login
 
-  # ユーザーネームかメールアドレスのどちらでもログインできるようにする
+  # 仮想属性 `login` を追加
+  attr_writer :login
+  
+  # 仮想属性 :remove_profile_image を追加
+  attr_accessor :remove_profile_image
+  
+  # 保存前に画像を削除する
+  before_save :purge_profile_image, if: -> { remove_profile_image == '1' }
+
+  # ユーザーネームまたはメールアドレスでログインできるようにする
   def login
     @login || self.username || self.email
   end
@@ -30,17 +34,23 @@ class User < ApplicationRecord
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
+      where(conditions.to_h)
+        .where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }])
+        .first
     else
       where(conditions.to_h).first
     end
   end
 
-  # ユーザーネームのバリデーション
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  # バリデーション
+  validates :username, presence: true, uniqueness: { case_sensitive: false }  # ユーザーネームは必須で一意
+  validates :email, presence: true, uniqueness: { case_sensitive: false }     # メールアドレスも必須で一意
+  validates :bio, length: { maximum: 300 }, allow_blank: true                 # 自己紹介は任意だが300文字以内
   
-  # バリデーションの追加
-  validates :bio, length: { maximum: 300 }, allow_blank: true
+  private
+
+  def purge_profile_image
+    profile_image.purge
+  end
 
 end

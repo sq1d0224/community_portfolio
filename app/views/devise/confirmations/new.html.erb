@@ -1,15 +1,18 @@
-<h2>Resend confirmation instructions</h2>
+<h2>確認メールを再送信</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <!-- エラーメッセージの表示 -->
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <!-- メールアドレス入力フィールド -->
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, 'メールアドレス' %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
+  <!-- 確認メール再送信ボタン -->
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "確認メールを再送信", class: "btn btn-primary" %>
   </div>
 <% end %>
 

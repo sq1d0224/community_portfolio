@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/show'
   # Deviseによるユーザー認証
   devise_for :users, controllers: {
-  sessions: 'devise/sessions',
-  passwords: 'devise/passwords'
-}
+    sessions: 'devise/sessions',
+    passwords: 'devise/passwords',
+    registrations: 'users/registrations'
+  }
 
   # 投稿に関するルーティング
   resources :posts
@@ -12,25 +12,30 @@ Rails.application.routes.draw do
   # プロフィールページに関連するルーティング
   get 'profile', to: 'users#show', as: 'user_profile'
   post 'profile', to: 'users#create_post'
-  
-   # プロフィール編集
-  resources :users, only: [:edit, :update]
 
-  # 静的ページやホームページに関連するルーティング
-  # devise_scopeでログイン画面をrootに設定
+  # プロフィール編集
+  resources :users, only: [:index, :show, :edit, :update]
+  
+  # トップページにリダイレクト
+  # get '/users', to: redirect('/')
+
+  # 静的ページ
+  get 'about', to: 'pages#about'
+
+  # トップページ
+  get 'top', to: 'users#top', as: 'top'
+  
+  # プライバシーポリシーページ
+  get 'privacy_policy', to: 'pages#privacy_policy'
+  
+  # 利用規約ページ
+  get 'terms_of_service', to: 'pages#terms_of_service', as: 'terms_of_service'
+  
+  # お問い合わせページ
+  get 'contact', to: 'pages#contact', as: 'contact'
+
+  # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do
     root to: 'devise/sessions#new'
   end
-  
-  get 'about', to: 'pages#about'
-  
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
-
-  get 'top', to: 'users#top', as: 'top'
-  
-  
-
-
 end
