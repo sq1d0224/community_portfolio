@@ -85,8 +85,6 @@ nav ul li a:hover {
 
 /* ユーザー情報スタイル */
 .user-info {
-  display: flex;
-  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -107,12 +105,27 @@ nav ul li a:hover {
   margin-top: 20px;
 }
 
+/* 投稿の設定 */
 .post-item {
-  border: 1px solid #ccc;
-  padding: 15px;
-  background-color: #f9f9f9;
-  text-align: left;
-  border-radius: 8px;
+  background-color: #f9f9f9; /* 背景色を設定 */
+  border: 1px solid #ccc; /* ボーダーを追加 */
+  border-radius: 8px; /* 角を丸く */
+  padding: 15px; /* 内側に余白を追加 */
+  margin-bottom: 20px; /* 下部に余白を追加 */
+}
+
+.post-item img {
+  max-width: 100%; /* 画像がコンテナを超えないように設定 */
+  height: auto; /* アスペクト比を維持 */
+  display: block; /* ブロック要素として扱う */
+  margin: 0 auto; /* 画像を中央に配置 */
+}
+
+/* 追加要素 */
+.no-posts {
+  text-align: center; /* 文字を中央揃え */
+  font-size: 16px; /* フォントサイズを設定 */
+  color: #7f8c8d; /* 文字色を灰色に設定 */
 }
 
 /* ホーム画面背景設定 */
@@ -208,21 +221,22 @@ nav ul li a:hover {
   border-color: #545b62;
 }
 
+/* フッター設定 */
 .footer {
   padding: 0 150px;
-  background-color: #AAA; /* フッターの背景色 */
+  background-color: #AAA; /* フッターの背景色をシルバーに設定 */
   text-align: center; /* 全体のテキストを中央揃え */
 }
 
 .footer p {
-  color: #333;
+  color: #333; /* コピーライトの文字色を濃い灰色に設定 */
   padding-top: 10px;
-  font-size: 12px; /* コピーライトのフォントサイズ */
+  font-size: 12px; /* コピーライトのフォントサイズを小さく設定 */
 }
 
 .footer nav {
   display: flex; /* フレックスボックスを使用して横並びにする */
-  justify-content: center; /* 横方向に中央揃え */
+  justify-content: center; /* ナビゲーションリンクを横方向に中央揃え */
 }
 
 .footer nav ul {
@@ -230,7 +244,7 @@ nav ul li a:hover {
   padding: 0; /* パディングをリセット */
   margin: 0; /* マージンをリセット */
   display: flex; /* フレックスボックスを使用して横並びにする */
-  justify-content: center; /* 横方向に中央揃え */
+  justify-content: center; /* リンクを横方向に中央揃え */
 }
 
 .footer nav ul li {
@@ -241,56 +255,137 @@ nav ul li a:hover {
   text-decoration: none; /* リンクの下線を削除 */
 }
 
+/* アバウトページの背景設定 */
 .about-page-background {
-    background-image: url('grass.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 50px 20px;
+  background-image: url('grass.jpg'); /* アバウトページの背景画像を設定 */
+  background-size: cover; /* 背景画像を画面全体に表示 */
+  background-position: center; /* 背景画像を中央に配置 */
+  padding: 50px 20px; /* 上下50px、左右20pxのパディングを追加 */
 }
 
+/* アバウトページのコンテンツ設定 */
 .about-page {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 900px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を半透明の白に設定 */
+  padding: 30px; /* 内側の余白を追加 */
+  border-radius: 10px; /* 角を丸くする */
+  max-width: 900px; /* コンテンツの最大幅を900pxに設定 */
+  margin: 0 auto; /* 中央に配置 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
 }
 
+/* アバウトページのタイトル設定 */
 .about-title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 36px; /* タイトルの文字サイズ */
+  font-weight: bold; /* 太字に設定 */
+  color: #2c3e50; /* タイトルの文字色を濃い青に設定 */
+  text-align: center; /* タイトルを中央揃え */
+  margin-bottom: 20px; /* 下部に余白を追加 */
 }
 
+/* 各セクションの設定 */
 .about-section {
-    margin-bottom: 40px;
+  margin-bottom: 40px; /* 下部に余白を追加 */
 }
 
+/* セクションタイトルの設定 */
 .section-title {
-    font-size: 28px;
-    color: #16a085;
-    margin-bottom: 15px;
-    border-left: 5px solid #16a085;
-    padding-left: 10px;
+  font-size: 28px; /* タイトルの文字サイズを大きく設定 */
+  color: #16a085; /* タイトルの文字色を緑色に設定 */
+  margin-bottom: 15px; /* 下部に余白を追加 */
+  border-left: 5px solid #16a085; /* 左側に緑色のボーダーを追加 */
+  padding-left: 10px; /* ボーダーとタイトルの間に余白を追加 */
 }
 
+/* セクションの内容設定 */
 .section-content {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #34495e;
-    text-align: justify;
+  font-size: 18px; /* テキストの文字サイズを設定 */
+  line-height: 1.6; /* 行の高さを設定 */
+  color: #34495e; /* テキストの文字色を濃い灰色に設定 */
+  text-align: justify; /* テキストを両端揃え */
 }
 
+/* 特徴リストの設定 */
 .features-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    font-size: 18px;
-    color: #34495e;
+  list-style-type: disc; /* リストマーカーを円に設定 */
+  margin-top: 20px; /* 上部に余白を追加 */
+  padding-left: 20px; /* 左側にパディングを追加 */
+  font-size: 18px; /* テキストの文字サイズを設定 */
+  color: #34495e; /* テキストの文字色を濃い灰色に設定 */
 }
 
+/* 各特徴アイテムの設定 */
 .feature-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px; /* 下部に余白を追加 */
+}
+
+/*プロフィールの設定*/
+.profile-page-background {
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
+  background-size: cover; /* 画面全体に背景画像をフィット */
+  background-position: center; /* 背景画像を中央に配置 */
+  padding: 50px 20px; /* ページ全体に余白を追加 */
+}
+
+.profile-page {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding: 30px; /* コンテンツの内側に余白を追加 */
+  border-radius: 10px; /* 角を丸く */
+  max-width: 900px; /* 最大幅を指定して中央に配置 */
+  margin: 0 auto; /* 中央揃え */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 全体を中央揃えにする */
+}
+
+/* ユーザーネームの中央揃え */
+.profile-username {
+  text-align: center; /* 中央揃え */
+  font-size: 36px; /* フォントサイズ */
+  color: #2c3e50; /* 文字色 */
+  margin-bottom: 20px; /* 下部に余白を追加 */
+}
+
+.profile-image-container {
+  text-align: center; /* 画像を中央揃え */
+  margin-bottom: 20px; /* 下部に余白を追加 */
+}
+
+.profile-details {
+  width: 100%; /* 幅を100%に設定して中央に配置 */
+  max-width: 600px; /* テーブルの最大幅を設定 */
+  margin-bottom: 20px; /* 下部に余白を追加 */
+}
+
+.profile-table {
+  width: 100%; /* テーブルの幅を100%に設定 */
+  border-collapse: collapse; /* テーブルセル間のスペースをなくす */
+  margin: 0 auto; /* テーブルを中央に配置 */
+}
+
+/* テーブルの設定 */
+.profile-table {
+  width: 100%; /* テーブル幅を全幅に */
+  border-collapse: collapse; /* ボーダーを結合 */
+  margin-bottom: 30px; /* 下部に余白を追加 */
+}
+
+.profile-table th,
+.profile-table td {
+  padding: 10px; /* セル内に余白を追加 */
+  border-bottom: 1px solid #ccc; /* 下にボーダーを追加 */
+  text-align: left; /* 文字を左揃え */
+}
+
+.profile-table th {
+  width: 30%; /* thの幅を調整 */
+  font-weight: bold; /* 太字に設定 */
+  color: #34495e; /* 文字色 */
+}
+
+/* ボタンとリンクの中央揃え */
+.profile-actions,
+.new-post-link {
+  text-align: center; /* 中央揃え */
+  margin-bottom: 20px; /* 下部に余白を追加 */
 }
