@@ -35,11 +35,11 @@
     </main>
 
     <footer class="footer">
-      <p>&copy; <%= Time.now.year %> <%= t('site_name', default: 'CommunityPortfolio') %>. <%= t('all_rights_reserved', default: 'All rights reserved.') %></p>
+      <p>&copy; GOLNAVI</p>
       <nav aria-label="Footer navigation">
         <ul role="menu">
-          <li role="menuitem"><%= link_to t('privacy_policy', default: 'プライバシーポリシー'), privacy_policy_path %></li>
-          <li role="menuitem"><%= link_to t('terms_of_service', default: '利用規約'), terms_of_service_path %></li>
+          <li role="menuitem"><%= link_to t('privacy_policy', default: 'プライバシーポリシー'), privacy_policy_path %></li>|
+          <li role="menuitem"><%= link_to t('terms_of_service', default: '利用規約'), terms_of_service_path %></li>|
           <li role="menuitem"><%= link_to t('contact', default: 'お問い合わせ'), contact_path %></li>
         </ul>
       </nav>

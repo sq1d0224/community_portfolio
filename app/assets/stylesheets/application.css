@@ -8,7 +8,7 @@
 /* ヘッダー設定 */
 .header {
   padding: 0 150px;
-  background-color: silver; /* ナビゲーションバーの背景色をシルバーに設定 */
+  background-color: #AAA; /* ナビゲーションバーの背景色をシルバーに設定 */
 }
 
 /* コンテナ設定 */
@@ -40,12 +40,12 @@ nav ul {
 }
 
 /* ナビゲーションリンク設定 */
-nav ul li {
+.header nav ul li {
   margin-left: 20px; /* リンク間のスペース */
 }
 
 nav ul li a {
-  color: black; /* リンクの文字色を黒に設定 */
+  color: #333; /* リンクの文字色を濃い灰色に設定 */
   text-decoration: none; /* 下線を削除 */
   padding: 5px 10px; /* パディング */
   border-radius: 5px; /* 角を丸く */
@@ -206,4 +206,91 @@ nav ul li a:hover {
 .new-registration-link .btn-secondary:hover {
   background-color: #5a6268;
   border-color: #545b62;
+}
+
+.footer {
+  padding: 0 150px;
+  background-color: #AAA; /* フッターの背景色 */
+  text-align: center; /* 全体のテキストを中央揃え */
+}
+
+.footer p {
+  color: #333;
+  padding-top: 10px;
+  font-size: 12px; /* コピーライトのフォントサイズ */
+}
+
+.footer nav {
+  display: flex; /* フレックスボックスを使用して横並びにする */
+  justify-content: center; /* 横方向に中央揃え */
+}
+
+.footer nav ul {
+  list-style-type: none; /* リストのデフォルトスタイルを削除 */
+  padding: 0; /* パディングをリセット */
+  margin: 0; /* マージンをリセット */
+  display: flex; /* フレックスボックスを使用して横並びにする */
+  justify-content: center; /* 横方向に中央揃え */
+}
+
+.footer nav ul li {
+  display: inline; /* リストアイテムをインライン表示 */
+}
+
+.footer nav ul li a {
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.about-page-background {
+    background-image: url('grass.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+}
+
+.about-page {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #16a085;
+    margin-bottom: 15px;
+    border-left: 5px solid #16a085;
+    padding-left: 10px;
+}
+
+.section-content {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #34495e;
+    text-align: justify;
+}
+
+.features-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #34495e;
+}
+
+.feature-item {
+    margin-bottom: 10px;
 }
