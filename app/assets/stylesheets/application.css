@@ -405,3 +405,30 @@ nav ul li a:hover {
   align-items: center; /* 全体を中央揃えにする */
   width: calc(100% - 300px); /* 横幅を全体に広げるために設定 */
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-item a {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.page-item.active a {
+  background-color: #0056b3;
+}
+
+.page-item.disabled a {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
