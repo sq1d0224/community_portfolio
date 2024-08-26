@@ -92,8 +92,7 @@ nav ul li a:hover {
 }
 
 /* プロフィール画像のスタイル */
-.user-info .profile-image,
-.profile-image {
+.user-info {
   border-radius: 50%; /* 画像を丸くする */
   border: 3px solid #ccc; /* グレーの縁を追加 */
   padding: 3px; /* 画像と縁の間に余白を追加 */
@@ -357,8 +356,23 @@ nav ul li a:hover {
 
 /* プロフィール画像の中央揃え */
 .profile-image-container {
-  text-align: center; /* 画像を中央揃え */
-  margin-bottom: 20px; /* 下部に余白を追加 */
+  width: 300px; /* コンテナの幅を固定 */
+  height: 300px; /* コンテナの高さを固定 */
+  border-radius: 50%; /* 円形の外枠 */
+  border: 3px solid #ccc; /* グレーの縁を追加 */
+  padding: 3px; /* 画像と縁の間に余白を追加 */
+  background-color: white; /* 縁と画像の間に白い背景を追加 */
+  overflow: hidden; /* 画像がはみ出さないように設定 */
+  display: flex; /* フレックスボックスで整列 */
+  align-items: center; /* 縦方向の中央揃え */
+  justify-content: center; /* 横方向の中央揃え */
+}
+
+.profile-image {
+  width: 100%; /* 画像の幅をコンテナにフィット */
+  height: 100%; /* 画像の高さをコンテナにフィット */
+  object-fit: cover; /* 画像をコンテナにフィットさせる */
+  border-radius: 50%; /* 画像自体も丸くする */
 }
 
 /* プロフィール詳細テーブルの設定 */
@@ -370,7 +384,7 @@ nav ul li a:hover {
 /* テーブルのスタイル */
 .profile-table {
   width: 100%; /* テーブル幅を全幅に */
-  border-collapse: collapse; /* ボーダーを結合 */
+  /*border-collapse: collapse; /* ボーダーを結合 */
 }
 
 .profile-table th,
@@ -431,4 +445,101 @@ nav ul li a:hover {
 .page-item.disabled a {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* プロフィール編集画面全体の背景設定 */
+.edit-profile-page-background {
+  background-image: url('practice.jpg'); /* 背景画像を指定 */
+  background-size: cover; /* 画面全体に背景画像をフィット */
+  background-position: center; /* 背景画像を中央に配置 */
+  padding: 50px 0; /* ページ全体に余白を追加 */
+}
+
+/* タイトルスタイル */
+.edit-profile-title {
+  text-align: center; /* タイトルを中央揃え */
+  font-size: 36px; /* フォントサイズ */
+  color: #2c3e50; /* 文字色 */
+  margin-bottom: 30px; /* 下部に余白を追加 */
+}
+
+/* フォーム全体のスタイル */
+.edit-profile-form {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding: 30px; /* 内側の余白を追加 */
+  border-radius: 10px; /* 角を丸く */
+  max-width: 600px; /* フォームの最大幅を600pxに設定 */
+  margin: 0 auto; /* フォームを中央に配置 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+}
+
+.username-field strong {
+  font-size: 18px; /* フォントサイズ */
+  color: #34495e; /* 文字色 */
+}
+
+.age-field strong {
+  font-size: 18px; /* フォントサイズ */
+  color: #34495e; /* 文字色 */
+}
+
+.bio-field, .profile-image-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-textarea {
+  width: 100%; /* 横幅を100%に設定 */
+  height: 150px; /* 高さを150pxに設定 */
+  resize: vertical; /* ユーザーが高さを変更できるようにする（横幅は変更不可） */
+}
+
+/* ラベルのスタイル */
+.form-label {
+  font-size: 16px; /* ラベルのフォントサイズ */
+  margin-bottom: 5px; /* ラベルの下に余白を追加 */
+  color: #34495e; /* 文字色 */
+}
+
+/* テキストエリア、セレクトボックスのスタイル */
+.form-select, .form-control {
+  padding: 10px; /* 内側の余白を追加 */
+  font-size: 14px; /* フォントサイズ */
+}
+
+/* プロフィール画像のプレビュー */
+.profile-image-preview-container {
+  margin-top: 10px; /* 上に余白を追加 */
+  text-align: center; /* 画像を中央揃え */
+}
+
+.profile-image-preview {
+  border-radius: 50%; /* 画像を丸くする */
+  border: 3px solid #ccc; /* グレーの縁を追加 */
+  padding: 5px; /* 画像と縁の間に余白を追加 */
+  background-color: white; /* 縁と画像の間に白い背景を追加 */
+}
+
+/* 画像削除オプション */
+.remove-profile-image-option {
+  margin-top: 10px; /* 上に余白を追加 */
+  text-align: center; /* テキストを中央揃え */
+}
+
+/* ボタンのスタイル */
+.profile-actions {
+  text-align: center; /* ボタンを中央揃え */
+  margin-top: 20px; /* 上に余白を追加 */
+}
+
+.btn-primary, .btn-secondary {
+  padding: 10px 20px; /* パディングを追加 */
+  border-radius: 5px; /* 角を丸く */
+  font-size: 16px; /* フォントサイズ */
+  cursor: pointer; /* カーソルをポインタに */
+}
+
+.cancel-link {
+  display: inline-block; /* インラインブロックに */
+  margin-top: 10px; /* 上に余白を追加 */
 }

@@ -4,7 +4,7 @@
 
     <div class="profile-image-container">
       <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]), class: "profile-image" %>
+        <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]), class: "profile-image" %>
       <% else %>
         <%= image_tag 'no_image_photo.jpg', size: "300x300", class: "profile-image" %>
       <% end %>
@@ -65,6 +65,5 @@
       <% end %>
     </div>
     <%= paginate @posts, theme: 'bootstrap4' %>
-    
   </div>
 </div>
