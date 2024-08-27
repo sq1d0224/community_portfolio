@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   # バリデーション
-  validates :title, presence: true
-  validates :description, presence: true
+  validates :title, presence: true, length: { maximum: 100 }
+  validates :description, presence: true, length: { maximum: 10000 }
   
   # 画像表示メソッド
   def display_image

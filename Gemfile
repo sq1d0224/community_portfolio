@@ -59,5 +59,5 @@ gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
-
+gem 'sidekiq'
 

@@ -1,7 +1,11 @@
-<h1>新規投稿</h1>
+<div class="new-post-page-background">
+  
+  <div class="new-post-page">
+    
+    <%= render 'form', post: @post %>
 
-<%= render 'form', post: @post %>
-
-<div class="actions mt-3">
-  <%= link_to 'トップページへ', top_path, class: 'btn btn-primary' %>
+    <div class="actions mt-3">
+      <%= link_to 'トップページへ', top_path, class: 'btn btn-primary return-to-top' %>
+    </div>
+  </div>
 </div>

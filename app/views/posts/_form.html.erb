@@ -1,4 +1,5 @@
 <%= form_with(model: post, local: true) do |form| %>
+  <h1 class="new-post-title">新規投稿</h1>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, 'タイトル' %>
-    <%= form.text_field :title, class: 'form-control' %> <!-- スタイルクラスを追加 -->
+  <div class="field title-field">
+    <strong><%= form.label :title, 'タイトル' %></strong>
+    <%= form.text_field :title, class: 'form-control title-textfield', placeholder: '100文字以内' %>
   </div>
 
-  <div>
-    <%= form.label :description, '説明文' %>
-    <%= form.text_area :description, class: 'form-control' %> <!-- スタイルクラスを追加 -->
+  <div class="field title-description">
+    <strong><%= form.label :description, '説明文' %></strong>
+    <%= form.text_area :description, class: 'form-control description-textarea', placeholder: '10000文字以内' %>
   </div>
 
-  <div>
-    <%= form.label :image, '画像' %>
-    <%= form.file_field :image, class: 'form-control-file' %> <!-- スタイルクラスを追加 -->
+  <div class="field title-image">
+    <strong><%= form.label :image, '画像' %></strong>
+    <%= form.file_field :image, class: 'form-control' %>
   </div>
 
   <div class="mt-3">
-    <%= form.submit '投稿', class: 'btn btn-primary' %> <!-- スタイルクラスを追加 -->
+    <%= form.submit '投稿', class: 'btn btn-primary' %>
   </div>
 <% end %>

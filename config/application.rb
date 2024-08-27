@@ -21,13 +21,13 @@ module CommunityPortfolio
   end
 end
 
-module YourAppName
+module CommunityPortfolio
   class Application < Rails::Application
     config.i18n.default_locale = :ja
   end
 end
 
-module YourAppName
+module CommunityPortfolio
   class Application < Rails::Application
     # タイムゾーンを日本標準時に設定
     config.time_zone = 'Asia/Tokyo'

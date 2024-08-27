@@ -1,7 +1,8 @@
 <div class="edit-profile-page-background">
-  <h1 class="edit-profile-title">プロフィールを編集</h1>
+  
 
   <%= form_for(@user, url: user_path(@user), html: { class: 'edit-profile-form' }) do |f| %>
+    <h1 class="edit-profile-title">プロフィールを編集</h1>
     <%= render 'shared/error_messages', resource: @user %>
 
     <div class="field username-field">
@@ -10,7 +11,7 @@
 
     <div class="field gender-field">
       <strong><%= f.label :gender, '性別', class: 'form-label' %></strong>
-      <%= f.select :gender, [['男性', '男性'], ['女性', '女性'], ['その他', 'その他']], include_blank: '選択してください', class: 'form-select' %>
+      <%= f.select :gender, [['男性', '男性'], ['女性', '女性'], ['その他', 'その他']], include_blank: ' ', class: 'form-select' %>
     </div>
 
     <div class="field age-field">
@@ -24,7 +25,7 @@
 
     <div class="field bio-field">
       <strong><%= f.label :bio, '自己紹介', class: 'form-label' %></strong>
-      <%= f.text_area :bio, placeholder: '300文字以内', class: 'form-control bio-textarea' %>
+      <%= f.text_area :bio, placeholder: '10000文字以内', class: 'form-control bio-textarea' %>
     </div>
 
     <div class="field profile-image-field">
