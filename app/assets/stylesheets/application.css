@@ -540,6 +540,8 @@ nav ul li a:hover {
 }
 
 .cancel-link {
-  display: inline-block; /* インラインブロックに */
-  margin-top: 10px; /* 上に余白を追加 */
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  width: fit-content;
 }
