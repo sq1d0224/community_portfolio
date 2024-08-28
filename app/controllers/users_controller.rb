@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    # 空のメソッド、今後の拡張用？
+    
   end
 
   def show

@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field title-field">
-    <strong><%= form.label :title, 'タイトル' %></strong>
+    <strong><%= form.label :title, 'タイトル', class: 'form-label' %></strong>
     <%= form.text_field :title, class: 'form-control title-textfield', placeholder: '100文字以内' %>
   </div>
 
   <div class="field title-description">
-    <strong><%= form.label :description, '説明文' %></strong>
+    <strong><%= form.label :description, '説明文', class: 'form-label' %></strong>
     <%= form.text_area :description, class: 'form-control description-textarea', placeholder: '10000文字以内' %>
   </div>
 
   <div class="field title-image">
-    <strong><%= form.label :image, '画像' %></strong>
+    <strong><%= form.label :image, '画像', class: 'form-label' %></strong>
     <%= form.file_field :image, class: 'form-control' %>
   </div>
 

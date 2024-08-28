@@ -22,6 +22,7 @@
           <li role="menuitem"><%= link_to t('about', default: 'GOLNAVIとは'), about_path %></li>
           <% if user_signed_in? %>
             <li role="menuitem"><%= link_to t('top', default: 'トップ'), top_path %></li>
+            <li role="menuitem"><%= link_to '投稿一覧', posts_path %></li>
             <li role="menuitem"><%= link_to t('profile', default: 'プロフィール'), user_profile_path %></li>
             <li role="menuitem"><%= link_to t('log_out', default: 'ログアウト'), destroy_user_session_path, method: :delete %></li>
           <% else %>

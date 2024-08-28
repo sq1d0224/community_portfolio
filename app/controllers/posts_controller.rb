@@ -3,6 +3,10 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
   
+  def index
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(20)
+  end
+  
   def show
     # `set_post` により @post が設定されるので、ここでの処理は不要です。
   end
