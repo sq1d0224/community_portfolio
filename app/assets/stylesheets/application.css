@@ -132,12 +132,15 @@ nav ul li a:hover {
   margin-top: 20px;
 }
 
+/* post-item の基本スタイル */
 .post-item {
   background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 2px solid #AAA;
   border-radius: 8px;
   padding: 15px;
-  margin-bottom: 20px;
+  max-width: 100%; /* はみ出し防止 */
+  overflow: hidden;
+  word-wrap: break-word; /* 長い単語を折り返し */
 }
 
 .post-item img {
@@ -147,8 +150,41 @@ nav ul li a:hover {
   margin: 0 auto;
 }
 
+/* タイトルがはみ出さないようにするスタイル */
+.post-title {
+  font-size: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 表示する行数を2行に制限 */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* はみ出した部分を隠す */
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+/* 説明文を5行までに制限し、省略するスタイル */
+.post-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* 表示する行数を5行に制限 */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* はみ出した部分を隠す */
+}
+
+.post-link {
+  display: flex;
+  justify-content: flex-end;  
+  color: #4f96f6;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.post-description-link:hover {
+  color: #c7511f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .post-date {
-  color: gray;
+  color: #777;
   font-size: 12px;
 }
 

@@ -6,8 +6,17 @@
       <% if @posts.any? %>
         <% @posts.each do |post| %>
           <div class="post-item">
+            
             <h3 class="post-title"><%= link_to post.title, post_path(post) %></h3>
-            <p class="post-description"><%= truncate(post.description, length: 100) %></p>
+            
+            <p class="post-description">
+              <%= truncate(post.description, length: 100) %>
+              <% if post.description.length > 100 %>
+                <%= link_to '続きを読む', post_path(post), class: 'post-link' %>
+              <% end %>
+            </p>
+
+            
             <p class="post-date"><%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
             <% if post.image.attached? %>
               <p class="post-image"><%= image_tag post.display_image %></p>
