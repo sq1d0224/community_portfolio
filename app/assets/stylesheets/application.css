@@ -123,6 +123,7 @@ nav ul li a:hover {
   font-size: 36px;
   color: #2c3e50;
   margin-bottom: 20px;
+  color: #34495e; /* 文字色 */
 }
 
 .posts-grid {
@@ -143,11 +144,34 @@ nav ul li a:hover {
   word-wrap: break-word; /* 長い単語を折り返し */
 }
 
-.post-item img {
+.post-img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+/* 投稿ユーザー情報のスタイル */
+.post-user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* 投稿タイトルとの間に余白を追加 */
+}
+
+.user-icon {
+  border: 2px solid #CCC;
+  border-radius: 50%; /* アイコンを円形に */
+  margin-right: 10px; /* ユーザーネームとの間に余白を追加 */
+}
+
+.post-username {
+  font-size: 14px; /* ユーザーネームの文字サイズ */
+  color: #34495e; /* 文字色 */
+  text-decoration: none; /* 下線を削除 */
+}
+
+.post-username:hover {
+  text-decoration: underline; /* ホバー時の効果 */
 }
 
 /* タイトルがはみ出さないようにするスタイル */
@@ -157,8 +181,15 @@ nav ul li a:hover {
   -webkit-line-clamp: 2; /* 表示する行数を2行に制限 */
   -webkit-box-orient: vertical;
   overflow: hidden; /* はみ出した部分を隠す */
+}
+
+.post-title-link {
   text-decoration: none;
-  margin-bottom: 10px;
+  color: #34495e; /* 文字色 */
+}
+
+.post-title-link:hover {
+  text-decoration: underline; /* ホバー時の効果 */
 }
 
 /* 説明文を5行までに制限し、省略するスタイル */
@@ -391,7 +422,7 @@ nav ul li a:hover {
   background-image: url('golfgirl.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像をフィット */
   background-position: center; /* 背景画像を中央に配置 */
-  padding: 50px 0; /* ページ全体に余白を追加 */
+  padding: 50px 150px; /* ページ全体に余白を追加 */
 }
 
 /* プロフィールページの全体スタイル */
@@ -401,6 +432,7 @@ nav ul li a:hover {
   padding-bottom: 10px; /* 下部の余白 */
   border-radius: 10px; /* 角を丸く */
   margin: 0 auto; /* 中央揃え */
+  margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
   display: flex; /* フレックスボックスで整列 */
   flex-direction: column; /* 縦方向に配置 */
@@ -473,16 +505,17 @@ nav ul li a:hover {
 }
 
 /* プロフィールページの投稿リストセクション */
-.profile-post-page {
-  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
-  padding: 30px 30px 10px 30px;
-  border-radius: 10px; /* 角を丸く */
-  margin: 30px 150px 0 150px; /* 中央揃え */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
-  display: flex; /* フレックスボックスで整列 */
-  flex-direction: column; /* 縦方向に配置 */
-  align-items: center; /* 全体を中央揃えにする */
-  width: calc(100% - 300px); /* 横幅を全体に広げるために設定 */
+.profile-posts-page {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-posts-title {
+  text-align: center;
 }
 
 .pagination {

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @post = Post.new
-    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(12)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def edit
