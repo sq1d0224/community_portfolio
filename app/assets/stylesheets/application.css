@@ -518,11 +518,11 @@ nav ul li a:hover {
   text-align: center;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+.pagination-empty {
+  height: 40px; /* ページネーションが占める高さを設定 */
+  text-align: center; /* 必要に応じてテキストを中央揃え */
 }
+
 
 .page-item {
   margin: 0 5px;

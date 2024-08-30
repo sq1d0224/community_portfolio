@@ -66,4 +66,4 @@
 <!-- なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。 -->
 
 ## 実装機能リスト
-https://docs.google.com/spreadsheets/d/1Lcrz5jAmzEby51tgtaoo3MleRpeuUtNOsfI4ace02S4/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/13ngN82qERiqFBWIV25KKYDCaEKnwZ7yOxWcQZWyOUyQ/edit?gid=885378170#gid=885378170

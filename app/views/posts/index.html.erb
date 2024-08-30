@@ -45,6 +45,6 @@
       <% end %>
     </div>
 
-    <%= paginate @posts, theme: 'bootstrap4' %>
+    <%= paginate @posts, theme: 'bootstrap4' if @posts.total_pages > 1 %>
   </div>
 </div>
