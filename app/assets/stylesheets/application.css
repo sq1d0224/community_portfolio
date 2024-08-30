@@ -7,6 +7,11 @@
 
 /* ヘッダー設定 */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* ヘッダーを最前面に表示 */
   padding: 0 150px; /* 左右に150pxのパディングを設定 */
   background-color: #AAA; /* ナビゲーションバーの背景色をシルバーに設定 */
 }
@@ -101,18 +106,23 @@ nav ul li a:hover {
   margin-right: 20px; /* 右側に余白を追加 */
 }
 
-/* 投稿関連スタイル */
-/* 投稿一覧ページ背景設定 */
+/* 背景画像を固定 */
 .posts-page-background {
   background-image: url('ping.jpg'); /* 背景画像を指定 */
   background-size: cover;
   background-position: center;
-  padding: 50px 150px;
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
+/* 投稿一覧のスクロール設定 */
 .posts-page {
-  background-color: rgba(255, 255, 255, 0.8);
+  overflow-y: auto;
   padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   width: 100%;
   margin: 0 auto;
@@ -326,6 +336,11 @@ nav ul li a:hover {
 
 /* フッター設定 */
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* フッターを最前面に表示 */
   padding: 0 150px; /* 左右に150pxのパディングを追加 */
   background-color: #AAA; /* フッターの背景色をシルバーに設定 */
   text-align: center; /* 全体のテキストを中央揃え */
@@ -363,7 +378,11 @@ nav ul li a:hover {
   background-image: url('grass.jpg'); /* アバウトページの背景画像を設定 */
   background-size: cover; /* 背景画像を画面全体に表示 */
   background-position: center; /* 背景画像を中央に配置 */
-  padding: 50px 20px; /* 上下50px、左右20pxのパディングを追加 */
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
 /* アバウトページのコンテンツ設定 */
@@ -426,7 +445,11 @@ nav ul li a:hover {
   background-image: url('golfgirl.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像をフィット */
   background-position: center; /* 背景画像を中央に配置 */
-  padding: 50px 150px; /* ページ全体に余白を追加 */
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
 /* プロフィールページの全体スタイル */
