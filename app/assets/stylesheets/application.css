@@ -42,6 +42,7 @@ nav ul {
 /* ナビゲーションリンク設定 */
 .header nav ul li {
   margin-left: 20px; /* リンク間のスペースを設定 */
+  
 }
 
 nav ul li a {
@@ -103,7 +104,7 @@ nav ul li a:hover {
 /* 投稿関連スタイル */
 /* 投稿一覧ページ背景設定 */
 .posts-page-background {
-  background-image: url('ping.jpg'); /* 背景画像を指定 */
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover;
   background-position: center;
   padding: 50px 150px;
@@ -219,12 +220,15 @@ nav ul li a:hover {
   font-size: 12px;
 }
 
-.no-posts {
+.no-posts-coment {
   text-align: center;
+  height: 1000px;
+}
+
+.no-posts {
   font-size: 18px;
   color: #7f8c8d;
 }
-
 
 /* ホーム画面背景設定 */
 .home-background {
@@ -519,30 +523,31 @@ nav ul li a:hover {
 }
 
 .pagination-empty {
-  height: 40px; /* ページネーションが占める高さを設定 */
-  text-align: center; /* 必要に応じてテキストを中央揃え */
+  display: flex;
+  justify-content: center; /* ページネーションを中央揃えにする */
+  margin-top: 20px; /* ページネーションの上に余白を追加 */
 }
 
-
-.page-item {
-  margin: 0 5px;
+.pagination {
+  display: inline-block;
 }
 
-.page-item a {
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: white;
+.pagination li {
+  display: inline;
+  margin: 0 3px;
+}
+
+.pagination a {
   border-radius: 5px;
   text-decoration: none;
+  background-color: #007bff;
+  color: white;
 }
 
-.page-item.active a {
+.pagination a:hover,
+.pagination .active span:hover {
   background-color: #0056b3;
-}
-
-.page-item.disabled a {
-  background-color: #ccc;
-  cursor: not-allowed;
+  color: white;
 }
 
 /* プロフィール編集画面全体の背景設定 */

@@ -87,10 +87,12 @@
           </div>
         <% end %>
       <% else %>
-        <p class="no-posts">まだ投稿はありません。</p>
+        <p class="no-posts">投稿がありません。</p>
       <% end %>
     </div>
 
-    <%= paginate @posts, theme: 'bootstrap4' if @posts.total_pages > 1 %>
+    <div class="pagination-empty">
+    <%= paginate @posts, theme: 'bootstrap4', total_pages: (@posts.total_pages > 1 ? @posts.total_pages : 2) %>
+    </div>
   </div>
 </div>
