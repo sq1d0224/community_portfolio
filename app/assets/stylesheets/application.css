@@ -42,7 +42,7 @@ nav ul {
 /* ナビゲーションリンク設定 */
 .header nav ul li {
   margin-left: 20px; /* リンク間のスペースを設定 */
-  
+
 }
 
 nav ul li a {
@@ -104,7 +104,7 @@ nav ul li a:hover {
 /* 投稿関連スタイル */
 /* 投稿一覧ページ背景設定 */
 .posts-page-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
+  background-image: url('ping.jpg'); /* 背景画像を指定 */
   background-size: cover;
   background-position: center;
   padding: 50px 150px;
@@ -203,7 +203,7 @@ nav ul li a:hover {
 
 .post-link {
   display: flex;
-  justify-content: flex-end;  
+  justify-content: flex-end;
   color: #4f96f6;
   font-size: 13px;
   text-decoration: none;
