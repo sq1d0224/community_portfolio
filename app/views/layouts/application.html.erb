@@ -19,19 +19,20 @@
           <%= link_to t('site_name', default: 'GOLVAVI'), root_path %>
         </div>
         <ul role="menu">
-          <li role="menuitem"><%= link_to t('about', default: 'GOLNAVIとは'), about_path %></li>
+          <li role="menuitem"><%= link_to t('about', default: 'GOLNAVIとは'), about_path, class: ('active' if current_page?(about_path)) %></li>
           <% if user_signed_in? %>
-            <li role="menuitem"><%= link_to t('top', default: 'トップ'), top_path %></li>
-            <li role="menuitem"><%= link_to '投稿一覧', posts_path %></li>
-            <li role="menuitem"><%= link_to t('profile', default: 'プロフィール'), user_profile_path %></li>
+            <li role="menuitem"><%= link_to t('top', default: 'トップ'), top_path, class: ('active' if current_page?(top_path)) %></li>
+            <li role="menuitem"><%= link_to '投稿一覧', posts_path, class: ('active' if current_page?(posts_path)) %></li>
+            <li role="menuitem"><%= link_to t('profile', default: 'プロフィール'), user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>
             <li role="menuitem"><%= link_to t('log_out', default: 'ログアウト'), destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li role="menuitem"><%= link_to t('sign_up', default: '新規登録'), new_user_registration_path %></li>
-            <li role="menuitem"><%= link_to t('log_in', default: 'ログイン'), new_user_session_path %></li>
+            <li role="menuitem"><%= link_to t('sign_up', default: '新規登録'), new_user_registration_path, class: ('active' if current_page?(new_user_registration_path)) %></li>
+            <li role="menuitem"><%= link_to t('log_in', default: 'ログイン'), new_user_session_path, class: ('active' if current_page?(new_user_session_path)) %></li>
           <% end %>
         </ul>
       </nav>
     </header>
+
 
     <main class="container">
       <%= yield %>
@@ -43,7 +44,7 @@
         <ul role="menu">
           <!--<li role="menuitem"><%= link_to t('privacy_policy', default: 'プライバシーポリシー'), privacy_policy_path %></li>|-->
           <!--<li role="menuitem"><%= link_to t('terms_of_service', default: '利用規約'), terms_of_service_path %></li>|-->
-          <li role="menuitem"><%= link_to t('contact', default: 'お問い合わせ'), contact_path %></li>
+          <li role="menuitem"><%= link_to t('contact', default: 'お問い合わせ'), contact_path, class: ('active' if current_page?(contact_path)) %></li>
         </ul>
       </nav>
     </footer>

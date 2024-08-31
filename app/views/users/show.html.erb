@@ -36,13 +36,13 @@
     </div>
 
     <div class="profile-actions">
-      <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-primary' %>
+      <%= link_to 'プロフィールを編集', edit_user_path(@user.id), class: 'btn btn-primary' %>
     </div>
   </div>
 
   <div class="profile-posts-page">
     <div class="profile-posts-title">
-      <h2>あなたの投稿一覧</h2>
+      <h2><%= @user.username %>の投稿一覧</h2>
     </div>
     <div class="new-post-link">
       <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
@@ -77,13 +77,12 @@
               <% end %>
             </p>
 
-            
-            <p class="post-date"><%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
             <% if post.image.attached? %>
               <p class="post-image"><%= image_tag post.display_image, class: 'post-img' %></p>
             <% else %>
               <p class="post-image"><%= image_tag 'no_image_photo1.jpg', class: 'post-img' %></p>
             <% end %>
+            <p class="post-date"><%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
           </div>
         <% end %>
       <% else %>

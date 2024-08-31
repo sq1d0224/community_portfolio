@@ -1,20 +1,32 @@
-<p id="notice" class="alert alert-info"><%= notice %></p>
+<div class="post-detail-background">
+  <div class="post-detail">
+    
+    <!-- ユーザー情報の表示部分 -->
+    <div class="post-user-info">
+      <% if @post.user.profile_image.attached? %>
+        <%= image_tag @post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "user-icon" %>
+      <% else %>
+        <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "user-icon" %>
+      <% end %>
+      <%= link_to @post.user.username, user_profile_path(@post.user), class: 'post-username' %>
+    </div>
 
-<h1><%= @post.title %></h1>
-<p><%= @post.description %></p>
+    <h1 class="post-detail-title"><%= @post.title %></h1>
+    <p class="post-detail-description"><%= @post.description %></p>
 
-<% if @post.image.attached? %>
-  <%= image_tag @post.display_image, alt: "投稿画像", class: "img-fluid" %>
-<% else %>
-  <p>画像はありません。</p>
-<% end %>
+    <% if @post.image.attached? %>
+      <p class="post-image"><%= image_tag @post.display_image, class: "img-fluid" %>
+    <% else %>
+      <p class="post-image"><%= image_tag 'no_image_photo1.jpg', class: 'post-img' %></p>
+    <% end %>
 
-<p>投稿者: <%= @post.user.username %></p>
-<p>投稿日時: <%= l(@post.created_at, format: :long, locale: :ja) %></p>
+    <p class="post-detail-date"><%= l(@post.created_at, format: :long, locale: :ja) %></p>
 
-<% if @post.user == current_user %>
-  <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary' %>
-  <%= link_to '投稿を削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
-<% end %>
-
-<%= link_to 'トップページへ', top_path, class: 'btn btn-secondary' %>
+    <% if @post.user == current_user %>
+      <div class="post-actions">
+        <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary edit-post-btn' %>
+        <%= link_to '投稿を削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger delete-post-btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -63,6 +63,11 @@ nav ul li a:hover {
   color: white; /* ホバー時の文字色を白に設定 */
 }
 
+nav ul li a.active {
+  text-decoration: underline; /* 現在のページのリンクに下線を追加 */
+  color: white; /* ホバー時の文字色を白に設定 */
+}
+
 /* ボタンスタイル */
 .btn {
   display: inline-block; /* インラインブロック要素として扱う */
@@ -87,8 +92,14 @@ nav ul li a:hover {
   color: white; /* 文字色を白に設定 */
 }
 
+/* デンジャーボタンのスタイル */
+.btn-danger {
+  background-color: #dc3545; /* 背景色を赤色に設定 */
+  color: white; /* 文字色を白に設定 */
+}
+
 /* ボタンのホバー効果 */
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover, .btn-secondary:hover, .btn-danger:hover {
   opacity: 0.8; /* ホバー時の透明度を設定 */
 }
 
@@ -108,7 +119,7 @@ nav ul li a:hover {
 
 /* 背景画像を固定 */
 .posts-page-background {
-  background-image: url('ping.jpg'); /* 背景画像を指定 */
+  background-image: url('practice1.jpg'); /* 背景画像を指定 */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -132,8 +143,6 @@ nav ul li a:hover {
 .posts-title {
   text-align: center;
   font-size: 36px;
-  color: #2c3e50;
-  margin-bottom: 20px;
   color: #34495e; /* 文字色 */
 }
 
@@ -369,10 +378,6 @@ nav ul li a:hover {
   display: inline; /* リストアイテムをインライン表示 */
 }
 
-.footer nav ul li a {
-  text-decoration: none; /* リンクの下線を削除 */
-}
-
 /* アバウトページの背景設定 */
 .about-page-background {
   background-image: url('grass.jpg'); /* アバウトページの背景画像を設定 */
@@ -442,7 +447,7 @@ nav ul li a:hover {
 
 /* プロフィールページ背景設定 */
 .profile-page-background {
-  background-image: url('golfgirl.jpg'); /* 背景画像を指定 */
+  background-image: url('golfshot1.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像をフィット */
   background-position: center; /* 背景画像を中央に配置 */
   background-attachment: fixed;
@@ -578,7 +583,11 @@ nav ul li a:hover {
   background-image: url('practice.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像をフィット */
   background-position: center; /* 背景画像を中央に配置 */
-  padding: 50px 0; /* ページ全体に余白を追加 */
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
 /* タイトルスタイル */
@@ -678,7 +687,11 @@ nav ul li a:hover {
   background-image: url('golfshot.jpg'); /* 必要に応じて背景画像を設定 */
   background-size: cover;
   background-position: center;
-  padding: 50px 0; /* ページ全体に余白を追加 */
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
 /* 新規投稿ページの全体スタイル */
@@ -712,4 +725,83 @@ nav ul li a:hover {
 .mt-3 {
   display: flex;
   justify-content: center; /* コンテンツを中央揃え */
+}
+
+
+/* 全体の背景設定 */
+.post-detail-background {
+  background-image: url('golfcourse3.jpg'); /* 背景画像を指定 */
+  background-size: cover; /* 画面全体に背景画像を表示 */
+  background-position: center; /* 背景画像を中央に配置 */
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+/* 投稿詳細ページの全体スタイル */
+.post-detail {
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明の白背景 */
+  padding: 30px; /* 内側の余白 */
+  border-radius: 10px; /* 角を丸くする */
+  width: 100%;
+  max-width: 800px; /* 最大幅を800pxに設定 */
+  margin: 0 auto; /* 中央揃え */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ボックスシャドウを追加して立体感を演出 */
+}
+
+/* 投稿タイトルのスタイル */
+.post-detail-title {
+  word-wrap: break-word; /* 長い単語を折り返し */
+  overflow-wrap: break-word; /* 長い単語を折り返し */
+  white-space: pre-wrap; /* テキストの折り返し */
+  word-break: break-all; /* 単語を途中で折り返す */
+  font-size: 23px;
+  color: #34495e; /* タイトル文字色 */
+  margin-bottom: 20px;
+}
+
+/* 投稿説明文のスタイル */
+.post-detail-description {
+  word-wrap: break-word; /* 長い単語を折り返し */
+  overflow-wrap: break-word; /* 長い単語を折り返し */
+  white-space: pre-wrap; /* テキストの折り返し */
+  word-break: break-all; /* 単語を途中で折り返す */
+  font-size: 17px;
+  color: #34495e; /* 説明文の文字色 */
+  margin-bottom: 20px;
+  white-space: pre-wrap; /* 自動改行 */
+}
+
+/* 投稿画像のスタイル */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+/* 画像がない場合のメッセージ */
+.no-image {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 投稿日時のスタイル */
+.post-detail-date {
+  font-size: 15px;
+  color: #777;
+  text-align: left;
+  margin-top: 10px;
+}
+
+/* 編集・削除ボタンのグループ */
+.post-actions {
+  display: flex;
+  justify-content: flex-end; /* 右寄せ */
+  gap: 10px; /* ボタン間の隙間 */
+  margin-top: 20px;
 }

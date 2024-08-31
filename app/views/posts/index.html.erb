@@ -1,6 +1,10 @@
 <div class="posts-page-background">
   <div class="posts-page">
     <h1 class="posts-title">投稿一覧</h1>
+    
+    <div class="new-post-link">
+      <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+    </div>
 
     <div class="posts-grid">
       <% if @posts.any? %>
@@ -14,7 +18,7 @@
               <% else %>
                 <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
               <% end %>
-              <%= link_to post.user.username, user_profile_path(post.user), class: 'post-username' %>
+              <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
             </div>
 
             
@@ -31,13 +35,12 @@
               <% end %>
             </p>
 
-            
-            <p class="post-date"><%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
             <% if post.image.attached? %>
               <p class="post-image"><%= image_tag post.display_image, class: 'post-img' %></p>
             <% else %>
               <p class="post-image"><%= image_tag 'no_image_photo1.jpg', class: 'post-img' %></p>
             <% end %>
+            <p class="post-date"><%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
           </div>
         <% end %>
       <% else %>
