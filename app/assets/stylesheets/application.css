@@ -805,3 +805,50 @@ nav ul li a.active {
   gap: 10px; /* ボタン間の隙間 */
   margin-top: 20px;
 }
+
+.edit-post-page-background {
+  background-image: url('practice2.jpg'); /* 背景画像を指定 */
+  background-size: cover; /* 画面全体に背景画像を表示 */
+  background-position: center; /* 背景画像を中央に配置 */
+  background-attachment: fixed;
+  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.edit-post-page {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-post-page-title {
+  text-align: center;
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.edit-post-title,
+.edit-post-description,
+.edit-post-image {
+  margin-bottom: 20px;
+}
+
+.current-image {
+  margin-top: 10px;
+}
+
+.current-post-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.remove-image-option {
+  margin-top: 10px;
+}

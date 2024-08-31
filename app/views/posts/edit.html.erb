@@ -1,8 +1,46 @@
-<h1>投稿の編集</h1>
+<div class="edit-post-page-background">
+  <div class="edit-post-page">
+    <h1 class="edit-post-page-title">投稿を編集する</h1>
 
-<%= render 'form', post: @post %>
+    <%= form_with(model: @post, local: true) do |form| %>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> が発生しました:</h2>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<div class="actions">
-  <%= link_to 'キャンセル', @post, class: 'btn btn-secondary' %>
-  <%= link_to 'Topへ', top_path, class: 'btn btn-primary ml-2' %>
+      <div class="edit-post-title">
+        <%= form.label :title, 'タイトル', class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="edit-post-description">
+        <%= form.label :description, '説明文', class: 'form-label' %>
+        <%= form.text_area :description, class: 'form-control' %>
+      </div>
+
+      <div class="edit-post-image">
+        <%= form.label :image, '画像', class: 'form-label' %>
+        <%= form.file_field :image, class: 'form-control-file' %>
+        <% if @post.image.attached? %>
+          <div class="current-image">
+            <%= image_tag @post.display_image, alt: "現在の画像", class: "img-fluid current-post-image" %>
+          </div>
+          <div class="remove-image-option">
+            <%= form.check_box :remove_image %> 画像を削除する
+          </div>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit '更新する', class: 'btn btn-primary' %>
+        <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
 </div>

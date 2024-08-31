@@ -36,9 +36,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to top_path, notice: '投稿が削除されました。'
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to user_path(current_user), notice: '投稿が削除されました。'
+    else
+      redirect_to post_path(@post), alert: '投稿の削除に失敗しました。'
+    end
   end
+
 
   private
 
@@ -48,7 +53,7 @@ class PostsController < ApplicationController
 
   def authorize_user!
     unless @post.user == current_user
-      redirect_to top_path, alert: '他のユーザーの投稿を編集することはできません。'
+      redirect_to post_path, alert: '他のユーザーの投稿を編集することはできません。'
     end
   end
 
