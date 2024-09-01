@@ -808,6 +808,7 @@ nav ul li a.active {
   color: #777;
   text-align: left;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* 編集・削除ボタンのグループ */
@@ -900,6 +901,17 @@ nav ul li a.active {
   font-size: 18px; /* アイコンサイズ */
 }
 
+.comments-section {
+  border-top: 2px dotted #AAA;
+  border-bottom: 2px dotted #AAA;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.comments-section h2 {
+  font-size: 20px;
+}
+
 .comment-container {
   padding: 10px;
   background-color: #fff;
@@ -966,7 +978,8 @@ nav ul li a.active {
   z-index: 1;
   padding: 8px 16px;
   border-radius: 4px;
-  min-width: 100px; /* 最小幅を設定 */
+  min-width: 250px; /* 最小幅を設定 */
+  text-align: center;
 }
 
 .dropdown-menu.show {
@@ -1024,3 +1037,8 @@ nav ul li a.active {
   align-self: flex-end; /* 左下に配置 */
 }
 
+.post-detail-header {
+  display: flex;
+  justify-content: space-between; /* 左右に配置 */
+  align-items: center;
+}

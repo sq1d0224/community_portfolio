@@ -51,25 +51,25 @@
     <div class="posts-grid">
       <% if @posts.any? %>
         <% @posts.each do |post| %>
-        
+
           <div class="post-item">
-            
+
             <div class="post-user-info">
               <% if post.user.profile_image.attached? %>
                 <%= image_tag post.user.profile_image.variant(resize_to_fill: [30, 30]), class: 'user-icon' %>
               <% else %>
                 <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
               <% end %>
-              <%= link_to post.user.username, user_profile_path(post.user), class: 'post-username' %>
+              <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
             </div>
 
-            
+
             <h3 class="post-title"><%= link_to truncate(post.title, length: 40), post_path(post), class: 'post-title-link' %></h3>
               <% if post.title.length > 40 %>
                 <%= link_to '続きを読む', post_path(post), class: 'post-link' %>
               <% end %>
-            
-            
+
+
             <p class="post-description">
               <%= truncate(post.description, length: 100) %>
               <% if post.description.length > 100 %>

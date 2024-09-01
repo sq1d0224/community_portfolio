@@ -17,6 +17,8 @@ class PostsController < ApplicationController
   
   def show
     # `set_post` により @post が設定されるので、ここでの処理は不要です。
+    @post = Post.find(params[:id])
+    @comments_count = @post.comments.count
   end
 
   def new

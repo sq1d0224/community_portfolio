@@ -1,14 +1,30 @@
 <div class="post-detail-background">
   <div class="post-detail">
     
+    <div class="post-detail-header">
     <!-- ユーザー情報の表示部分 -->
-    <div class="post-user-info">
-      <% if @post.user.profile_image.attached? %>
-        <%= image_tag @post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "post-user-icon" %>
-      <% else %>
-        <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
-      <% end %>
-      <%= link_to @post.user.username, user_path(@post.user.id), class: 'post-detail-username' %>
+      <div class="left-section">
+        <% if @post.user.profile_image.attached? %>
+          <%= image_tag @post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "post-user-icon" %>
+        <% else %>
+          <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
+        <% end %>
+        <%= link_to @post.user.username, user_path(@post.user.id), class: 'post-detail-username' %>
+      </div>
+    
+      <!-- 3点リーダー -->
+      <div class="dropdown right-section">
+        <div class="dropdown-toggle" data-comment-id="<%= @post.id %>"><i class="fa-solid fa-ellipsis"></i></div>
+        <div class="dropdown-menu" id="dropdown-menu-<%= @post.id %>">
+          <% if @post.user == current_user %>
+            <%= link_to '投稿を編集する', edit_post_path(@post), class: 'dropdown-item edit-post-btn' %>
+            <%= link_to '投稿を削除する', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
+          <% else %>
+            <p class="dropdown-item no-actions">可能な操作はありません</p>
+          <% end %>
+        </div>
+      </div>
+    
     </div>
 
     <h1 class="post-detail-title"><%= @post.title %></h1>
@@ -30,7 +46,7 @@
     <% end %>
     
     <div class="comments-section">
-      <h2>コメント一覧</h2>
+      <h2>コメント一覧(<%= @comments_count %>)</h2>
       <% @post.comments.each do |comment| %>
         <div class="comment-container">
           <div class="comment-header">
@@ -45,11 +61,13 @@
               
             <div class="right-section">
               <div class="dropdown">
-                <div class="dropdown-toggle">
-                  <i class="fa-solid fa-ellipsis"></i>
-                </div>
-                <div class="dropdown-menu">
-                  <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
+                <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
+                  <% if comment.user == current_user %>
+                    <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                  <% else %>
+                    <p class="dropdown-item no-actions">可能な操作はありません</p>
+                  <% end %>
                 </div>
               </div>
             </div>

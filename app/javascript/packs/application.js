@@ -29,11 +29,12 @@ document.addEventListener("turbolinks:load", () => {
 import $ from 'jquery';
 window.$ = $;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
   // ドロップダウンをクリックでトグルする
   document.querySelectorAll('.dropdown-toggle').forEach(function(element) {
     element.addEventListener('click', function(event) {
-      const dropdownMenu = this.nextElementSibling;
+      const commentId = this.getAttribute('data-comment-id');
+      const dropdownMenu = document.getElementById(`dropdown-menu-${commentId}`);
 
       // 他の開いているドロップダウンメニューを閉じる
       document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
@@ -52,8 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ページのどこかをクリックした時に開いているドロップダウンを閉じる
   document.addEventListener('click', function() {
-    document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+    document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
       menu.classList.remove('show');
     });
   });
+
+  // ドロップダウンメニュー内のクリックイベントを無視
+  document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+    menu.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  });
 });
+
+
