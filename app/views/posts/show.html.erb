@@ -4,11 +4,11 @@
     <!-- ユーザー情報の表示部分 -->
     <div class="post-user-info">
       <% if @post.user.profile_image.attached? %>
-        <%= image_tag @post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "user-icon" %>
+        <%= image_tag @post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "post-user-icon" %>
       <% else %>
-        <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "user-icon" %>
+        <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
       <% end %>
-      <%= link_to @post.user.username, user_profile_path(@post.user), class: 'post-username' %>
+      <%= link_to @post.user.username, user_path(@post.user.id), class: 'post-detail-username' %>
     </div>
 
     <h1 class="post-detail-title"><%= @post.title %></h1>
@@ -28,5 +28,60 @@
         <%= link_to '投稿を削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger delete-post-btn' %>
       </div>
     <% end %>
+    
+    <div class="comments-section">
+      <h2>コメント一覧</h2>
+      <% @post.comments.each do |comment| %>
+        <div class="comment-container">
+          <div class="comment-header">
+            <div class="left-section">
+              <% if comment.user.profile_image.attached? %>
+                <%= image_tag comment.user.profile_image.variant(resize_to_fill: [30, 30]), class: "comment-user-icon" %>
+              <% else %>
+                <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
+              <% end %>
+              <%= link_to comment.user.username, user_path(comment.user), class: 'comment-username' %>
+            </div>
+              
+            <div class="right-section">
+              <div class="dropdown">
+                <div class="dropdown-toggle">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <div class="dropdown-menu">
+                  <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+          <div class="comment-content">
+            <p><%= comment.content %></p>
+            <p class="comment-date"><%= l(comment.created_at, format: :long, locale: :ja) %></p>
+          </div>
+        </div>
+        
+      <% end %>
+    </div>
+
+    <div class="comment-form-container">
+      <div class="user-icon-wrapper">
+        <% if current_user.profile_image.attached? %>
+          <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: "user-icon" %>
+        <% else %>
+          <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "user-icon" %>
+        <% end %>
+      </div>
+
+      <div class="comment-form-wrapper">
+        <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+          <div class="comment-form">
+            <%= form.text_area :content, class: "form-control comment-input", placeholder: "コメントする(1000文字以内)" %>
+            <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn' %>
+          </div>
+        <% end %>
+      </div>  
+    </div>
+    
   </div>
 </div>

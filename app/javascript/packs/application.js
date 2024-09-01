@@ -24,3 +24,36 @@ document.addEventListener("turbolinks:load", () => {
   console.log("Turbolinks loaded!");
   // 追加のJavaScriptコード
 });
+
+// jQueryのインポート
+import $ from 'jquery';
+window.$ = $;
+
+document.addEventListener('DOMContentLoaded', function() {
+  // ドロップダウンをクリックでトグルする
+  document.querySelectorAll('.dropdown-toggle').forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      const dropdownMenu = this.nextElementSibling;
+
+      // 他の開いているドロップダウンメニューを閉じる
+      document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+        if (menu !== dropdownMenu) {
+          menu.classList.remove('show');
+        }
+      });
+
+      // 現在のドロップダウンメニューを表示/非表示切り替え
+      dropdownMenu.classList.toggle('show');
+
+      // イベントの伝播を止める
+      event.stopPropagation();
+    });
+  });
+
+  // ページのどこかをクリックした時に開いているドロップダウンを閉じる
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+      menu.classList.remove('show');
+    });
+  });
+});

@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   # 投稿に関するルーティング
   resources :posts
+  
+  # コメントに関するルーティング
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
 
   # プロフィールページに関連するルーティング
   get 'profile', to: 'users#show', as: 'user_profile'

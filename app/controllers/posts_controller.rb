@@ -4,7 +4,15 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
   
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(20)
+    if params[:search].present?
+      @posts = Post.where("title LIKE ?", "%#{params[:search]}%")
+                   .or(Post.where("description LIKE ?", "%#{params[:search]}%"))
+                   .order(created_at: :desc)
+                   .page(params[:page])
+                   .per(20)
+    else
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(20)
+    end
   end
   
   def show

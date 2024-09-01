@@ -185,7 +185,7 @@ nav ul li a.active {
 }
 
 .post-username {
-  font-size: 14px; /* ユーザーネームの文字サイズ */
+  font-size: 16px; /* ユーザーネームの文字サイズ */
   color: #34495e; /* 文字色 */
   text-decoration: none; /* 下線を削除 */
 }
@@ -774,6 +774,18 @@ nav ul li a.active {
   white-space: pre-wrap; /* 自動改行 */
 }
 
+.post-detail-username {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.post-detail-username:hover {
+  text-decoration: underline;
+}
+
 /* 投稿画像のスタイル */
 .img-fluid {
   max-width: 100%;
@@ -852,3 +864,163 @@ nav ul li a.active {
 .remove-image-option {
   margin-top: 10px;
 }
+
+.search-form-with-icon {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px; /* フォームと投稿リストの間にスペースを追加 */
+}
+
+.search-input-container {
+  position: relative;
+  width: 300px; /* テキストフィールドの幅を設定 */
+}
+
+.search-input {
+  width: 100%; /* テキストフィールドをコンテナ内で100%の幅にする */
+  padding-right: 40px; /* アイコン用のスペースを確保 */
+  border-radius: 20px; /* 角を丸くする */
+  border: 1px solid #ccc; /* 境界線を追加 */
+}
+
+.search-button {
+  position: absolute;
+  right: 10px; /* 右端からの距離を調整 */
+  top: 50%;
+  transform: translateY(-50%); /* ボタンを縦中央に配置 */
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-button i {
+  font-size: 18px; /* アイコンサイズ */
+}
+
+.comment-container {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between; /* 左右に配置 */
+  align-items: center;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.comment-user-icon {
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #CCC;
+}
+
+.comment-username {
+  font-weight: bold;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.comment-username:hover {
+  text-decoration: underline;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #777;
+}
+
+.right-section {
+  position: relative;
+}
+
+/* ドロップダウンメニューのスタイル */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 8px 16px;
+  border-radius: 4px;
+  min-width: 100px; /* 最小幅を設定 */
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  color: #c7511f;
+}
+
+.comment-content {
+  margin-top: 5px;
+}
+
+
+/* コメントフォーム全体のコンテナ */
+.comment-form-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+/* ユーザーアイコンのスタイル */
+.post-user-icon {
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #CCC;
+}
+
+/* コメントフォームのラッパー */
+.comment-form-wrapper {
+  flex: 1; /* 残りのスペースを占める */
+}
+
+/* コメントフォームのスタイル */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* コメントの入力欄のスタイル */
+.comment-form .form-control {
+  width: 100%;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+/* コメント投稿ボタンのスタイル */
+.comment-submit-btn {
+  align-self: flex-end; /* 左下に配置 */
+}
+
