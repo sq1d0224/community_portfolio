@@ -18,7 +18,7 @@
         <div class="dropdown-menu" id="dropdown-menu-<%= @post.id %>">
           <% if @post.user == current_user %>
             <%= link_to '投稿を編集する', edit_post_path(@post), class: 'dropdown-item edit-post-btn' %>
-            <%= link_to '投稿を削除する', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
+            <%= link_to '投稿を削除する', post_path(@post), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
           <% else %>
             <p class="dropdown-item no-actions">可能な操作はありません</p>
           <% end %>
@@ -37,13 +37,6 @@
     <% end %>
 
     <p class="post-detail-date"><%= l(@post.created_at, format: :long, locale: :ja) %></p>
-
-    <% if @post.user == current_user %>
-      <div class="post-actions">
-        <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary edit-post-btn' %>
-        <%= link_to '投稿を削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger delete-post-btn' %>
-      </div>
-    <% end %>
     
     <div class="comments-section">
       <h2>コメント一覧(<%= @comments_count %>)</h2>

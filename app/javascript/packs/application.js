@@ -30,40 +30,19 @@ import $ from 'jquery';
 window.$ = $;
 
 document.addEventListener('turbolinks:load', function() {
-  // ドロップダウンをクリックでトグルする
   document.querySelectorAll('.dropdown-toggle').forEach(function(element) {
     element.addEventListener('click', function(event) {
       const commentId = this.getAttribute('data-comment-id');
       const dropdownMenu = document.getElementById(`dropdown-menu-${commentId}`);
-
-      // 他の開いているドロップダウンメニューを閉じる
-      document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
-        if (menu !== dropdownMenu) {
-          menu.classList.remove('show');
-        }
-      });
-
-      // 現在のドロップダウンメニューを表示/非表示切り替え
+      
       dropdownMenu.classList.toggle('show');
-
-      // イベントの伝播を止める
       event.stopPropagation();
     });
   });
 
-  // ページのどこかをクリックした時に開いているドロップダウンを閉じる
   document.addEventListener('click', function() {
     document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
       menu.classList.remove('show');
     });
   });
-
-  // ドロップダウンメニュー内のクリックイベントを無視
-  document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
-    menu.addEventListener('click', function(event) {
-      event.stopPropagation();
-    });
-  });
 });
-
-

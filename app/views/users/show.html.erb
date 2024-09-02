@@ -78,18 +78,28 @@
             </p>
 
             <% if post.image.attached? %>
-              <p class="post-image"><%= image_tag post.display_image, class: 'post-img' %></p>
+              <p class="post-image">
+                <%= link_to post_path(post) do %>
+                  <%= image_tag post.display_image, class: 'post-img' %>
+                <% end %>
+              </p>
             <% else %>
-              <p class="post-image"><%= image_tag 'no_image_photo1.jpg', class: 'post-img' %></p>
+              <p class="post-image">
+                <%= link_to post_path(post) do %>
+                  <%= image_tag 'no_image_photo1.jpg', class: 'post-img' %>
+                <% end %>
+              </p>
             <% end %>
-            <p class="post-date"><%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %></p>
+
+            <p class="post-date">
+              <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %>
+            </p>
           </div>
         <% end %>
       <% else %>
         <p class="no-posts">投稿がありません。</p>
       <% end %>
     </div>
-
     <div class="pagination-empty">
     <%= paginate @posts, theme: 'bootstrap4', total_pages: (@posts.total_pages > 1 ? @posts.total_pages : 2) %>
     </div>

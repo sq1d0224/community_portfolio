@@ -21,7 +21,7 @@
 
       <div class="edit-post-description">
         <%= form.label :description, '説明文', class: 'form-label' %>
-        <%= form.text_area :description, class: 'form-control' %>
+        <%= form.text_area :description, class: 'form-control edit-post-textarea' %>
       </div>
 
       <div class="edit-post-image">
@@ -37,9 +37,9 @@
         <% end %>
       </div>
 
-      <div class="actions">
+      <div class="edit-post-actions">
         <%= form.submit '更新する', class: 'btn btn-primary' %>
-        <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-secondary' %>
+        <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-secondary cancel-link' %>
       </div>
     <% end %>
   </div>

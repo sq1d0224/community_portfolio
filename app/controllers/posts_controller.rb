@@ -45,12 +45,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy
-    @post = Post.find(params[:id])
-    if @post.destroy
-      redirect_to user_path(current_user), notice: '投稿が削除されました。'
-    else
-      redirect_to post_path(@post), alert: '投稿の削除に失敗しました。'
+   def destroy
+    user = @post.user # 削除前にユーザーをキャッシュ
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to user_path(user), notice: '投稿が正常に削除されました。' }
+      format.json { head :no_content }
     end
   end
 
