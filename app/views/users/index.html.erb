@@ -1,0 +1,47 @@
+<div class="users-page-background">
+  <div class="users-page">
+    <h1 class="users-title">ユーザー一覧</h1>
+
+    <!-- 検索フォームの追加 -->
+    <div class="search-form">
+      <%= form_with url: users_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
+        <div class="search-input-container">
+          <%= form.text_field :search, placeholder: "ユーザーを検索", class: "form-control search-input" %>
+          <button type="submit" class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i> <!-- Font Awesome の虫眼鏡アイコン -->
+          </button>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- ユーザーのリスト表示 -->
+    <div class="users-list">
+      <% @users.each do |user| %>
+        <div class="user-item">
+          <div class="user-icon-container">
+            <% if user.profile_image.attached? %>
+              <%= image_tag user.profile_image.variant(resize_to_fill: [100, 100]), class: 'user-icon' %>
+            <% else %>
+              <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
+            <% end %>
+          </div>
+          <div class="user-info-container">
+            <div class="user-meta">
+              <span class="user-name"><%= user.username %></span>
+              <span class="user-gender">性別: <%= user.gender %></span>
+              <span class="user-age">年齢: <%= user.age %></span>
+            </div>
+            <div class="user-bio">
+              <%= truncate(user.bio, length: 100) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- ページネーション -->
+    <div class="pagination-empty">
+      <%= paginate @users, theme: 'bootstrap4', class: 'pagination' %>
+    </div>
+  </div>
+</div>

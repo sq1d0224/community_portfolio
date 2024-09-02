@@ -6,7 +6,7 @@
     <div class="search-form">
       <%= form_with url: posts_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
         <div class="search-input-container">
-          <%= form.text_field :search, placeholder: "検索", class: "form-control search-input" %>
+          <%= form.text_field :search, placeholder: "投稿を検索", class: "form-control search-input" %>
           <button type="submit" class="search-button">
             <i class="fa-solid fa-magnifying-glass"></i> <!-- Font Awesome の虫眼鏡アイコン -->
           </button>
@@ -32,6 +32,8 @@
               <% end %>
               <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
             </div>
+            
+            
 
             
             <h3 class="post-title"><%= link_to truncate(post.title, length: 40), post_path(post), class: 'post-title-link' %></h3>
@@ -60,10 +62,12 @@
                 <% end %>
               </p>
             <% end %>
-
+            
             <p class="post-date">
               <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %>
             </p>
+
+            
           </div>
         <% end %>
       <% else %>

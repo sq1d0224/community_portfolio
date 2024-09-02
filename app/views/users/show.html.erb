@@ -61,8 +61,10 @@
                 <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
               <% end %>
               <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
+              
             </div>
 
+            
 
             <h3 class="post-title"><%= link_to truncate(post.title, length: 40), post_path(post), class: 'post-title-link' %></h3>
               <% if post.title.length > 40 %>
@@ -90,10 +92,12 @@
                 <% end %>
               </p>
             <% end %>
-
+            
             <p class="post-date">
               <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %>
             </p>
+
+            
           </div>
         <% end %>
       <% else %>

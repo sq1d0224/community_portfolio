@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    
+    @users = User.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :gender, :birthdate, :bio, :profile_image, :remove_profile_image)
+    params.require(:user).permit(:username, :gender, :birthdate, :bio, :profile_image, :remove_profile_image)
   end
   
   def is_matching_login_user

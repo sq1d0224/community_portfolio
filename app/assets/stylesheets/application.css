@@ -119,14 +119,12 @@ nav ul li a.active {
 
 /* 背景画像を固定 */
 .posts-page-background {
-  background-image: url('practice1.jpg'); /* 背景画像を指定 */
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* 投稿一覧のスクロール設定 */
@@ -136,8 +134,9 @@ nav ul li a.active {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   width: 100%;
-  margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1600px;
+  margin: auto;
 }
 
 .posts-title {
@@ -238,6 +237,7 @@ nav ul li a.active {
 .post-date {
   color: #777;
   font-size: 12px;
+  margin-bottom: 10px;
 }
 
 .no-posts-coment {
@@ -320,6 +320,7 @@ nav ul li a.active {
 
 /* ログイン、新規登録の文字のスタイル */
 .log {
+  color: #34495e;
   margin-bottom: 10px; /* 下部に余白を追加 */
 }
 
@@ -385,10 +386,8 @@ nav ul li a.active {
   background-size: cover; /* 背景画像を画面全体に表示 */
   background-position: center; /* 背景画像を中央に配置 */
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* アバウトページのコンテンツ設定 */
@@ -405,7 +404,7 @@ nav ul li a.active {
 .about-title {
   font-size: 36px; /* タイトルの文字サイズ */
   font-weight: bold; /* 太字に設定 */
-  color: #2c3e50; /* タイトルの文字色を濃い青に設定 */
+  color: #34495e; /* タイトルの文字色を濃い青に設定 */
   text-align: center; /* タイトルを中央揃え */
   margin-bottom: 20px; /* 下部に余白を追加 */
 }
@@ -448,14 +447,12 @@ nav ul li a.active {
 
 /* プロフィールページ背景設定 */
 .profile-page-background {
-  background-image: url('golfshot1.jpg'); /* 背景画像を指定 */
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像をフィット */
   background-position: center; /* 背景画像を中央に配置 */
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* プロフィールページの全体スタイル */
@@ -465,7 +462,7 @@ nav ul li a.active {
   padding-bottom: 10px; /* 下部の余白 */
   border-radius: 10px; /* 角を丸く */
   margin: 0 auto; /* 中央揃え */
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
   display: flex; /* フレックスボックスで整列 */
   flex-direction: column; /* 縦方向に配置 */
@@ -543,7 +540,8 @@ nav ul li a.active {
   padding: 30px;
   border-radius: 10px;
   width: 100%;
-  margin: 0 auto;
+  max-width: 1600px;
+  margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -581,14 +579,12 @@ nav ul li a.active {
 
 /* プロフィール編集画面全体の背景設定 */
 .edit-profile-page-background {
-  background-image: url('practice.jpg'); /* 背景画像を指定 */
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像をフィット */
   background-position: center; /* 背景画像を中央に配置 */
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* タイトルスタイル */
@@ -685,14 +681,12 @@ nav ul li a.active {
 /* 新規投稿ページの背景設定 */
 .new-post-page-background {
   min-height: 100vh;
-  background-image: url('golfshot.jpg'); /* 必要に応じて背景画像を設定 */
+  background-image: url('grass.jpg'); /* 必要に応じて背景画像を設定 */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* 新規投稿ページの全体スタイル */
@@ -731,14 +725,12 @@ nav ul li a.active {
 
 /* 全体の背景設定 */
 .post-detail-background {
-  background-image: url('golfcourse3.jpg'); /* 背景画像を指定 */
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像を表示 */
   background-position: center; /* 背景画像を中央に配置 */
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* 投稿詳細ページの全体スタイル */
@@ -814,12 +806,12 @@ nav ul li a.active {
 
 /* 共通の背景スタイル */
 .edit-post-page-background {
-  background-image: url('practice2.jpg'); /* 背景画像を指定 */
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 画面全体に背景画像を表示 */
   background-position: center; /* 背景画像を中央に配置 */
   background-attachment: fixed;
-  padding-top: 90px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 100px; /* フッターの高さを考慮して余白を調整 */
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* コンテナのスタイル */
@@ -1099,4 +1091,89 @@ nav ul li a.active {
   display: flex;
   justify-content: space-between; /* 左右に配置 */
   align-items: center;
+}
+
+/* ユーザー一覧ページ全体の背景設定 */
+.users-page-background {
+  background-image: url('grass.jpg'); /* 背景画像を指定 */
+  background-size: cover; /* 画面全体に背景画像を表示 */
+  background-position: center; /* 背景画像を中央に配置 */
+  background-attachment: fixed;
+  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
+}
+
+/* ユーザー一覧の全体スタイル */
+.users-page {
+  background-color: rgba(255, 255, 255, 0.9); /* 背景を少し透明に */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトルのスタイル */
+.users-title {
+  text-align: center;
+  font-size: 36px;
+  color: #34495e;
+  margin-bottom: 30px;
+}
+
+/* ユーザーリストのスタイル */
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 各ユーザーアイテムのスタイル */
+.user-item {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ユーザーアイコンのコンテナ */
+.user-icon-container {
+  flex-shrink: 0; /* アイコンのサイズに合わせて収縮 */
+}
+
+/* ユーザー情報のコンテナ */
+.user-info-container {
+  flex-grow: 1;
+}
+
+/* ユーザー名、性別、年齢のメタ情報 */
+.user-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.user-gender, .user-age {
+  font-size: 16px;
+  color: #555;
+}
+
+/* ユーザー自己紹介文のスタイル */
+.user-bio {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+  max-width: 800px; /* 自己紹介文の最大幅 */
 }

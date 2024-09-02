@@ -6,7 +6,8 @@
     <%= render 'shared/error_messages', resource: @user %>
 
     <div class="field username-field">
-      <strong>ユーザーネーム:</strong> <%= @user.username %>
+      <strong><%= f.label :username, 'ユーザーネーム', class: 'form-label' %></strong>
+      <%= f.text_field :username, class: 'form-control' %>
     </div>
 
     <div class="field gender-field">

@@ -61,3 +61,4 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'sidekiq'
 
+

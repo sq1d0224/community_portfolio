@@ -46,6 +46,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }  # ユーザーネームは必須で一意
   validates :email, presence: true, uniqueness: { case_sensitive: false }     # メールアドレスも必須で一意
   validates :bio, length: { maximum: 10000 }, allow_blank: true                 # 自己紹介は任意だが10000文字以内
+  # パスワードのバリデーション
+  validates :password, length: { minimum: 8 }, if: -> { password.present? }
   
   private
 
