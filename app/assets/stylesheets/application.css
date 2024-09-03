@@ -459,7 +459,7 @@ nav ul li a.active {
 .profile-page {
   background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
   padding-top: 30px; /* コンテンツの内側に余白を追加 */
-  padding-bottom: 10px; /* 下部の余白 */
+  padding-bottom: 30px; /* 下部の余白 */
   border-radius: 10px; /* 角を丸く */
   margin: 0 auto; /* 中央揃え */
   margin-bottom: 50px;
@@ -1151,7 +1151,7 @@ nav ul li a.active {
 }
 
 .user-meta {
-  margin-bottom: 10px;
+  /**/
 }
 
 .user-name {
@@ -1169,6 +1169,10 @@ nav ul li a.active {
   margin-top: 5px; /* ユーザー名と性別・年齢の間に少しスペースを追加 */
   font-size: 16px;
   color: #333;
+  padding-top: 7px;
+  border-top: 1px dotted #AAA;
+  padding-bottom: 7px;
+  border-bottom: 1px dotted #AAA;
 }
 
 .user-gender,
@@ -1179,4 +1183,7 @@ nav ul li a.active {
 .user-bio {
   font-size: 14px;
   color: #666;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px dotted #AAA;
 }

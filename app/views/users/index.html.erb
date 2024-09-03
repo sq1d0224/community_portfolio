@@ -1,6 +1,6 @@
 <div class="users-page-background">
   <div class="users-page">
-    <h1 class="users-title">ユーザー一覧</h1>
+    <h1 class="users-title">ユーザーー覧</h1>
 
     <!-- 検索フォームの追加 -->
     <div class="search-form">
@@ -25,7 +25,7 @@
               <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
             <% end %>
           </div>
-          
+
           <div class="user-info-container">
             <div class="user-meta">
               <span class="user-name"><%= link_to user.username, user_path(user) %></span>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="user-bio">
-              <%= truncate(user.bio, length: 100) %>
+              <%= truncate(user.bio, length: 280) %>
             </div>
           </div>
         </div>
