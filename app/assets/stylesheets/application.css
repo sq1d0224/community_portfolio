@@ -1146,34 +1146,37 @@ nav ul li a.active {
   flex-shrink: 0; /* アイコンのサイズに合わせて収縮 */
 }
 
-/* ユーザー情報のコンテナ */
 .user-info-container {
-  flex-grow: 1;
+  flex: 1;
 }
 
-/* ユーザー名、性別、年齢のメタ情報 */
 .user-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
   margin-bottom: 10px;
 }
 
 .user-name {
   font-size: 20px;
   font-weight: bold;
-  color: #34495e;
+  color: #5a009d; /* 例: ユーザー名のリンク色をパープルに変更 */
+  text-decoration: none;
 }
 
-.user-gender, .user-age {
+.user-name:hover {
+  text-decoration: underline;
+}
+
+.user-details {
+  margin-top: 5px; /* ユーザー名と性別・年齢の間に少しスペースを追加 */
   font-size: 16px;
-  color: #555;
+  color: #333;
 }
 
-/* ユーザー自己紹介文のスタイル */
+.user-gender,
+.user-age {
+  margin-right: 15px; /* 性別と年齢の間に少しスペースを追加 */
+}
+
 .user-bio {
   font-size: 14px;
-  color: #777;
-  line-height: 1.4;
-  max-width: 800px; /* 自己紹介文の最大幅 */
+  color: #666;
 }

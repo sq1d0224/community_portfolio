@@ -25,11 +25,14 @@
               <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
             <% end %>
           </div>
+          
           <div class="user-info-container">
             <div class="user-meta">
-              <span class="user-name"><%= user.username %></span>
-              <span class="user-gender">性別: <%= user.gender %></span>
-              <span class="user-age">年齢: <%= user.age %></span>
+              <span class="user-name"><%= link_to user.username, user_path(user) %></span>
+              <div class="user-details"> <!-- 性別と年齢を新しいdivに配置 -->
+                <span class="user-gender">性別: <%= user.gender %></span>
+                <span class="user-age">年齢: <%= user.age %></span>
+              </div>
             </div>
             <div class="user-bio">
               <%= truncate(user.bio, length: 100) %>
