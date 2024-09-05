@@ -49,14 +49,14 @@
           </div>
         <% end %>
       <% else %>
-        <div class="no-posts-coment">
+        <div class="no-coment">
           <p class="no-posts">コメントした投稿がありません。</p>
         </div>
       <% end %>
     </div>
 
     <div class="pagination-empty">
-      <%= paginate @posts, theme: 'bootstrap4', class: 'pagination' %>
+      <%= paginate @posts, theme: 'bootstrap4', total_pages: (@posts.total_pages > 1 ? @posts.total_pages : 2), class: 'pagination' %>
     </div>
   </div>
 </div>

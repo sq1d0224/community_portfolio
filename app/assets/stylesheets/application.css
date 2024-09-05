@@ -245,9 +245,9 @@ nav ul li a.active {
   margin-bottom: 5px;
 }
 
-.no-posts-coment {
+.no-coment {
   text-align: center;
-  height: 1000px;
+  height: 400px;
 }
 
 .no-posts {

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :commented_posts]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :my_posts, :commented_posts]
+  before_action :set_post, only: [:show, :edit, :update, :destroy] # 必要なアクションに限定
   before_action :authorize_user!, only: [:edit, :update, :destroy]
   
   def index
@@ -16,8 +16,7 @@ class PostsController < ApplicationController
   end
   
   def show
-    # `set_post` により @post が設定されるので、ここでの処理は不要です。
-    @post = Post.find(params[:id])
+    # `set_post` により @post が設定される
     @comments_count = @post.comments.count
   end
 
@@ -33,7 +32,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: '投稿が作成されました。'
     else
-      render :new # ここで適切なビューを指定します。
+      render :new
     end
   end
 
@@ -54,12 +53,15 @@ class PostsController < ApplicationController
     end
   end
   
+  # 自分の投稿一覧
+  def my_posts
+    @posts = current_user.posts.order(created_at: :desc).page(params[:page]).per(20)
+  end
+  
   # コメントした投稿一覧を表示するアクション
   def commented_posts
-    # ログインしているユーザーがコメントした投稿を取得
-    @posts = Post.joins(:comments).where(comments: { user_id: current_user.id }).distinct.page(params[:page]).per(10)
+    @posts = Post.joins(:comments).where(comments: { user_id: current_user.id }).distinct.page(params[:page]).per(20)
   end
-
 
   private
 

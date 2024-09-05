@@ -16,35 +16,41 @@
 
     <!-- ユーザーのリスト表示 -->
     <div class="users-list">
-      <% @users.each do |user| %>
-        <div class="user-item">
-          <div class="user-icon-container">
-            <% if user.profile_image.attached? %>
-              <%= image_tag user.profile_image.variant(resize_to_fill: [100, 100]), class: 'user-icon' %>
-            <% else %>
-              <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
-            <% end %>
-          </div>
+      <% if @users.any? %>
+        <% @users.each do |user| %>
+          <div class="user-item">
+            <div class="user-icon-container">
+              <% if user.profile_image.attached? %>
+                <%= image_tag user.profile_image.variant(resize_to_fill: [100, 100]), class: 'user-icon' %>
+              <% else %>
+                <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
+              <% end %>
+            </div>
 
-          <div class="user-info-container">
-            <div class="user-meta">
-              <span class="user-name"><%= link_to user.username, user_path(user) %></span>
-              <div class="user-details"> <!-- 性別と年齢を新しいdivに配置 -->
-                <span class="user-gender">性別: <%= user.gender %></span>
-                <span class="user-age">年齢: <%= user.age %></span>
+            <div class="user-info-container">
+              <div class="user-meta">
+                <span class="user-name"><%= link_to user.username, user_path(user) %></span>
+                <div class="user-details"> <!-- 性別と年齢を新しいdivに配置 -->
+                  <span class="user-gender">性別: <%= user.gender %></span>
+                  <span class="user-age">年齢: <%= user.age %></span>
+                </div>
+              </div>
+              <div class="user-bio">
+                <%= truncate(user.bio, length: 280) %>
               </div>
             </div>
-            <div class="user-bio">
-              <%= truncate(user.bio, length: 280) %>
-            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <div class="no-coment">
+          <p class="no-posts">ユーザーがいません。</p>
+        </div
       <% end %>
     </div>
 
     <!-- ページネーション -->
     <div class="pagination-empty">
-      <%= paginate @users, theme: 'bootstrap4', class: 'pagination' %>
+      <%= paginate @users, theme: 'bootstrap4', total_pages: (@users.total_pages > 1 ? @users.total_pages : 2),  class: 'pagination' %>
     </div>
   </div>
 </div>

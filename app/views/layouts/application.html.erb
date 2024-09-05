@@ -24,7 +24,8 @@
             <li role="menuitem"><%= link_to t('top', default: 'トップ'), top_path, class: ('active' if current_page?(top_path)) %></li>
             <li role="menuitem"><%= link_to '投稿一覧', posts_path, class: ('active' if current_page?(posts_path)) %></li>
             <li role="menuitem"><%= link_to 'ユーザーー覧', users_path, class: ('active' if current_page?(users_path)) %></li>
-            <li role="menuitem"><%= link_to 'コメントした投稿一覧', commented_posts_path, class: ('active' if current_page?(commented_posts_path)) %></li>
+            <li role="menuitem"><%= link_to 'あなたの投稿一覧', my_posts_posts_path, class: ('active' if current_page?(my_posts_posts_path)) %></li>
+            <li role="menuitem"><%= link_to 'コメントした投稿一覧', commented_posts_posts_path, class: ('active' if current_page?(commented_posts_posts_path)) %></li>
             <li role="menuitem"><%= link_to t('profile', default: 'プロフィール'), user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>
             <li role="menuitem"><%= link_to t('log_out', default: 'ログアウト'), destroy_user_session_path, method: :delete %></li>
           <% else %>
