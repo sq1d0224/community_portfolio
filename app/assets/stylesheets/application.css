@@ -228,6 +228,11 @@ nav ul li a.active {
   text-decoration: none;
 }
 
+.post-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
 .post-description-link:hover {
   color: #c7511f;
   text-decoration: underline;
@@ -237,7 +242,7 @@ nav ul li a.active {
 .post-date {
   color: #777;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .no-posts-coment {
@@ -1186,4 +1191,19 @@ nav ul li a.active {
   padding-top: 7px;
   padding-bottom: 7px;
   border-bottom: 1px dotted #AAA;
+}
+
+.post-comments {
+  font-size: 14px;
+  color: #777;
+}
+
+.post-comments a {
+  text-decoration: none;
+  color: #4f96f6;
+}
+
+.post-comments a:hover {
+  text-decoration: underline;
+  color: #0056b3;
 }

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :commented_posts]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
   
@@ -45,13 +45,19 @@ class PostsController < ApplicationController
     end
   end
 
-   def destroy
+  def destroy
     user = @post.user # 削除前にユーザーをキャッシュ
     @post.destroy
     respond_to do |format|
       format.html { redirect_to user_path(user), notice: '投稿が正常に削除されました。' }
       format.json { head :no_content }
     end
+  end
+  
+  # コメントした投稿一覧を表示するアクション
+  def commented_posts
+    # ログインしているユーザーがコメントした投稿を取得
+    @posts = Post.joins(:comments).where(comments: { user_id: current_user.id }).distinct.page(params[:page]).per(10)
   end
 
 

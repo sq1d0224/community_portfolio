@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   
   # お問い合わせページ
   get 'contact', to: 'pages#contact', as: 'contact'
+  
+  # 現在ログインしているユーザーがコメントした投稿を表示するルートを追加
+  get 'commented_posts', to: 'posts#commented_posts'
 
   # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do
