@@ -21,15 +21,19 @@
           <div class="user-item">
             <div class="user-icon-container">
               <% if user.profile_image.attached? %>
-                <%= image_tag user.profile_image.variant(resize_to_fill: [100, 100]), class: 'user-icon' %>
+                <%= link_to user_path(user.id) do %>
+                  <%= image_tag user.profile_image.variant(resize_to_fill: [100, 100]), class: 'user-icon' %>
+                <% end %>
               <% else %>
-                <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
+                <%= link_to user_path(user.id) do %>
+                  <%= image_tag 'no_image_photo.jpg', size: "100x100", class: 'user-icon' %>
+                <% end %>
               <% end %>
             </div>
 
             <div class="user-info-container">
               <div class="user-meta">
-                <span class="user-name"><%= link_to user.username, user_path(user) %></span>
+                <span><%= link_to user.username, user_path(user.id), class: 'user-name' %></span>
                 <div class="user-details"> <!-- 性別と年齢を新しいdivに配置 -->
                   <span class="user-gender">性別: <%= user.gender %></span>
                   <span class="user-age">年齢: <%= user.age %></span>

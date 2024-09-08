@@ -21,6 +21,13 @@
   /* 現時点で特別なスタイルなし */
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between; /* タイトルとメニューを左右に配置 */
+  align-items: center; /* 縦方向に中央揃え */
+  padding: 10px 20px; /* ナビゲーションバー内のパディング */
+}
+
 /* ナビゲーションバー設定 */
 nav {
   display: flex; /* フレックスボックスを使用して子要素を横並びに */
@@ -38,16 +45,29 @@ nav {
 }
 
 /* ナビゲーションリンクリスト */
-nav ul {
-  list-style-type: none; /* リストマーカーを削除 */
-  display: flex; /* フレックスボックスで横並びに */
-  justify-content: flex-end; /* リストを右揃えに */
+.navbar-menu {
+  display: flex; /* 横並びにする */
+  align-items: center; /* 縦方向に中央揃え */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* ナビゲーションリンク設定 */
-.header nav ul li {
-  margin-left: 20px; /* リンク間のスペースを設定 */
+.navbar-menu li {
+  margin-left: 15px; /* 各メニューアイテムの間隔 */
+}
 
+/* ユーザーアイコンとドロップダウンのスタイル */
+.header-user-profile {
+  display: flex;
+  align-items: center; /* アイコンと矢印を中央揃え */
+}
+
+.header-user-icon {
+  border-radius: 50%; /* 丸く表示 */
+  margin-left: 10px;
+  vertical-align: middle; /* アイコンとテキストの位置を揃える */
 }
 
 nav ul li a {
@@ -175,6 +195,11 @@ nav ul li a.active {
   display: flex;
   align-items: center;
   margin-bottom: 10px; /* 投稿タイトルとの間に余白を追加 */
+}
+
+.header-user-icon {
+  border: 2px solid #CCC;
+  border-radius: 50%; /* アイコンを円形に */
 }
 
 .user-icon {
@@ -1162,7 +1187,7 @@ nav ul li a.active {
 .user-name {
   font-size: 20px;
   font-weight: bold;
-  color: #5a009d; /* 例: ユーザー名のリンク色をパープルに変更 */
+  color: #34495e; /* 例: ユーザー名のリンク色をパープルに変更 */
   text-decoration: none;
 }
 

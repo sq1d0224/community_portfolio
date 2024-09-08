@@ -10,9 +10,13 @@
           <div class="post-item">
             <div class="post-user-info">
               <% if post.user.profile_image.attached? %>
-                <%= image_tag post.user.profile_image.variant(resize_to_fill: [30, 30]), class: 'user-icon' %>
+                <%= link_to user_path(post.user.id) do %>
+                  <%= image_tag post.user.profile_image.variant(resize_to_fill: [30, 30]), class: 'user-icon' %>
+                <% end %>
               <% else %>
-                <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
+                <%= link_to user_path(post.user.id) do %>
+                  <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
+                <% end %>
               <% end %>
               <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
             </div>

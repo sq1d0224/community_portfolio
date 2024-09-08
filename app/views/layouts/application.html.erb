@@ -14,23 +14,35 @@
 
   <body>
     <header class="header">
-      <nav>
+      <nav class="navbar">
         <div class="navbar-title">
-          <%= link_to 'GOLVAVI', root_path %>
-        </div>
-        <ul>
-          <li><%= link_to 'GOLNAVIとは', about_path %></li>
           <% if user_signed_in? %>
-            <li role="menuitem"><%= link_to t('top', default: 'トップ'), top_path, class: ('active' if current_page?(top_path)) %></li>
-            <li role="menuitem"><%= link_to '投稿一覧', posts_path, class: ('active' if current_page?(posts_path)) %></li>
-            <li role="menuitem"><%= link_to 'ユーザーー覧', users_path, class: ('active' if current_page?(users_path)) %></li>
-            <li role="menuitem"><%= link_to 'あなたの投稿一覧', my_posts_posts_path, class: ('active' if current_page?(my_posts_posts_path)) %></li>
-            <li role="menuitem"><%= link_to 'コメントした投稿一覧', commented_posts_posts_path, class: ('active' if current_page?(commented_posts_posts_path)) %></li>
-            <li role="menuitem"><%= link_to t('profile', default: 'プロフィール'), user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>
-            <li role="menuitem"><%= link_to t('log_out', default: 'ログアウト'), destroy_user_session_path, method: :delete %></li>
+            <%= link_to 'GOLNAVI', top_path %> <!-- ログイン後はtop_pathに遷移 -->
           <% else %>
-            <li role="menuitem"><%= link_to t('sign_up', default: '新規登録'), new_user_registration_path, class: ('active' if current_page?(new_user_registration_path)) %></li>
-            <li role="menuitem"><%= link_to t('log_in', default: 'ログイン'), new_user_session_path, class: ('active' if current_page?(new_user_session_path)) %></li>
+            <%= link_to 'GOLNAVI', new_user_session_path %> <!-- ログイン前はnew_user_session_pathに遷移 -->
+          <% end %>
+        </div>
+        <ul class="navbar-menu">
+          <li><%= link_to 'GOLNAVIとは', about_path, class: ('active' if current_page?(about_path)) %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'トップ', top_path, class: ('active' if current_page?(top_path)) %></li>
+            <li><%= link_to '投稿一覧', posts_path, class: ('active' if current_page?(posts_path)) %></li>
+            <li><%= link_to 'ユーザーー覧', users_path, class: ('active' if current_page?(users_path)) %></li>
+            <li><%= link_to 'あなたの投稿一覧', my_posts_posts_path, class: ('active' if current_page?(my_posts_posts_path)) %></li>
+            <li><%= link_to 'コメントした投稿一覧', commented_posts_posts_path, class: ('active' if current_page?(commented_posts_posts_path)) %></li>
+            <li><%= link_to 'プロフィール', user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <li class="navbar-item header-user-profile">
+              <% if current_user.profile_image.attached? %>
+                <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: 'header-user-icon' %>
+              <% else %>
+                <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'header-user-icon' %>
+              <% end %>
+              <i class="fa-solid fa-angle-down"></i>
+            </li>
+          <% else %>
+            <li><%= link_to '新規登録', new_user_registration_path, class: ('active' if current_page?(new_user_registration_path)) %></li>
+            <li><%= link_to 'ログイン', new_user_session_path, class: ('active' if current_page?(root_path) || current_page?(new_user_session_path)) %></li>
           <% end %>
         </ul>
       </nav>
@@ -43,11 +55,11 @@
 
     <footer class="footer">
       <p>&copy; GOLNAVI</p>
-      <nav aria-label="Footer navigation">
-        <ul role="menu">
-          <!--<li role="menuitem"><%= link_to t('privacy_policy', default: 'プライバシーポリシー'), privacy_policy_path %></li>|-->
-          <!--<li role="menuitem"><%= link_to t('terms_of_service', default: '利用規約'), terms_of_service_path %></li>|-->
-          <li role="menuitem"><%= link_to t('contact', default: 'お問い合わせ'), contact_path, class: ('active' if current_page?(contact_path)) %></li>
+      <nav>
+        <ul>
+          <!--<li><%= link_to 'プライバシーポリシー', privacy_policy_path %></li>|-->
+          <!--<li><%= link_to '利用規約', terms_of_service_path %></li>|-->
+          <li><%= link_to 'お問い合わせ', contact_path, class: ('active' if current_page?(contact_path)) %></li>
         </ul>
       </nav>
     </footer>

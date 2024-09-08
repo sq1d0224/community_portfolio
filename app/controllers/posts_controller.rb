@@ -60,7 +60,11 @@ class PostsController < ApplicationController
   
   # コメントした投稿一覧を表示するアクション
   def commented_posts
-    @posts = Post.joins(:comments).where(comments: { user_id: current_user.id }).distinct.page(params[:page]).per(20)
+    # ログインしているユーザーがコメントした投稿を、投稿が新しい順で取得
+    @posts = Post.joins(:comments)
+                 .where(comments: { user_id: current_user.id })
+                 .order('posts.created_at DESC') # 投稿が新しい順で並び替え
+                 .distinct.page(params[:page]).per(20)
   end
 
   private
