@@ -12,7 +12,6 @@
   left: 0;
   width: 100%;
   z-index: 1000; /* ヘッダーを最前面に表示 */
-  padding: 0 150px; /* 左右に150pxのパディングを設定 */
   background-color: #AAA; /* ナビゲーションバーの背景色をシルバーに設定 */
 }
 
@@ -26,6 +25,9 @@
   justify-content: space-between; /* タイトルとメニューを左右に配置 */
   align-items: center; /* 縦方向に中央揃え */
   padding: 10px 20px; /* ナビゲーションバー内のパディング */
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 /* ナビゲーションバー設定 */
@@ -70,6 +72,10 @@ nav {
   vertical-align: middle; /* アイコンとテキストの位置を揃える */
 }
 
+.fa-angle-down {
+  padding-left: 5px;
+}
+
 nav ul li a {
   color: #333; /* リンクの文字色を濃い灰色に設定 */
   text-decoration: none; /* リンクの下線を削除 */
@@ -87,6 +93,8 @@ nav ul li a.active {
   text-decoration: underline; /* 現在のページのリンクに下線を追加 */
   color: white; /* ホバー時の文字色を白に設定 */
 }
+
+
 
 /* ボタンスタイル */
 .btn {
@@ -382,9 +390,14 @@ nav ul li a.active {
   left: 0;
   width: 100%;
   z-index: 1000; /* フッターを最前面に表示 */
-  padding: 0 150px; /* 左右に150pxのパディングを追加 */
   background-color: #AAA; /* フッターの背景色をシルバーに設定 */
   text-align: center; /* 全体のテキストを中央揃え */
+}
+
+.footer-navbar {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .footer p {
@@ -1040,6 +1053,7 @@ nav ul li a.active {
 .dropdown {
   position: relative;
   display: inline-block;
+  color: #34495e;
 }
 
 .dropdown-toggle {
@@ -1066,6 +1080,8 @@ nav ul li a.active {
 }
 
 .dropdown-item {
+  color: #4f96f6;
+  text-decoration: none;
   padding: 8px 16px;
   cursor: pointer;
   display: block; /* インラインではなくブロック要素として扱う */
@@ -1073,6 +1089,11 @@ nav ul li a.active {
 
 .dropdown-item:hover {
   color: #c7511f;
+  text-decoration: underline;
+}
+
+.fa-ellipsis {
+  font-size: 23px;
 }
 
 .comment-content {
@@ -1231,4 +1252,40 @@ nav ul li a.active {
 .post-comments a:hover {
   text-decoration: underline;
   color: #0056b3;
+}
+
+/* ドロップダウンメニューのスタイル */
+.header-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.header-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  list-style: none;
+  padding: 10px;
+}
+
+.header-dropdown-content a {
+  cursor: pointer;
+  color: #4f96f6;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+}
+
+.header-dropdown-content a:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+/* ユーザーアイコンとドロップダウン表示のスタイル */
+
+.header-dropdown:hover .header-dropdown-content {
+  display: block;
 }

@@ -32,14 +32,22 @@
             <li><%= link_to 'コメントした投稿一覧', commented_posts_posts_path, class: ('active' if current_page?(commented_posts_posts_path)) %></li>
             <li><%= link_to 'プロフィール', user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-            <li class="navbar-item header-user-profile">
-              <% if current_user.profile_image.attached? %>
-                <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: 'header-user-icon' %>
-              <% else %>
-                <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'header-user-icon' %>
-              <% end %>
-              <i class="fa-solid fa-angle-down"></i>
-            </li>
+            <div class="header-dropdown">
+              <li class="navbar-item header-user-profile">
+                <% if current_user.profile_image.attached? %>
+                  <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: 'header-user-icon' %>
+                <% else %>
+                  <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'header-user-icon' %>
+                <% end %>
+                <i class="fa-solid fa-angle-down"></i>
+              </li>
+              <ul class="header-dropdown-content">
+                <li><%= link_to 'あなたの投稿一覧', my_posts_posts_path %></li>
+                <li><%= link_to 'コメントした投稿一覧', commented_posts_posts_path %></li>
+                <li><%= link_to 'プロフィール', user_path(current_user) %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
           <% else %>
             <li><%= link_to '新規登録', new_user_registration_path, class: ('active' if current_page?(new_user_registration_path)) %></li>
             <li><%= link_to 'ログイン', new_user_session_path, class: ('active' if current_page?(root_path) || current_page?(new_user_session_path)) %></li>
@@ -54,14 +62,16 @@
     </main>
 
     <footer class="footer">
-      <p>&copy; GOLNAVI</p>
-      <nav>
-        <ul>
-          <!--<li><%= link_to 'プライバシーポリシー', privacy_policy_path %></li>|-->
-          <!--<li><%= link_to '利用規約', terms_of_service_path %></li>|-->
-          <li><%= link_to 'お問い合わせ', contact_path, class: ('active' if current_page?(contact_path)) %></li>
-        </ul>
-      </nav>
+      <div class="footer-navbar">
+        <p>&copy; GOLNAVI</p>
+        <nav>
+          <ul>
+            <!--<li><%= link_to 'プライバシーポリシー', privacy_policy_path %></li>|-->
+            <!--<li><%= link_to '利用規約', terms_of_service_path %></li>|-->
+            <li><%= link_to 'お問い合わせ', contact_path, class: ('active' if current_page?(contact_path)) %></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
 
     <style>

@@ -46,3 +46,31 @@ document.addEventListener('turbolinks:load', function() {
     });
   });
 });
+
+
+
+// ドロップダウンメニューをクリックで表示するスクリプト
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggle = document.querySelector('.header-user-profile');
+  const dropdownContent = document.querySelector('.header-dropdown-content');
+
+  if (dropdownToggle && dropdownContent) {  // 要素が存在する場合のみイベントを追加
+    dropdownToggle.addEventListener('click', function(event) {
+      // ドロップダウンの表示/非表示を切り替え
+      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+
+      // クリックイベントがバブリングしないようにする
+      event.stopPropagation();
+    });
+
+    // ページ全体でクリックがあった場合にドロップダウンを閉じる
+    document.addEventListener('click', function() {
+      dropdownContent.style.display = 'none';
+    });
+
+    // ドロップダウン内をクリックしても閉じないようにする
+    dropdownContent.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  }
+});
