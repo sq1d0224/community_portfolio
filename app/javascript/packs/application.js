@@ -20,15 +20,16 @@ import "../stylesheets/application";
 // import "../scripts/custom";
 
 // Turbolinksのロード時に実行する処理
-document.addEventListener("turbolinks:load", () => {
-  console.log("Turbolinks loaded!");
-  // 追加のJavaScriptコード
+document.addEventListener('turbolinks:load', () => {
+  Rails.start(); // Rails UJSをturbolinks:load後に再スタートさせる
 });
+
 
 // jQueryのインポート
 import $ from 'jquery';
 window.$ = $;
 
+// 投稿詳細のドロップダウン
 document.addEventListener('turbolinks:load', function() {
   document.querySelectorAll('.dropdown-toggle').forEach(function(element) {
     element.addEventListener('click', function(event) {
@@ -48,29 +49,36 @@ document.addEventListener('turbolinks:load', function() {
 });
 
 
+// ヘッダーのドロップダウン
+document.addEventListener('turbolinks:load', function() {
+  // 各ドロップダウンのトグル要素に対してクリックイベントを追加
+  document.querySelectorAll('.dropdown-toggle').forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      const commentId = this.getAttribute('data-comment-id');
+      const dropdownMenu = document.getElementById(`dropdown-menu-${commentId}`);
+      
+      // すべてのドロップダウンメニューを閉じる
+      document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+        menu.classList.remove('show');
+      });
 
-// ドロップダウンメニューをクリックで表示するスクリプト
-document.addEventListener('DOMContentLoaded', function() {
-  const dropdownToggle = document.querySelector('.header-user-profile');
-  const dropdownContent = document.querySelector('.header-dropdown-content');
-
-  if (dropdownToggle && dropdownContent) {  // 要素が存在する場合のみイベントを追加
-    dropdownToggle.addEventListener('click', function(event) {
-      // ドロップダウンの表示/非表示を切り替え
-      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-
-      // クリックイベントがバブリングしないようにする
-      event.stopPropagation();
+      // 対象のドロップダウンメニューを表示/非表示切り替え
+      dropdownMenu.classList.toggle('show');
+      event.stopPropagation(); // イベントのバブリングを防ぐ
     });
+  });
 
-    // ページ全体でクリックがあった場合にドロップダウンを閉じる
-    document.addEventListener('click', function() {
-      dropdownContent.style.display = 'none';
+  // ドロップダウンメニューの外側をクリックしたときにメニューを閉じる
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+      menu.classList.remove('show');
     });
+  });
 
-    // ドロップダウン内をクリックしても閉じないようにする
-    dropdownContent.addEventListener('click', function(event) {
-      event.stopPropagation();
+  // ドロップダウンメニュー内をクリックしても閉じないようにする
+  document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+    menu.addEventListener('click', function(event) {
+      event.stopPropagation(); // メニュー内クリックでは閉じない
     });
-  }
+  });
 });

@@ -56,7 +56,7 @@ nav {
 }
 
 /* ナビゲーションリンク設定 */
-.navbar-menu li {
+.navbar-menu-li {
   margin-left: 15px; /* 各メニューアイテムの間隔 */
 }
 
@@ -72,9 +72,6 @@ nav {
   vertical-align: middle; /* アイコンとテキストの位置を揃える */
 }
 
-.fa-angle-down {
-  padding-left: 5px;
-}
 
 nav ul li a {
   color: #333; /* リンクの文字色を濃い灰色に設定 */
@@ -110,6 +107,7 @@ nav ul li a.active {
 
 /* プライマリボタンのスタイル */
 .btn-primary {
+  border: none;
   background-color: #007bff; /* 背景色をブルーに設定 */
   color: white; /* 文字色を白に設定 */
 }
@@ -616,7 +614,8 @@ nav ul li a.active {
 
 .pagination a:hover,
 .pagination .active span:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
+  opacity: 0.8; /* ホバー時の透明度を設定 */
   color: white;
 }
 
@@ -988,7 +987,8 @@ nav ul li a.active {
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  opacity: 0.8; /* ホバー時の透明度を設定 */
+  background-color: #007bff;
   border-color: #004085;
 }
 
@@ -1256,36 +1256,23 @@ nav ul li a.active {
 
 /* ドロップダウンメニューのスタイル */
 .header-dropdown {
+  margin-left: 15px;
   position: relative;
   display: inline-block;
 }
 
-.header-dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+.dropdown-menu li {
   list-style: none;
-  padding: 10px;
 }
 
-.header-dropdown-content a {
-  cursor: pointer;
+.dropdown-menu a {
   color: #4f96f6;
   text-decoration: none;
   display: block;
   padding: 8px 16px;
 }
 
-.header-dropdown-content a:hover {
+.dropdown-menu a:hover {
   color: #c7511f;
   text-decoration: underline;
-}
-
-/* ユーザーアイコンとドロップダウン表示のスタイル */
-
-.header-dropdown:hover .header-dropdown-content {
-  display: block;
 }

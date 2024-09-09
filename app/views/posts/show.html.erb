@@ -33,7 +33,7 @@
     <% if @post.image.attached? %>
       <p class="post-image"><%= image_tag @post.display_image(size: [700, 700]), class: "img-fluid" %>
     <% else %>
-      <p class="post-image"><%= image_tag 'no_image_photo1.jpg', size: "300x300", class: 'post-img' %></p>
+      <p class="post-image"><%= image_tag 'no_image_photo2.jpg', class: 'post-img' %></p>
     <% end %>
 
     <p class="post-detail-date"><%= l(@post.created_at, format: :long, locale: :ja) %></p>
@@ -57,7 +57,7 @@
                 <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
                 <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
                   <% if comment.user == current_user %>
-                    <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                    <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
                   <% else %>
                     <p class="dropdown-item no-actions">可能な操作はありません</p>
                   <% end %>
@@ -95,4 +95,5 @@
     </div>
     
   </div>
+  
 </div>

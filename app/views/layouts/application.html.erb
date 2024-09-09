@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/854bb4e028.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -25,32 +25,34 @@
         <ul class="navbar-menu">
           <li><%= link_to 'GOLNAVIとは', about_path, class: ('active' if current_page?(about_path)) %></li>
           <% if user_signed_in? %>
-            <li><%= link_to 'トップ', top_path, class: ('active' if current_page?(top_path)) %></li>
-            <li><%= link_to '投稿一覧', posts_path, class: ('active' if current_page?(posts_path)) %></li>
-            <li><%= link_to 'ユーザーー覧', users_path, class: ('active' if current_page?(users_path)) %></li>
-            <li><%= link_to 'あなたの投稿一覧', my_posts_posts_path, class: ('active' if current_page?(my_posts_posts_path)) %></li>
-            <li><%= link_to 'コメントした投稿一覧', commented_posts_posts_path, class: ('active' if current_page?(commented_posts_posts_path)) %></li>
-            <li><%= link_to 'プロフィール', user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <li class="navbar-menu-li"><%= link_to 'トップ', top_path, class: ('active' if current_page?(top_path)) %></li>
+            <li class="navbar-menu-li"><%= link_to '投稿一覧', posts_path, class: ('active' if current_page?(posts_path)) %></li>
+            <li class="navbar-menu-li"><%= link_to 'ユーザーー覧', users_path, class: ('active' if current_page?(users_path)) %></li>
+            <!--<li class="navbar-menu-li"><%= link_to 'あなたの投稿一覧', my_posts_posts_path, class: ('active' if current_page?(my_posts_posts_path)) %></li>-->
+            <!--<li class="navbar-menu-li"><%= link_to 'コメントした投稿一覧', commented_posts_posts_path, class: ('active' if current_page?(commented_posts_posts_path)) %></li>-->
+            <!--<li class="navbar-menu-li"><%= link_to 'プロフィール', user_path(current_user), class: ('active' if current_page?(user_path(current_user))) %></li>-->
+            <li class="navbar-menu-li"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></li>
+
             <div class="header-dropdown">
-              <li class="navbar-item header-user-profile">
+              <li class="navbar-item header-user-profile dropdown-toggle" data-comment-id="user-profile">
                 <% if current_user.profile_image.attached? %>
                   <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: 'header-user-icon' %>
                 <% else %>
                   <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'header-user-icon' %>
                 <% end %>
-                <i class="fa-solid fa-angle-down"></i>
+                <i class="fa-solid fa-angles-down"></i>
               </li>
-              <ul class="header-dropdown-content">
+              <ul id="dropdown-menu-user-profile" class="dropdown-menu">
+                <li><%= link_to 'プロフィール', user_path(current_user) %></li>
                 <li><%= link_to 'あなたの投稿一覧', my_posts_posts_path %></li>
                 <li><%= link_to 'コメントした投稿一覧', commented_posts_posts_path %></li>
-                <li><%= link_to 'プロフィール', user_path(current_user) %></li>
-                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></li>
               </ul>
             </div>
+
           <% else %>
-            <li><%= link_to '新規登録', new_user_registration_path, class: ('active' if current_page?(new_user_registration_path)) %></li>
-            <li><%= link_to 'ログイン', new_user_session_path, class: ('active' if current_page?(root_path) || current_page?(new_user_session_path)) %></li>
+            <li class="navbar-menu-li"><%= link_to '新規登録', new_user_registration_path, class: ('active' if current_page?(new_user_registration_path)) %></li>
+            <li class="navbar-menu-li"><%= link_to 'ログイン', new_user_session_path, class: ('active' if current_page?(root_path) || current_page?(new_user_session_path)) %></li>
           <% end %>
         </ul>
       </nav>
