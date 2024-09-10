@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     is_matching_login_user
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'プロフィールを更新しました。'
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to user_path, alert: "アクセス権がありません。"
+      redirect_to user_path
     end
   end
 end

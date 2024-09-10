@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(@post), notice: 'コメントが追加されました。'
+      redirect_to post_path(@post)
     else
-      redirect_to post_path(@post), alert: 'コメントを追加できませんでした。'
+      redirect_to post_path(@post)
     end
   end
 
@@ -19,9 +19,9 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
-      redirect_to post_path(@post), notice: 'コメントが削除されました。'
+      redirect_to post_path(@post)
     else
-      redirect_to post_path(@post), alert: 'コメントを削除できませんでした。'
+      redirect_to post_path(@post)
     end
   end
 

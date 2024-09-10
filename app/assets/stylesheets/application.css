@@ -205,7 +205,6 @@ nav ul li a.active {
 .post-user-info {
   display: flex;
   align-items: center;
-  margin-bottom: 10px; /* 投稿タイトルとの間に余白を追加 */
 }
 
 .header-user-icon {
@@ -221,11 +220,12 @@ nav ul li a.active {
 
 .post-username {
   font-size: 16px; /* ユーザーネームの文字サイズ */
-  color: #34495e; /* 文字色 */
+  color: #007bff; /* 文字色 */
   text-decoration: none; /* 下線を削除 */
 }
 
 .post-username:hover {
+  color: #c7511f;
   text-decoration: underline; /* ホバー時の効果 */
 }
 
@@ -240,10 +240,11 @@ nav ul li a.active {
 
 .post-title-link {
   text-decoration: none;
-  color: #34495e; /* 文字色 */
+  color: #007bff; /* 文字色 */
 }
 
 .post-title-link:hover {
+  color: #c7511f;
   text-decoration: underline; /* ホバー時の効果 */
 }
 
@@ -751,7 +752,7 @@ nav ul li a.active {
   word-break: break-all; /* 単語を途中で折り返す */
   font-size: 23px;
   color: #34495e; /* タイトル文字色 */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* 投稿説明文のスタイル */
@@ -762,7 +763,7 @@ nav ul li a.active {
   word-break: break-all; /* 単語を途中で折り返す */
   font-size: 17px;
   color: #34495e; /* 説明文の文字色 */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   white-space: pre-wrap; /* 自動改行 */
 }
 
@@ -771,10 +772,11 @@ nav ul li a.active {
   font-weight: bold;
   margin-right: 10px;
   text-decoration: none;
-  color: #2c3e50;
+  color: #007bff;
 }
 
 .post-detail-username:hover {
+  color: #c7511f;
   text-decoration: underline;
 }
 
@@ -888,9 +890,9 @@ nav ul li a.active {
   font-size: 18px;
 }
 
-#error_explanation ul {
-  margin: 0;
-  padding-left: 20px;
+#error_explanation ul li {
+  text-align: center;
+  list-style: none;
 }
 
 .search-form-with-icon {
@@ -1092,6 +1094,7 @@ nav ul li a.active {
   display: flex;
   justify-content: space-between; /* 左右に配置 */
   align-items: center;
+  margin-bottom: 10px;
 }
 
 /* ユーザー一覧の全体スタイル */
@@ -1148,11 +1151,12 @@ nav ul li a.active {
 .user-name {
   font-size: 20px;
   font-weight: bold;
-  color: #34495e; /* 例: ユーザー名のリンク色をパープルに変更 */
+  color: #007bff; /* 例: ユーザー名のリンク色をパープルに変更 */
   text-decoration: none;
 }
 
 .user-name:hover {
+  color: #c7511f;
   text-decoration: underline;
 }
 
@@ -1187,12 +1191,12 @@ nav ul li a.active {
 
 .post-comments a {
   text-decoration: none;
-  color: #4f96f6;
+  color: #007bff;
 }
 
 .post-comments a:hover {
   text-decoration: underline;
-  color: #0056b3;
+  color: #c7511f;
 }
 
 /* ドロップダウンメニューのスタイル */
@@ -1207,7 +1211,7 @@ nav ul li a.active {
 }
 
 .dropdown-menu a {
-  color: #4f96f6;
+  color: #007bff;
   text-decoration: none;
   display: block;
   padding: 8px 16px;

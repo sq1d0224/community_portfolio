@@ -21,31 +21,31 @@
               <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
             </div>
 
-            <h3 class="post-title"><%= link_to truncate(post.title, length: 40), post_path(post), class: 'post-title-link' %></h3>
-              <% if post.title.length > 40 %>
-                <%= link_to '続きを読む', post_path(post), class: 'post-link' %>
-              <% end %>
+            <h3 class="post-title"><%= link_to truncate(post.title, length: 20), post_path(post), class: 'post-title-link' %></h3>
+              <!--<% if post.title.length > 20 %>-->
+                <!--<%= link_to '続きを読む', post_path(post), class: 'post-link' %>-->
+              <!--<% end %>-->
 
             <p class="post-description">
-              <%= truncate(post.description, length: 100) %>
-              <% if post.description.length > 100 %>
-                <%= link_to '続きを読む', post_path(post), class: 'post-link' %>
-              <% end %>
+              <%= truncate(post.description, length: 90) %>
+              <!--<% if post.description.length > 90 %>-->
+                <!--<%= link_to '続きを読む', post_path(post), class: 'post-link' %>-->
+              <!--<% end %>-->
             </p>
 
-            <!--<% if post.image.attached? %>-->
+            <% if post.image.attached? %>
               <p class="post-image">
                 <%= link_to post_path(post) do %>
                   <%= image_tag post.display_image([300, 300]), loading: 'lazy', class: 'post-img' %>
                 <% end %>
               </p>
-            <!--<% else %>-->
-              <!--<p class="post-image">-->
-                <!--<%= link_to post_path(post) do %>-->
-                  <!--<%= image_tag 'no_image_photo2.jpg', class: 'post-img' %>-->
-                <!--<% end %>-->
-              <!--</p>-->
-            <!--<% end %>-->
+            <% else %>
+              <p class="post-image">
+                <%= link_to post_path(post) do %>
+                  <%= image_tag 'no_image_photo3.jpg', class: 'post-img' %>
+                <% end %>
+              </p>
+            <% end %>
             
             <div class="post-footer">
               <p class="post-date">

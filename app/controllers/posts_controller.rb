@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to post_path(@post), notice: '投稿が作成されました。'
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: '投稿が更新されました。'
+      redirect_to post_path(@post)
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to my_posts_posts_path, notice: '投稿が正常に削除されました。' }
+      format.html { redirect_to my_posts_posts_path }
       format.json { head :no_content }
     end
   end

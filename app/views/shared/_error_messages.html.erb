@@ -1,11 +1,14 @@
-<% if resource.errors.any? %>
+<% if resource.present? && resource.errors.any? %>
   <div id="error_explanation">
-    <h2>
-      <%= pluralize(resource.errors.count, "エラー") %>が発生しました:
-    </h2>
+    <!--<h2>-->
+      <!--<%= pluralize(resource.errors.count, "エラー") %>が発生しました:-->
+    <!--</h2>-->
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% resource.errors.each do |attr, message| %>
+        <li>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <%= message %>
+        </li>
       <% end %>
     </ul>
   </div>

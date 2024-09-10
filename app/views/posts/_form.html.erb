@@ -1,15 +1,7 @@
 <%= form_with(model: post, local: true) do |form| %>
   <h1 class="new-post-title">新規投稿</h1>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', resource: @post %>
+  
 
   <div class="field title-field">
     <strong><%= form.label :title, 'タイトル', class: 'form-label' %></strong>

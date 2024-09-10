@@ -48,6 +48,8 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 10000 }, allow_blank: true                 # 自己紹介は任意だが10000文字以内
   # パスワードのバリデーション
   validates :password, length: { minimum: 8 }, if: -> { password.present? }
+  # ユーザーネームの一意性をチェック
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
   
   private
 
