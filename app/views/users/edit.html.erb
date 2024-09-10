@@ -1,5 +1,4 @@
-<div class="edit-profile-page-background">
-  
+<div class="page-background">
 
   <%= form_for(@user, url: user_path(@user), html: { class: 'edit-profile-form' }) do |f| %>
     <h1 class="edit-profile-title">プロフィールを編集</h1>
@@ -42,7 +41,7 @@
       <% end %>
     </div>
     <div class="profile-actions">
-      <%= f.submit '更新する', class: 'btn btn-primary' %>
+      <%= f.submit '更新する', data: { confirm: '本当に更新しますか？' }, class: 'btn btn-primary' %>
     </div>
     <%= link_to 'キャンセル', user_path, class: 'btn btn-secondary cancel-link' %>
   <% end %>

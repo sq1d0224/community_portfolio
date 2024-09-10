@@ -45,10 +45,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    user = @post.user # 削除前にユーザーをキャッシュ
+    @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(user), notice: '投稿が正常に削除されました。' }
+      format.html { redirect_to my_posts_posts_path, notice: '投稿が正常に削除されました。' }
       format.json { head :no_content }
     end
   end
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
 
   def authorize_user!
     unless @post.user == current_user
-      redirect_to post_path, alert: '他のユーザーの投稿を編集することはできません。'
+      redirect_to post_path
     end
   end
 

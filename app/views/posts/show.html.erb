@@ -1,4 +1,4 @@
-<div class="post-detail-background">
+<div class="page-background">
   <div class="post-detail">
     
     <div class="post-detail-header">
@@ -18,7 +18,7 @@
         <div class="dropdown-menu" id="dropdown-menu-<%= @post.id %>">
           <% if @post.user == current_user %>
             <%= link_to '投稿を編集する', edit_post_path(@post), class: 'dropdown-item edit-post-btn' %>
-            <%= link_to '投稿を削除する', post_path(@post), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
+            <%= link_to '投稿を削除する', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
           <% else %>
             <p class="dropdown-item no-actions">可能な操作はありません</p>
           <% end %>
@@ -30,11 +30,11 @@
     <h1 class="post-detail-title"><%= @post.title %></h1>
     <p class="post-detail-description"><%= @post.description %></p>
 
-    <% if @post.image.attached? %>
-      <p class="post-image"><%= image_tag @post.display_image(size: [700, 700]), class: "img-fluid" %>
-    <% else %>
-      <p class="post-image"><%= image_tag 'no_image_photo2.jpg', class: 'post-img' %></p>
-    <% end %>
+    <!--<% if @post.image.attached? %>-->
+      <p class="post-image"><%= image_tag @post.display_image([600, 600]), loading: 'lazy', class: "img-fluid" %>
+    <!--<% else %>-->
+      <!--<p class="post-image"><%= image_tag 'no_image_photo2.jpg', class: 'post-img' %></p>-->
+    <!--<% end %>-->
 
     <p class="post-detail-date"><%= l(@post.created_at, format: :long, locale: :ja) %></p>
     
@@ -57,7 +57,7 @@
                 <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
                 <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
                   <% if comment.user == current_user %>
-                    <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                    <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
                   <% else %>
                     <p class="dropdown-item no-actions">可能な操作はありません</p>
                   <% end %>
@@ -88,7 +88,7 @@
         <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
           <div class="comment-form">
             <%= form.text_area :content, class: "form-control comment-input", placeholder: "コメントする(1000文字以内)" %>
-            <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn' %>
+            <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn', data: { confirm: '本当にコメントしますか？' } %>
           </div>
         <% end %>
       </div>  

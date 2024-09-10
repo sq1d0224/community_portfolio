@@ -91,8 +91,6 @@ nav ul li a.active {
   color: white; /* ホバー時の文字色を白に設定 */
 }
 
-
-
 /* ボタンスタイル */
 .btn {
   display: inline-block; /* インラインブロック要素として扱う */
@@ -144,7 +142,7 @@ nav ul li a.active {
 }
 
 /* 背景画像を固定 */
-.posts-page-background {
+.page-background {
   background-image: url('grass.jpg'); /* 背景画像を指定 */
   background-size: cover;
   background-position: center;
@@ -180,6 +178,9 @@ nav ul li a.active {
 
 /* post-item の基本スタイル */
 .post-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #f9f9f9;
   border: 2px solid #AAA;
   border-radius: 8px;
@@ -187,6 +188,10 @@ nav ul li a.active {
   max-width: 100%; /* はみ出し防止 */
   overflow: hidden;
   word-wrap: break-word; /* 長い単語を折り返し */
+}
+
+.post-image {
+  margin-bottom: 10px; /* 画像と日付が重ならないようにマージンを設定 */
 }
 
 .post-img {
@@ -270,10 +275,14 @@ nav ul li a.active {
   cursor: pointer;
 }
 
+.post-footer {
+  margin-top: auto; /* アイテムの最下部に張り付く */
+}
+
 .post-date {
   color: #777;
   font-size: 12px;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
 .no-coment {
@@ -421,16 +430,6 @@ nav ul li a.active {
   display: inline; /* リストアイテムをインライン表示 */
 }
 
-/* アバウトページの背景設定 */
-.about-page-background {
-  background-image: url('grass.jpg'); /* アバウトページの背景画像を設定 */
-  background-size: cover; /* 背景画像を画面全体に表示 */
-  background-position: center; /* 背景画像を中央に配置 */
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
-}
-
 /* アバウトページのコンテンツ設定 */
 .about-page {
   background-color: rgba(255, 255, 255, 0.8); /* 背景を半透明の白に設定 */
@@ -484,16 +483,6 @@ nav ul li a.active {
 /* 各特徴アイテムの設定 */
 .feature-item {
   margin-bottom: 10px; /* 下部に余白を追加 */
-}
-
-/* プロフィールページ背景設定 */
-.profile-page-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
-  background-size: cover; /* 画面全体に背景画像をフィット */
-  background-position: center; /* 背景画像を中央に配置 */
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* プロフィールページの全体スタイル */
@@ -619,16 +608,6 @@ nav ul li a.active {
   color: white;
 }
 
-/* プロフィール編集画面全体の背景設定 */
-.edit-profile-page-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
-  background-size: cover; /* 画面全体に背景画像をフィット */
-  background-position: center; /* 背景画像を中央に配置 */
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
-}
-
 /* タイトルスタイル */
 .edit-profile-title {
   text-align: center; /* タイトルを中央揃え */
@@ -720,17 +699,6 @@ nav ul li a.active {
   width: fit-content;
 }
 
-/* 新規投稿ページの背景設定 */
-.new-post-page-background {
-  min-height: 100vh;
-  background-image: url('grass.jpg'); /* 必要に応じて背景画像を設定 */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
-}
-
 /* 新規投稿ページの全体スタイル */
 .new-post-page {
   background-color: rgba(255, 255, 255, 0.8); /* 背景を半透明の白に */
@@ -762,17 +730,6 @@ nav ul li a.active {
 .mt-3 {
   display: flex;
   justify-content: center; /* コンテンツを中央揃え */
-}
-
-
-/* 全体の背景設定 */
-.post-detail-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
-  background-size: cover; /* 画面全体に背景画像を表示 */
-  background-position: center; /* 背景画像を中央に配置 */
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* 投稿詳細ページの全体スタイル */
@@ -844,16 +801,6 @@ nav ul li a.active {
   text-align: left;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-/* 共通の背景スタイル */
-.edit-post-page-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
-  background-size: cover; /* 画面全体に背景画像を表示 */
-  background-position: center; /* 背景画像を中央に配置 */
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* コンテナのスタイル */
@@ -1085,10 +1032,13 @@ nav ul li a.active {
   padding: 8px 16px;
   cursor: pointer;
   display: block; /* インラインではなくブロック要素として扱う */
+  border-radius: 5px; /* リンクの角を丸く */
+  transition: background-color 0.3s ease;
 }
 
 .dropdown-item:hover {
   color: #c7511f;
+  background-color: #CCC;
   text-decoration: underline;
 }
 
@@ -1142,16 +1092,6 @@ nav ul li a.active {
   display: flex;
   justify-content: space-between; /* 左右に配置 */
   align-items: center;
-}
-
-/* ユーザー一覧ページ全体の背景設定 */
-.users-page-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
-  background-size: cover; /* 画面全体に背景画像を表示 */
-  background-position: center; /* 背景画像を中央に配置 */
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* ユーザー一覧の全体スタイル */
@@ -1240,6 +1180,7 @@ nav ul li a.active {
 }
 
 .post-comments {
+  margin: 0;
   font-size: 14px;
   color: #777;
 }

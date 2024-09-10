@@ -1,4 +1,4 @@
-<div class="posts-page-background">
+<div class="page-background">
   <div class="posts-page">
     <h1 class="posts-title">投稿一覧</h1>
     
@@ -53,27 +53,27 @@
               <% end %>
             </p>
 
-            <% if post.image.attached? %>
+            <!--<% if post.image.attached? %>-->
               <p class="post-image">
                 <%= link_to post_path(post) do %>
-                  <%= image_tag post.display_image, class: 'post-img' %>
+                  <%= image_tag post.display_image([300, 300]), loading: 'lazy', class: 'post-img' %>
                 <% end %>
               </p>
-            <% else %>
-              <p class="post-image">
-                <%= link_to post_path(post) do %>
-                  <%= image_tag 'no_image_photo2.jpg', class: 'post-img' %>
-                <% end %>
+            <!--<% else %>-->
+              <!--<p class="post-image">-->
+                <!--<%= link_to post_path(post) do %>-->
+                  <!--<%= image_tag 'no_image_photo2.jpg', class: 'post-img' %>-->
+                <!--<% end %>-->
+              <!--</p>-->
+            <!--<% end %>-->
+            <div class="post-footer">
+              <p class="post-date">
+                <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %>
               </p>
-            <% end %>
-            
-            <p class="post-date">
-              <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %>
-            </p>
-            
-            <p class="post-comments">
-              <%= link_to "コメント(#{post.comments.count})", post_path(post, anchor: 'comments') %>
-            </p>
+              <p class="post-comments">
+                <%= link_to "コメント(#{post.comments.count})", post_path(post, anchor: 'comments') %>
+              </p>
+            </div>
             
           </div>
         <% end %>
