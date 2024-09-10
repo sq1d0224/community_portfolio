@@ -25,7 +25,7 @@
 
     <div class="field bio-field">
       <strong><%= f.label :bio, '自己紹介', class: 'form-label' %></strong>
-      <%= f.text_area :bio, placeholder: '10000文字以内', class: 'form-control bio-textarea' %>
+      <%= f.text_area :bio, placeholder: '10000文字以内', class: 'form-control bio-textarea', maxlength: 10000 %>
     </div>
 
     <div class="field profile-image-field">

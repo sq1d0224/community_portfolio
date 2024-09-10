@@ -1,0 +1,12 @@
+<h1>コミュニティ一覧</h1>
+
+<%= link_to '新しいコミュニティを作成する', new_community_path, class: 'btn btn-primary' %>
+
+<ul>
+  <% @communities.each do |community| %>
+    <li>
+      <h2><%= link_to community.title, community_path(community) %></h2>
+      <p><%= truncate(community.description, length: 100) %></p>
+    </li>
+  <% end %>
+</ul>

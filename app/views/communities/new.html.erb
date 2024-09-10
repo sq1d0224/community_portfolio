@@ -1,0 +1,31 @@
+<div class="page-background">
+  <div class="new-communities-page">
+    <h1 class="community-form-title">新しいコミュニティを作成</h1>
+
+    <%= form_with(model: @community, local: true, html: {multipart: true}) do |form| %>
+      <div class="field community-field">
+        <strong><%= form.label :title, 'コミュニティ名', class: 'form-label' %></strong>
+        <%= form.text_field :title, class: 'form-control community-input', placeholder: '30文字以内', maxlength: 30 %>
+      </div>
+
+      <div class="field community-field">
+        <strong><%= form.label :description, '説明', class: 'form-label' %></strong>
+        <%= form.text_area :description, class: 'form-control community-textarea', placeholder: '10000文字以内', maxlength: 10000 %>
+      </div>
+
+      <div class="field community-field">
+        <strong><%= form.label :category, 'カテゴリ', class: 'form-label' %></strong>
+        <%= form.select :category, ['ゴルフコース', 'ゴルフギア', 'ゴルフウェア', 'ゴルフアイテム', 'ゴルフ旅行', 'ラウンド募集・仲間探し', 'ゴルフ初心者', 'ジュニアゴルフ', 'ルール・マナー', 'その他'], {prompt: 'カテゴリを選択してください'}, class: 'community-select' %>
+      </div>
+
+      <div class="field community-field">
+        <strong><%= form.label :image, 'コミュニティ画像', class: 'form-label' %></strong>
+        <%= form.file_field :image, class: 'form-control community-file-input' %>
+      </div>
+
+      <div class="mt-3">
+        <%= form.submit '作成', class: 'btn btn-primary community-submit-btn', data: { confirm: '本当に作成しますか？' } %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -710,7 +710,7 @@ nav ul li a.active {
 }
 
 .new-post-title {
- text-align: center; /* タイトルを中央揃え */
+  text-align: center; /* タイトルを中央揃え */
   font-size: 36px; /* フォントサイズ */
   color: #34495e; /* 文字色 */
   margin-bottom: 30px; /* 下部に余白を追加 */
@@ -1216,4 +1216,25 @@ nav ul li a.active {
 .dropdown-menu a:hover {
   color: #c7511f;
   text-decoration: underline;
+}
+
+.new-communities-page {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding: 30px; /* 内側の余白を追加 */
+  border-radius: 10px; /* 角を丸く */
+  max-width: 600px; /* フォームの最大幅を600pxに設定 */
+  margin: 0 auto; /* フォームを中央に配置 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+}
+
+.community-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.community-form-title {
+  text-align: center; /* タイトルを中央揃え */
+  font-size: 36px; /* フォントサイズ */
+  color: #34495e; /* 文字色 */
+  margin-bottom: 30px; /* 下部に余白を追加 */
 }

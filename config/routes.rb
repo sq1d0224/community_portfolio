@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'communities/index'
   # Deviseによるユーザー認証
   devise_for :users, controllers: {
     sessions: 'devise/sessions',
@@ -21,6 +22,9 @@ Rails.application.routes.draw do
 
   # プロフィール編集
   resources :users, only: [:index, :show, :edit, :update]
+  
+  # コミュニティに関するルーティング
+  resources :communities, only: [:index, :new, :create]
   
   # 静的ページ
   get 'about', to: 'pages#about'

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   # バリデーション
-  validates :title, presence: true, length: { maximum: 100 }
+  validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 3000 }
   
   # 画像表示メソッド
