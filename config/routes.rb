@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   
   # コミュニティに関するルーティング
-  resources :communities, only: [:index, :new, :create]
+  resources :communities
   
   # 静的ページ
   get 'about', to: 'pages#about'

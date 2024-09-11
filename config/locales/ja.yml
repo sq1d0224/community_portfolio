@@ -2,7 +2,7 @@ ja:
   activerecord:
     errors:
       messages:
-        record_invalid: "バリデーションに失敗しました: %{errors}"
+        record_invalid: "バリデーションに失敗しました。: %{errors}"
         restrict_dependent_destroy:
           has_one: "削除できません。関連する%{record}が存在します。"
           has_many: "削除できません。関連する%{record}が存在します。"
@@ -14,33 +14,49 @@ ja:
         user:
           attributes:
             username:
-              blank: "ユーザーネームを入力してください"
-              taken: "このユーザーネームはすでに使用されています"
+              blank: "ユーザーネームを入力してください。"
+              taken: "このユーザーネームはすでに使用されています。"
             email:
-              blank: "メールアドレスを入力してください"
-              invalid: "メールアドレスの形式が正しくありません"
-              taken: "このメールアドレスはすでに使用されています"
+              blank: "メールアドレスを入力してください。"
+              invalid: "メールアドレスの形式が正しくありません。"
+              taken: "このメールアドレスはすでに使用されています。"
             password:
-              blank: "パスワードを入力してください"
-              too_short: "パスワードは%{count}文字以上で入力してください"
-              confirmation: "パスワード（確認）が一致しません"
+              blank: "パスワードを入力してください。"
+              too_short: "パスワードは%{count}文字以上で入力してください。"
+              confirmation: "パスワード（確認）が一致しません。"
               
         post: # Postモデル用のエラーメッセージ
           attributes:
             title:
-              blank: "タイトルを入力してください"
-              too_long: "タイトルは%{count}文字以内で入力してください"
+              blank: "タイトルを入力してください。"
+              too_long: "タイトルは%{count}文字以内で入力してください。"
             description:
-              blank: "説明文を入力してください"
-              too_long: "説明文は%{count}文字以内で入力してください"
+              blank: "説明文を入力してください。"
+              too_long: "説明文は%{count}文字以内で入力してください。"
             image:
-              blank: "画像を選択してください"
+              blank: "画像を選択してください。"
+              
+        community:
+          attributes:
+            title:
+              blank: "コミュニティ名を入力してください"
+              too_long: "コミュニティ名は%{count}文字以内で入力してください"
+            description:
+              blank: "説明を入力してください"
+              too_long: "説明は%{count}文字以内で入力してください"
+            category:
+              blank: "カテゴリを選択してください"
+            image:
+              blank: "コミュニティ画像を選択してください"      
               
   devise:
+    failure:
+      user:
+        invalid: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
     sessions:
       user:
         signed_in: "ログインしました。"
-        invalid: "ログイン情報が正しくありません。"
+        invalid: "ユーザーネームまたはパスワードが正しくありません。"
     registrations:
       user:
         signed_up: "アカウント登録が完了しました。"
@@ -58,15 +74,15 @@ ja:
         already_confirmed: "すでに確認済みです。"
         
   errors:
-    format: "%{attribute}%{message}"
+    format: "%{message}"
     messages:
-      blank: "を入力してください"
-      invalid: "は不正な値です"
-      taken: "はすでに使用されています"
-      too_short: "は%{count}文字以上で入力してください"
-      too_long: "は%{count}文字以内で入力してください"
-      confirmation: "と一致しません"
-      not_saved: "保存に失敗しました"
+      blank: "を入力してください。"
+      invalid: "は不正な値です。"
+      taken: "はすでに使用されています。"
+      too_short: "は%{count}文字以上で入力してください。"
+      too_long: "は%{count}文字以内で入力してください。"
+      confirmation: "と一致しません。"
+      not_saved: "保存に失敗しました。"
   date:
     order:
       - :year

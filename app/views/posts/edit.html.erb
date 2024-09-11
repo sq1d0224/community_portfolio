@@ -2,17 +2,9 @@
   <div class="edit-post-page">
     <h1 class="edit-post-page-title">投稿を編集する</h1>
 
+    <%= render 'shared/error_messages', resource: @post %>
+
     <%= form_with(model: @post, local: true) do |form| %>
-      <% if @post.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@post.errors.count, "error") %> が発生しました:</h2>
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
       <div class="edit-post-title">
         <%= form.label :title, 'タイトル', class: 'form-label' %>

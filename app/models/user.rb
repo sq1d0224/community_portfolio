@@ -7,6 +7,10 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :posts, dependent: :destroy   # ユーザーが削除されたら、関連する投稿も削除
   has_one_attached :profile_image        # Active Storageによるプロフィール画像
+  
+  has_many :communities # 作成したコミュニティ
+  has_many :memberships # 中間テーブル
+  has_many :joined_communities, through: :memberships, source: :community # 参加しているコミュニティ
 
   # 年齢を計算するメソッド
   def age
@@ -48,8 +52,6 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 10000 }, allow_blank: true                 # 自己紹介は任意だが10000文字以内
   # パスワードのバリデーション
   validates :password, length: { minimum: 8 }, if: -> { password.present? }
-  # ユーザーネームの一意性をチェック
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
   
   private
 

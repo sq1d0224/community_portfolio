@@ -44,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       
       # ユーザーが登録に失敗した場合、サインアップフォームにリダイレクト
-      redirect_to new_user_registration_path
+      render :new
     end
   end
 

@@ -286,7 +286,7 @@ nav ul li a.active {
   margin: 0;
 }
 
-.no-coment {
+.no-comment {
   text-align: center;
   height: 400px;
 }
@@ -1102,7 +1102,7 @@ nav ul li a.active {
   background-color: rgba(255, 255, 255, 0.9); /* 背景を少し透明に */
   padding: 20px;
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1241,4 +1241,93 @@ nav ul li a.active {
   font-size: 36px; /* フォントサイズ */
   color: #34495e; /* 文字色 */
   margin-bottom: 30px; /* 下部に余白を追加 */
+}
+
+
+
+
+
+
+.communities-page {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.communities-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #34495e;
+}
+
+.new_community_link {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.communities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.community-item {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.community-icon {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  /*border-radius: 50%;*/
+}
+
+.community-info-container {
+  flex: 1;
+}
+
+.community-meta {
+  margin-bottom: 7px;
+}
+
+.community-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #007bff; /* 例: ユーザー名のリンク色をパープルに変更 */
+  text-decoration: none;
+}
+
+.community-name:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+.community-category {
+  font-size: 14px;
+  color: #777;
+}
+
+.community-description {
+  font-size: 14px;
+  color: #666;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-top: 1px dotted #AAA;
+  border-bottom: 1px dotted #AAA;
+}
+
+.no-community {
+  text-align: center;
+  height: 400px;
 }
