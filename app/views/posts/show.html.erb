@@ -1,6 +1,6 @@
 <div class="page-background">
   <div class="post-detail">
-    
+
     <div class="post-detail-header">
     <!-- ユーザー情報の表示部分 -->
       <div class="left-section">
@@ -11,7 +11,7 @@
         <% end %>
         <%= link_to @post.user.username, user_path(@post.user.id), class: 'post-detail-username' %>
       </div>
-    
+
       <!-- 3点リーダー -->
       <div class="dropdown right-section">
         <div class="dropdown-toggle" data-comment-id="<%= @post.id %>"><i class="fa-solid fa-ellipsis"></i></div>
@@ -24,7 +24,7 @@
           <% end %>
         </div>
       </div>
-    
+
     </div>
 
     <h1 class="post-detail-title"><%= @post.title %></h1>
@@ -36,8 +36,8 @@
       <!--<p class="post-image"><%= image_tag 'no_image_photo2.jpg', class: 'post-img' %></p>-->
     <!--<% end %>-->
 
-    <p class="post-detail-date"><%= l(@post.created_at, format: :long, locale: :ja) %></p>
-    
+    <p class="post-detail-date"><%= @post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
+
     <div class="comments-section">
       <h2>コメント一覧(<%= @comments_count %>)</h2>
       <% @post.comments.each do |comment| %>
@@ -51,7 +51,7 @@
               <% end %>
               <%= link_to comment.user.username, user_path(comment.user), class: 'comment-username' %>
             </div>
-              
+
             <div class="right-section">
               <div class="dropdown">
                 <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
@@ -65,13 +65,13 @@
               </div>
             </div>
           </div>
-            
+
           <div class="comment-content">
             <p><%= comment.content %></p>
-            <p class="comment-date"><%= l(comment.created_at, format: :long, locale: :ja) %></p>
+            <p class="comment-date"><%= comment.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
           </div>
         </div>
-        
+
       <% end %>
     </div>
 
@@ -91,9 +91,9 @@
             <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn', data: { confirm: '本当にコメントしますか？' } %>
           </div>
         <% end %>
-      </div>  
+      </div>
     </div>
-    
+
   </div>
-  
+
 </div>

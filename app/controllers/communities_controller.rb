@@ -14,9 +14,9 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    @community = current_user.communities.build(community_params) # 作成者をcurrent_userに設定
+    @community = current_user.communities.new(community_params) # current_userでコミュニティ作成
     if @community.save
-      redirect_to communities_path, notice: 'コミュニティが作成されました。'
+      redirect_to communities_path
     else
       render :new
     end

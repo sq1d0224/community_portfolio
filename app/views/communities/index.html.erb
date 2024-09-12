@@ -28,14 +28,22 @@
                 <%= image_tag community.image.variant(resize_to_fill: [120, 120]), class: 'community-icon' %>
               <% end %>
             </div>
-
             <div class="community-info-container">
               <div class="community-meta">
                 <span><%= link_to community.title, community_path(community.id), class: 'community-name' %></span>
                 <div class="community-details">
+                  
+                  <span class="community-creator">
+                    作成者:
+                    <% if community.user.present? %>
+                      <%= link_to community.user.username, user_path(community.user), class: 'community-creator-link' %>
+                    <% else %>
+                      不明
+                    <% end %>
+                  </span>
                   <span class="community-category">カテゴリ: <%= community.category %></span>
-                  <span class="community-creator">作成者: <%= community.user.present? ? community.user.username : '不明' %></span> <!-- コミュニティ作成者を表示 -->
-                  <span class="community-members">参加者数: <%= community.users.count %> 人</span> <!-- 参加者数を表示 -->
+                  <span class="community-members">参加者数: <%= community.users.count %> 人</span>
+                  <span class="community-created-at">作成日: <%= community.created_at.strftime('%Y/%m/%d') %></span>
                 </div>
               </div>
               <div class="community-description">

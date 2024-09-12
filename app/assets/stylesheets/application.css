@@ -1313,9 +1313,38 @@ nav ul li a.active {
   text-decoration: underline;
 }
 
+.community-creator {
+  font-size: 14px;
+  color: #777;
+  margin-right: 10px;
+}
+
+.community-members {
+  font-size: 14px;
+  color: #777;
+  margin-right: 10px;
+}
+
 .community-category {
   font-size: 14px;
   color: #777;
+  margin-right: 10px;
+}
+
+.community-created-at {
+  font-size: 14px;
+  color: #777;
+  margin-right: 10px;
+}
+
+.community-creator-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.community-creator-link:hover {
+  color: #c7511f;
+  text-decoration: underline;
 }
 
 .community-description {

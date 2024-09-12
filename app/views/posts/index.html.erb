@@ -65,7 +65,7 @@
             
             <div class="post-footer">
               <p class="post-date">
-                <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y年%m月%d日 %H:%M") %>
+                <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
               </p>
               <p class="post-comments">
                 <%= link_to "コメント(#{post.comments.count})", post_path(post, anchor: 'comments') %>
