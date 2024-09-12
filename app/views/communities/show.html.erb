@@ -1,70 +1,74 @@
 <div class="page-background">
-  <div class="community-header">
-    <!-- コミュニティの画像とタイトル -->
-    <div class="community-image-title">
-      <% if @community.image.attached? %>
-        <div class="community-image">
-          <%= image_tag @community.image.variant(resize_to_fill: [120, 120]), class: 'community-icon' %>
-        </div>
-      <% else %>
-        <div class="community-image">
-          <%= image_tag 'default_community.jpg', class: 'community-icon' %> <!-- 画像がない場合のデフォルト画像 -->
-        </div>
-      <% end %>
-
-      <div class="community-title">
-        <h1><%= @community.title %></h1>
-        <p><strong>カテゴリ:</strong> <%= @community.category %></p>
-      </div>
-    </div>
-
-    <!-- コミュニティ参加ボタン -->
-    <div class="community-actions">
-      <% if current_user && current_user.joined_community?(@community) %>
-        <%= link_to 'コミュニティに参加中', leave_community_path(@community), class: 'btn btn-secondary', method: :delete %>
-      <% else %>
-        <%= link_to 'コミュニティに参加', join_community_path(@community), class: 'btn btn-primary', method: :post %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="community-details-section">
-    <!-- コミュニティ管理者とメンバー数の表示 -->
-    <div class="community-info">
-      <p><strong>管理人:</strong> <%= link_to @community.user.username, user_path(@community.user), class: 'community-admin' %></p>
-      <p><strong>参加メンバー:</strong> <%= @community.users.count %>人</p>
-      <p><strong>開設日:</strong> <%= @community.created_at.strftime('%Y年%m月%d日') %></p>
-    </div>
-
-    <!-- コミュニティの説明 -->
-    <div class="community-description">
-      <h2>コミュニティ詳細</h2>
-      <p><%= @community.description %></p>
-    </div>
-  </div>
-
-  <!-- コミュニティのつぶやき投稿フォーム -->
-  <div class="community-post-section">
-    <h3>コミュニティにつぶやきを投稿</h3>
-  </div>
-  
-  <h2>投稿一覧</h2>
-  <div class="community-posts-list">
-    <% @community.posts.each do |post| %>
-      <div class="post-item">
-        <h3><%= post.title %></h3>
-        <p><%= post.content %></p>
-        <% if post.image.attached? %>
-          <%= image_tag post.image, class: 'post-image' %>
+  <div class="community-detail">
+    <div class="community-header">
+      <!-- コミュニティの画像とタイトル -->
+      <div class="community-image-title">
+        <% if @community.image.attached? %>
+          <div class="community-image">
+            <%= image_tag @community.image.variant(resize_to_fill: [180, 180]), class: 'community-icon' %>
+          </div>
+        <% else %>
+          <div class="community-image">
+            <%= image_tag 'default_community.jpg', class: 'community-icon' %> <!-- 画像がない場合のデフォルト画像 -->
+          </div>
         <% end %>
-        <p>投稿者: <%= post.user.username %></p>
-      </div>
-    <% end %>
-  </div>
 
-  <!-- アクションボタン -->
-  <div class="actions">
-    <%= link_to '編集', edit_community_path(@community), class: 'btn btn-secondary' %>
-    <%= link_to '戻る', communities_path, class: 'btn btn-primary' %>
+        <div class="community-title">
+          <h1><%= @community.title %></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="community-details-section">
+      <!-- コミュニティ管理者とメンバー数の表示 -->
+      <div class="community-info">
+        <p><strong>カテゴリ:</strong> <%= @community.category %></p>
+        <p><strong>管理人:</strong> 
+          <% if @community.user.present? %>
+            <%= link_to @community.user.username, user_path(@community.user), class: 'community-admin' %>
+          <% else %>
+            <span>不明</span>
+          <% end %>
+        </p>
+        <p><strong>参加メンバー:</strong> <%= @community.users.count %>人</p>
+        <p><strong>開設日:</strong> <%= @community.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+    
+      <!-- コミュニティ参加ボタン -->
+      <div class="community-actions">
+        <% if current_user && current_user.joined_community?(@community) %>
+          <%= link_to 'コミュニティから退会する', leave_community_path(@community), data: { confirm: '本当にコミュニティから退会しますか？' }, class: 'btn btn-danger', method: :delete %>
+        <% else %>
+          <%= link_to 'コミュニティに参加する', join_community_path(@community), data: { confirm: '本当にコミュニティに参加しますか？' }, class: 'btn btn-primary', method: :post %>
+        <% end %>
+        <%= link_to '編集', edit_community_path(@community), class: 'btn btn-secondary' %>
+      </div>
+
+      <!-- コミュニティの説明 -->
+      <div class="community-description">
+        <h2><%= @community.description %></h2>
+      </div>
+    </div>
+  
+    <div class="community-posts">
+      <h2>投稿一覧</h2>
+      <%= link_to '新規投稿', new_in_community_community_posts_path(@community), class: 'btn btn-primary' %>
+
+      <% if @community.posts.any? %>
+        <% @community.posts.each do |post| %>
+          <div class="post-item">
+            <h3><%= link_to post.title, post_path(post) %></h3>
+            <p><%= truncate(post.description, length: 100) %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>投稿がありません。</p>
+      <% end %>
+    </div>
+  
+    <!-- アクションボタン -->
+    <div class="mt-3">
+      <%= link_to 'コミュニティ一覧', communities_path, class: 'btn btn-primary' %>
+    </div>
   </div>
 </div>

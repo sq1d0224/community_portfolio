@@ -1360,3 +1360,13 @@ nav ul li a.active {
   text-align: center;
   height: 400px;
 }
+
+.community-detail {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

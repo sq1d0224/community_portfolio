@@ -3,6 +3,7 @@ class Community < ApplicationRecord
   belongs_to :user # コミュニティの作成者
   has_many :memberships # コミュニティへの参加者を管理する中間テーブル（後述）
   has_many :users, through: :memberships # コミュニティに参加しているユーザー
+  has_many :posts, dependent: :destroy  # コミュニティが削除されたら関連する投稿も削除
   
   # コミュニティ名の必須と文字数制限（30文字以内）
   validates :title, presence: true, length: { maximum: 30 }

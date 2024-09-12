@@ -68,14 +68,21 @@ class PostsController < ApplicationController
                  .distinct.page(params[:page]).per(20)
   end
   
-  # コミュニティ内の投稿作成
+  # コミュニティ内での投稿用
+  def new_in_community
+    @post = @community.posts.new
+    render 'communities/post_new'  # コミュニティ専用フォームのビューをレンダリング
+  end
+  
+  # コミュニティ内での投稿作成
   def create_in_community
     @post = @community.posts.new(post_params)
     @post.user = current_user
+
     if @post.save
-      redirect_to community_path(@community), notice: 'コミュニティに投稿されました。'
+      redirect_to community_path(@community), notice: '投稿が作成されました。'
     else
-      render 'communities/show'  # エラーが出たらコミュニティの詳細ページにリダイレクト
+      render 'communities/post_new'
     end
   end
 
@@ -96,11 +103,7 @@ class PostsController < ApplicationController
   end
   
   def set_community
-    @community = Community.find(params[:community_id])  # URLからコミュニティIDを取得
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :content, :image)  # タイトル、内容、画像を許可
+    @community = Community.find(params[:community_id])
   end
   
 end

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'communities/index'
   # Deviseによるユーザー認証
   devise_for :users, controllers: {
     sessions: 'devise/sessions',
@@ -22,18 +21,20 @@ Rails.application.routes.draw do
 
   # プロフィール編集
   resources :users, only: [:index, :show, :edit, :update]
-  
+
   # コミュニティに関するルーティング
-  resources :communities
-  
   resources :communities do
-    resources :posts, only: [:create], controller: 'posts', action: :create_in_community  # コミュニティ内投稿用
+    resources :posts, only: [:create] do
+      collection do
+        get 'new_in_community', to: 'posts#new_in_community'  # 新規投稿フォームのルート
+      end
+    end
     member do
       post 'join', to: 'communities#join'
       delete 'leave', to: 'communities#leave'
     end
   end
-  
+
   # 静的ページ
   get 'about', to: 'pages#about'
   get 'privacy_policy', to: 'pages#privacy_policy'
@@ -42,7 +43,7 @@ Rails.application.routes.draw do
 
   # トップページ
   get 'top', to: 'users#top', as: 'top'
-  
+
   # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do
     root to: 'devise/sessions#new'
