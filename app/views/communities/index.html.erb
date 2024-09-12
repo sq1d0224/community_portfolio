@@ -15,7 +15,7 @@
     </div>
     
     <div class="new_community_link">
-      <%= link_to '新しいコミュニティを作成', new_community_path, class: 'btn btn-primary' %>
+      <%= link_to 'コミュニティを作成', new_community_path, class: 'btn btn-primary' %>
     </div>
     
     <!-- コミュニティのリスト表示 -->
@@ -32,7 +32,8 @@
               <div class="community-meta">
                 <span><%= link_to community.title, community_path(community.id), class: 'community-name' %></span>
                 <div class="community-details">
-                  
+                  <span class="community-category">カテゴリ: <%= community.category %></span>
+                  <br>
                   <span class="community-creator">
                     作成者:
                     <% if community.user.present? %>
@@ -41,8 +42,9 @@
                       不明
                     <% end %>
                   </span>
-                  <span class="community-category">カテゴリ: <%= community.category %></span>
-                  <span class="community-members">参加者数: <%= community.users.count %> 人</span>
+                  <br>
+                  <span class="community-members">参加人数: <%= community.users.count %> 人</span>
+                  <br>
                   <span class="community-created-at">作成日: <%= community.created_at.strftime('%Y/%m/%d') %></span>
                 </div>
               </div>

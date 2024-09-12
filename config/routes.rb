@@ -26,6 +26,14 @@ Rails.application.routes.draw do
   # コミュニティに関するルーティング
   resources :communities
   
+  resources :communities do
+    resources :posts, only: [:create], controller: 'posts', action: :create_in_community  # コミュニティ内投稿用
+    member do
+      post 'join', to: 'communities#join'
+      delete 'leave', to: 'communities#leave'
+    end
+  end
+  
   # 静的ページ
   get 'about', to: 'pages#about'
   get 'privacy_policy', to: 'pages#privacy_policy'

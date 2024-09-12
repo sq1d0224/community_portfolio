@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:show, :edit, :update, :destroy]
+  before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
   
   def index
     @communities = Community.includes(:user, :users).page(params[:page]).per(10)
@@ -24,6 +24,28 @@ class CommunitiesController < ApplicationController
   
   def show
     # @communityはbefore_actionでセットされます
+  end
+  
+  # コミュニティに参加するアクション
+  def join
+    unless current_user.communities.include?(@community)
+      current_user.communities << @community
+      flash[:notice] = "コミュニティに参加しました。"
+    else
+      flash[:alert] = "すでにこのコミュニティに参加しています。"
+    end
+    redirect_to @community
+  end
+
+  # コミュニティを退会するアクション
+  def leave
+    if current_user.communities.include?(@community)
+      current_user.communities.delete(@community)
+      flash[:notice] = "コミュニティを退会しました。"
+    else
+      flash[:alert] = "このコミュニティに参加していません。"
+    end
+    redirect_to @community
   end
 
   private

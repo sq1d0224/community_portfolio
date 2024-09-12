@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   # バリデーション
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 3000 }
+  validates :title, :content, presence: true  # タイトルと内容は必須
   
   # 画像表示メソッド
   def display_image(size = [300, 300])

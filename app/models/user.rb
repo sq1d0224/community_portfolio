@@ -11,6 +11,11 @@ class User < ApplicationRecord
   has_many :communities # 作成したコミュニティ
   has_many :memberships # 中間テーブル
   has_many :joined_communities, through: :memberships, source: :community # 参加しているコミュニティ
+  
+  # ユーザーが特定のコミュニティに参加しているか確認するメソッド
+  def joined_community?(community)
+    self.communities.include?(community)
+  end
 
   # 年齢を計算するメソッド
   def age
