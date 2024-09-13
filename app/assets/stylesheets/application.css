@@ -950,7 +950,9 @@ nav ul li a.active {
 }
 
 .comments-section h2 {
+  color: #333;
   font-size: 20px;
+  margin-bottom: 5px;
 }
 
 .comment-container {
@@ -1366,7 +1368,46 @@ nav ul li a.active {
   padding: 30px;
   border-radius: 10px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.community-image-title-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.community-details-section {
+  color: #34495e;
+  flex-grow: 1;
+}
+
+.community-title h1 {
+  margin-bottom: 10px;
+}
+
+.community-info p {
+  margin: 5px 0;
+}
+
+.community-admin {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.community-admin:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+.community-detail-description {
+  font-weight: bold;
+  font-size: 17px;
+  color: #34495e;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-top: 2px dotted #333;
+  border-bottom: 2px dotted #333;
 }
