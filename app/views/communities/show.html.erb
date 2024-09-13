@@ -12,14 +12,13 @@
             <%= image_tag 'default_community.jpg', class: 'community-icon' %> <!-- 画像がない場合のデフォルト画像 -->
           </div>
         <% end %>
-
-        <div class="community-title">
-          <h1><%= @community.title %></h1>
-        </div>
       </div>
     </div>
 
     <div class="community-details-section">
+      <div class="community-title">
+        <h1><%= @community.title %></h1>
+      </div>
       <!-- コミュニティ管理者とメンバー数の表示 -->
       <div class="community-info">
         <p><strong>カテゴリ:</strong> <%= @community.category %></p>
@@ -33,7 +32,9 @@
         <p><strong>参加メンバー:</strong> <%= @community.users.count %>人</p>
         <p><strong>開設日:</strong> <%= @community.created_at.strftime('%Y/%m/%d') %></p>
       </div>
+    </div>
     
+    <div class="community-details-btn">
       <!-- コミュニティ参加ボタン -->
       <div class="community-actions">
         <% if current_user && current_user.joined_community?(@community) %>
@@ -43,11 +44,11 @@
         <% end %>
         <%= link_to '編集', edit_community_path(@community), class: 'btn btn-secondary' %>
       </div>
-
-      <!-- コミュニティの説明 -->
-      <div class="community-description">
-        <h2><%= @community.description %></h2>
-      </div>
+    </div>
+    
+    <!-- コミュニティの説明 -->
+    <div class="community-description">
+      <h2><%= @community.description %></h2>
     </div>
   
     <div class="community-posts">
