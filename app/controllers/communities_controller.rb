@@ -26,6 +26,18 @@ class CommunitiesController < ApplicationController
     # @communityはbefore_actionでセットされます
   end
   
+  def edit
+    # 編集フォームを表示
+  end
+
+  def update
+    if @community.update(community_params)
+      redirect_to @community, notice: 'コミュニティが正常に更新されました。'
+    else
+      render :edit
+    end
+  end
+  
   # コミュニティに参加するアクション
   def join
     unless current_user.communities.include?(@community)

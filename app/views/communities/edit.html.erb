@@ -1,0 +1,44 @@
+<div class="page-background">
+  <div class="community-edit-page">
+    <h1 class="community-edit-title">コミュニティ編集</h1>
+    
+    <!-- エラーメッセージ表示 -->
+    <%= render 'shared/error_messages', resource: @community %>
+    
+    <!-- コミュニティ編集フォーム -->
+    <%= form_with(model: @community, local: true, html: {multipart: true}) do |form| %>
+      
+      <!-- タイトル編集 -->
+      <div class="field community-field">
+        <strong><%= form.label :title, 'コミュニティ名', class: 'form-label' %></strong>
+        <%= form.text_field :title, class: 'form-control community-input', placeholder: '30文字以内', maxlength: 30 %>
+      </div>
+      
+      <!-- 説明文編集 -->
+      <div class="field community-field">
+        <strong><%= form.label :description, '説明', class: 'form-label' %></strong>
+        <%= form.text_area :description, class: 'form-control community-textarea', placeholder: '10000文字以内', maxlength: 10000 %>
+      </div>
+      
+      <!-- 画像編集 -->
+      <div class="field community-field">
+        <strong><%= form.label :image, 'コミュニティ画像', class: 'form-label' %></strong>
+        <%= form.file_field :image, class: 'form-control community-file-input' %>
+        
+        <% if @community.image.attached? %>
+          <div class="community-image-preview-container">
+            <%= image_tag @community.image.variant(resize_to_fill: [300, 300]), class: 'community-image-preview' %>
+          </div>
+        <% end %>
+      </div>
+      
+      <!-- 更新ボタン -->
+      <div class="mt-3">
+        <%= form.submit '更新する', class: 'btn btn-primary community-submit-btn', data: { confirm: '本当に更新しますか？' } %>
+      </div>
+    <% end %>
+    
+    <!-- キャンセルボタン -->
+    <%= link_to 'キャンセル', community_path(@community), class: 'btn btn-secondary cancel-link' %>
+  </div>
+</div>

@@ -35,7 +35,7 @@
                   <span class="community-category">カテゴリ: <%= community.category %></span>
                   <br>
                   <span class="community-creator">
-                    作成者:
+                    管理人:
                     <% if community.user.present? %>
                       <%= link_to community.user.username, user_path(community.user), class: 'community-creator-link' %>
                     <% else %>

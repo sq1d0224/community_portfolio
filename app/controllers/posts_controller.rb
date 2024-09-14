@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :my_posts, :commented_posts]
   before_action :set_post, only: [:show, :edit, :update, :destroy] # 必要なアクションに限定
   before_action :authorize_user!, only: [:edit, :update, :destroy]
-  before_action :set_community, only: [:create_in_community]  # コミュニティをセットするアクション
   
   def index
     if params[:search].present?
@@ -67,24 +66,6 @@ class PostsController < ApplicationController
                  .order('posts.created_at DESC') # 投稿が新しい順で並び替え
                  .distinct.page(params[:page]).per(20)
   end
-  
-  # コミュニティ内での投稿用
-  def new_in_community
-    @post = @community.posts.new
-    render 'communities/post_new'  # コミュニティ専用フォームのビューをレンダリング
-  end
-  
-  # コミュニティ内での投稿作成
-  def create_in_community
-    @post = @community.posts.new(post_params)
-    @post.user = current_user
-
-    if @post.save
-      redirect_to community_path(@community), notice: '投稿が作成されました。'
-    else
-      render 'communities/post_new'
-    end
-  end
 
   private
 
@@ -100,10 +81,6 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :image, :user_id)
-  end
-  
-  def set_community
-    @community = Community.find(params[:community_id])
   end
   
 end

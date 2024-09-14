@@ -54,20 +54,33 @@
     <!-- 投稿一覧 -->
     <div class="community-detail-posts">
       <h2>コミュニティ投稿一覧</h2>
-      <%= link_to '新規投稿', new_in_community_community_posts_path(@community), class: 'btn btn-primary' %>
+      <div class="new-post-link">
+        <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
+      </div>
 
       <div class="community-post">
         <% if @community.posts.any? %>
           <% @community.posts.each do |post| %>
             <div class="post-item">
-              <h3><%= link_to post.title, post_path(post) %></h3>
+              <!-- 投稿の説明文を表示 -->
               <p><%= truncate(post.description, length: 100) %></p>
+              <!-- 投稿画像があれば表示 -->
+              <% if post.image.attached? %>
+                <div class="post-image">
+                  <%= image_tag post.image.variant(resize_to_fill: [300, 200]), loading: 'lazy', class: 'post-image' %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         <% else %>
-          <p>投稿がありません。</p>
+          <p class="no-post">投稿がありません。</p>
         <% end %>
       </div>
+      
+      <div class="pagination-empty">
+        
+      </div>
+      
     </div>
     
   </div>

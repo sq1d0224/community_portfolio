@@ -24,11 +24,7 @@ Rails.application.routes.draw do
 
   # コミュニティに関するルーティング
   resources :communities do
-    resources :posts, only: [:create] do
-      collection do
-        get 'new_in_community', to: 'posts#new_in_community'  # 新規投稿フォームのルート
-      end
-    end
+    resources :posts, controller: 'community_posts', only: [:new, :create]
     member do
       post 'join', to: 'communities#join'
       delete 'leave', to: 'communities#leave'

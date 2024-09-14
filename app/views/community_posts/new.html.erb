@@ -8,7 +8,7 @@
     <!-- フォームの作成 -->
     <%= form_with(model: [@community, @post], local: true) do |form| %>
       <div class="field">
-        <%= form.label :description, '投稿文', class: 'form-label' %>
+        <%= form.label :description, '説明文', class: 'form-label' %>
         <%= form.text_area :description, class: 'form-control description-textarea', placeholder: '1000文字以内', maxlength: 1000 %>
       </div>
 

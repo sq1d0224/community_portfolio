@@ -943,8 +943,8 @@ nav ul li a.active {
 
 
 .comments-section {
-  border-top: 2px dotted #AAA;
-  border-bottom: 2px dotted #AAA;
+  border-top: 2px dotted #333;
+  border-bottom: 2px dotted #333;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -1249,7 +1249,7 @@ nav ul li a.active {
 
 
 
-
+/*コミュニティ一覧ページ*/
 .communities-page {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 30px;
@@ -1363,6 +1363,9 @@ nav ul li a.active {
   height: 400px;
 }
 
+
+
+/*コミュニティ詳細画面*/
 .community-detail {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 30px;
@@ -1410,4 +1413,49 @@ nav ul li a.active {
   padding-bottom: 7px;
   border-top: 2px dotted #333;
   border-bottom: 2px dotted #333;
+}
+
+.community-detail-posts {
+  
+}
+
+.community-detail-posts h2 {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.no-post {
+  text-align: center;
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+
+
+/*コミュニティ編集画面*/
+.community-edit-page {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding: 30px; /* 内側の余白を追加 */
+  border-radius: 10px; /* 角を丸く */
+  max-width: 600px; /* フォームの最大幅を600pxに設定 */
+  margin: 0 auto; /* フォームを中央に配置 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+}
+
+.community-edit-title {
+  text-align: center;
+  font-size: 36px;
+  color: #34495e;
+  margin-bottom: 30px;
+}
+
+.community-image-preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.community-image-preview {
+  border: 2px solid #ccc;
+  border-radius: 10px;
 }
