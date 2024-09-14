@@ -1,7 +1,7 @@
 <div class="home-background">
   <div class="content">
     <h2 class="log">ログイン</h2>
-    
+
     <% if flash[:alert].present? %>
       <div id="error_explanation">
         <ul>
@@ -32,7 +32,7 @@
         <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     <% end %>
-    
+
     <div class="new-registration-link">
       <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
     </div>
