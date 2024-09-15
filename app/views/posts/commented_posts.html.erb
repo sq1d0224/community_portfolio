@@ -22,16 +22,8 @@
             </div>
 
             <h3 class="post-title"><%= link_to truncate(post.title, length: 20), post_path(post), class: 'post-title-link' %></h3>
-              <!--<% if post.title.length > 20 %>-->
-                <!--<%= link_to '続きを読む', post_path(post), class: 'post-link' %>-->
-              <!--<% end %>-->
 
-            <p class="post-description">
-              <%= truncate(post.description, length: 90) %>
-              <!--<% if post.description.length > 90 %>-->
-                <!--<%= link_to '続きを読む', post_path(post), class: 'post-link' %>-->
-              <!--<% end %>-->
-            </p>
+            <p class="post-description"><%= truncate(post.description, length: 90) %></p>
 
             <% if post.image.attached? %>
               <p class="post-image">
@@ -59,7 +51,7 @@
           </div>
         <% end %>
       <% else %>
-        <div class="no-coment">
+        <div class="no-comment">
           <p class="no-posts">コメントした投稿がありません。</p>
         </div>
       <% end %>

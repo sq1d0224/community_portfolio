@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_12_134149) do
+ActiveRecord::Schema.define(version: 2024_09_15_111518) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2024_09_12_134149) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "community_id", null: false
+    t.integer "community_id"
     t.index ["community_id"], name: "index_posts_on_community_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2024_09_12_134149) do
     t.string "gender"
     t.date "birthdate"
     t.text "bio"
-    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

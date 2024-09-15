@@ -37,12 +37,14 @@
     <div class="community-details-btn">
       <div class="community-actions">
         <%= link_to 'コミュニティ一覧', communities_path, class: 'btn btn-primary' %>
-        <% if current_user && current_user.joined_community?(@community) %>
+        <% if current_user == @community.user %>
+          <!-- コミュニティ作成者には「参加する」リンクを表示しない -->
+          <%= link_to 'コミュニティを編集', edit_community_path(@community), class: 'btn btn-secondary' %>
+        <% elsif current_user && current_user.joined_community?(@community) %>
           <%= link_to 'コミュニティから退会する', leave_community_path(@community), data: { confirm: '本当にコミュニティから退会しますか？' }, class: 'btn btn-danger', method: :delete %>
         <% else %>
           <%= link_to 'コミュニティに参加する', join_community_path(@community), data: { confirm: '本当にコミュニティに参加しますか？' }, class: 'btn btn-primary', method: :post %>
         <% end %>
-        <%= link_to '編集', edit_community_path(@community), class: 'btn btn-secondary' %>
       </div>
     </div>
 
@@ -54,6 +56,19 @@
     <!-- 投稿一覧 -->
     <div class="community-detail-posts">
       <h2>コミュニティ投稿一覧</h2>
+      
+      <!-- エラーメッセージの表示 -->
+      <% if flash[:alert].present? %>
+        <div id="error_explanation">
+          <ul>
+            <li>
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <%= flash[:alert] %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="new-post-link">
         <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
       </div>

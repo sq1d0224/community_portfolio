@@ -287,8 +287,7 @@ nav ul li a.active {
 }
 
 .no-comment {
-  text-align: center;
-  height: 400px;
+  height: 300px;
 }
 
 .no-posts {
@@ -515,20 +514,13 @@ nav ul li a.active {
   width: 300px; /* コンテナの幅を固定 */
   height: 300px; /* コンテナの高さを固定 */
   border-radius: 50%; /* 円形の外枠 */
-  border: 3px solid #ccc; /* グレーの縁を追加 */
+  border: 3px solid #AAA; /* グレーの縁を追加 */
   padding: 3px; /* 画像と縁の間に余白を追加 */
   background-color: white; /* 縁と画像の間に白い背景を追加 */
   overflow: hidden; /* 画像がはみ出さないように設定 */
   display: flex; /* フレックスボックスで整列 */
   align-items: center; /* 縦方向の中央揃え */
   justify-content: center; /* 横方向の中央揃え */
-}
-
-.profile-image {
-  width: 100%; /* 画像の幅をコンテナにフィット */
-  height: 100%; /* 画像の高さをコンテナにフィット */
-  object-fit: cover; /* 画像をコンテナにフィットさせる */
-  border-radius: 50%; /* 画像自体も丸くする */
 }
 
 /* プロフィール詳細テーブルの設定 */
@@ -670,7 +662,7 @@ nav ul li a.active {
 .profile-image-preview {
   border-radius: 50%; /* 画像を丸くする */
   border: 3px solid #ccc; /* グレーの縁を追加 */
-  padding: 5px; /* 画像と縁の間に余白を追加 */
+  padding: 0px; /* 画像と縁の間に余白を追加 */
   background-color: white; /* 縁と画像の間に白い背景を追加 */
 }
 
@@ -1123,6 +1115,7 @@ nav ul li a.active {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  height: 250px;
 }
 
 /* 各ユーザーアイテムのスタイル */

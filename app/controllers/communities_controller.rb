@@ -24,6 +24,14 @@ class CommunitiesController < ApplicationController
   
   def show
     # @communityはbefore_actionでセットされます
+    
+    # エラーメッセージがflashに保存されていた場合、@postを作成し、エラーを設定
+    if flash[:post_errors].present?
+      @post = @community.posts.new
+      flash[:post_errors].each do |error|
+        @post.errors.add(:base, error)
+      end
+    end
   end
   
   def edit

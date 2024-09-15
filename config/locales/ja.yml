@@ -113,3 +113,11 @@ ja:
       next: ">"
       previous: "<"
       truncate: "..."
+      
+  community:
+    join:
+      failure: "コミュニティに参加してください。"
+  flash:
+    posts:
+      create:
+        failure: "投稿に失敗しました。詳細を確認してください。"

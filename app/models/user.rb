@@ -7,14 +7,15 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :posts, dependent: :destroy   # ユーザーが削除されたら、関連する投稿も削除
   has_one_attached :profile_image        # Active Storageによるプロフィール画像
-  
-  has_many :communities # 作成したコミュニティ
-  has_many :memberships # 中間テーブル
-  has_many :joined_communities, through: :memberships, source: :community # 参加しているコミュニティ
-  
-  # ユーザーが特定のコミュニティに参加しているか確認するメソッド
+
+  # アソシエーション
+  has_many :memberships
+  has_many :communities, through: :memberships # 参加しているコミュニティ
+  has_many :owned_communities, class_name: 'Community' # 管理しているコミュニティ
+
+  # ユーザーが特定のコミュニティに参加しているかどうかを確認するメソッド
   def joined_community?(community)
-    self.communities.include?(community)
+    communities.include?(community)
   end
 
   # 年齢を計算するメソッド
@@ -27,10 +28,10 @@ class User < ApplicationRecord
 
   # 仮想属性 `login` を追加
   attr_writer :login
-  
+
   # 仮想属性 :remove_profile_image を追加
   attr_accessor :remove_profile_image
-  
+
   # 保存前に画像を削除する
   before_save :purge_profile_image, if: -> { remove_profile_image == '1' }
 
@@ -57,11 +58,13 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 10000 }, allow_blank: true                 # 自己紹介は任意だが10000文字以内
   # パスワードのバリデーション
   validates :password, length: { minimum: 8 }, if: -> { password.present? }
-  
+
   private
 
   def purge_profile_image
-    profile_image.purge
+    if profile_image.attached?
+      profile_image.purge # 凍結される前に即時削除
+    end
   end
 
 end

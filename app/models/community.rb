@@ -13,4 +13,12 @@ class Community < ApplicationRecord
   validates :category, presence: true
   # 画像の必須
   validates :image, presence: true
+  
+  private
+
+  # コミュニティ作成者をメンバーとして自動追加するメソッド
+  def add_owner_to_members
+    memberships.create(user: user)
+  end
+  
 end
