@@ -11,6 +11,21 @@ ja:
           other: "%{resource}を保存できませんでした: %{count}つのエラーがあります。"
           
       models:
+        community:
+          attributes:
+            user:
+              required: "ユーザーが必要です。"
+            title:
+              blank: "コミュニティ名を入力してください"
+              too_long: "コミュニティ名は%{count}文字以内で入力してください"
+            description:
+              blank: "説明を入力してください"
+              too_long: "説明は%{count}文字以内で入力してください"
+            category:
+              blank: "カテゴリを選択してください"
+            image:
+              blank: "コミュニティ画像を選択してください"     
+
         user:
           attributes:
             username:
@@ -25,7 +40,7 @@ ja:
               too_short: "パスワードは%{count}文字以上で入力してください。"
               confirmation: "パスワード（確認）が一致しません。"
               
-        post: # Postモデル用のエラーメッセージ
+        post:
           attributes:
             title:
               blank: "タイトルを入力してください。"
@@ -34,20 +49,7 @@ ja:
               blank: "説明文を入力してください。"
               too_long: "説明文は%{count}文字以内で入力してください。"
             image:
-              blank: "画像を選択してください。"
-              
-        community:
-          attributes:
-            title:
-              blank: "コミュニティ名を入力してください"
-              too_long: "コミュニティ名は%{count}文字以内で入力してください"
-            description:
-              blank: "説明を入力してください"
-              too_long: "説明は%{count}文字以内で入力してください"
-            category:
-              blank: "カテゴリを選択してください"
-            image:
-              blank: "コミュニティ画像を選択してください"      
+              blank: "画像を選択してください。" 
               
   devise:
     failure:

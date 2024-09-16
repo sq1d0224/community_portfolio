@@ -1,4 +1,5 @@
 class CommunitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
   
   def index
@@ -14,7 +15,14 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    @community = current_user.communities.new(community_params) # current_userでコミュニティ作成
+    @community = Community.new(community_params)
+    @community.user = current_user # current_userを明示的に設定
+    
+    # デバッグ用にcurrent_userと@community.userを確認
+  logger.debug "current_user: #{current_user.inspect}"
+  logger.debug "@community.user: #{@community.user.inspect}"
+
+    
     if @community.save
       redirect_to communities_path
     else
@@ -24,14 +32,6 @@ class CommunitiesController < ApplicationController
   
   def show
     # @communityはbefore_actionでセットされます
-    
-    # エラーメッセージがflashに保存されていた場合、@postを作成し、エラーを設定
-    if flash[:post_errors].present?
-      @post = @community.posts.new
-      flash[:post_errors].each do |error|
-        @post.errors.add(:base, error)
-      end
-    end
   end
   
   def edit

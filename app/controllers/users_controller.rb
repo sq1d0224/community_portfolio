@@ -8,7 +8,17 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(created_at: :desc).page(params[:page]).per(15)
+    # 検索がある場合とない場合の分岐
+    if params[:search].present?
+      # ユーザー名で検索
+      @users = User.where("username LIKE ?", "%#{params[:search]}%")
+                   .order(created_at: :desc)
+                   .page(params[:page])
+                   .per(15)
+    else
+      # 検索がない場合は全ユーザーを表示
+      @users = User.order(created_at: :desc).page(params[:page]).per(15)
+    end
   end
 
   def show

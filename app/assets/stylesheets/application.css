@@ -1115,7 +1115,6 @@ nav ul li a.active {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  height: 250px;
 }
 
 /* 各ユーザーアイテムのスタイル */

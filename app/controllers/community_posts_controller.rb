@@ -30,7 +30,7 @@ class CommunityPostsController < ApplicationController
   def set_community
     @community = Community.find(params[:community_id])
   end
-  
+
   # コミュニティに参加しているか、作成者かを確認する
   def ensure_user_can_post
     unless current_user == @community.user || current_user.joined_community?(@community)
@@ -38,5 +38,5 @@ class CommunityPostsController < ApplicationController
       redirect_to community_path(@community)
     end
   end
-  
+
 end

@@ -57,18 +57,6 @@
     <div class="community-detail-posts">
       <h2>コミュニティ投稿一覧</h2>
       
-      <!-- エラーメッセージの表示 -->
-      <% if flash[:alert].present? %>
-        <div id="error_explanation">
-          <ul>
-            <li>
-              <i class="fa-solid fa-triangle-exclamation"></i>
-              <%= flash[:alert] %>
-            </li>
-          </ul>
-        </div>
-      <% end %>
-
       <div class="new-post-link">
         <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
       </div>
