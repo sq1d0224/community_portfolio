@@ -1107,7 +1107,6 @@ nav ul li a.active {
   text-align: center;
   font-size: 36px;
   color: #34495e;
-  margin-bottom: 30px;
 }
 
 /* ユーザーリストのスタイル */
@@ -1408,11 +1407,18 @@ nav ul li a.active {
 }
 
 .community-detail-posts {
-  
+  display: flex;
+  justify-content: center;
+}
+
+.community-detail-post {
+  max-width: 500px;
+  width: 100%;
 }
 
 .community-detail-posts h2 {
   margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -1450,4 +1456,21 @@ nav ul li a.active {
 .community-image-preview {
   border: 2px solid #ccc;
   border-radius: 10px;
+}
+
+.community-post {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.community-post-detail-date {
+  font-size: 12px;
+  color: #777;
+  text-align: left;
+}
+
+.community-post-image {
+  margin: 0 auto;
 }

@@ -1,6 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
+  before_action :authorize_community_owner!, only: [:edit, :update, :destroy]
   
   def index
     @communities = Community.includes(:user, :users).page(params[:page]).per(10)
@@ -24,7 +25,7 @@ class CommunitiesController < ApplicationController
 
     
     if @community.save
-      redirect_to communities_path
+      redirect_to community_path
     else
       render :new
     end
@@ -32,6 +33,8 @@ class CommunitiesController < ApplicationController
   
   def show
     # @communityはbefore_actionでセットされます
+    # @community.posts にページネーションを適用
+    @paginated_posts = @community.posts.order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def edit
@@ -77,4 +80,12 @@ class CommunitiesController < ApplicationController
   def community_params
     params.require(:community).permit(:title, :description, :category, :image)
   end
+  
+  # 管理者かどうかを確認するメソッド
+  def authorize_community_owner!
+    unless current_user == @community.user
+      redirect_to community_path
+    end
+  end
+  
 end

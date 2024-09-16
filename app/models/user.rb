@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :communities, through: :memberships # 参加しているコミュニティ
   has_many :owned_communities, class_name: 'Community' # 管理しているコミュニティ
+  has_many :joined_communities, through: :memberships, source: :community # 参加しているコミュニティ
 
   # ユーザーが特定のコミュニティに参加しているかどうかを確認するメソッド
   def joined_community?(community)

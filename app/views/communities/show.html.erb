@@ -19,7 +19,7 @@
           </div>
           <div class="community-info">
             <p><strong>カテゴリ:</strong> <%= @community.category %></p>
-            <p><strong>管理人:</strong> 
+            <p><strong>管理人:</strong>
               <% if @community.user.present? %>
                 <%= link_to @community.user.username, user_path(@community.user), class: 'community-admin' %>
               <% else %>
@@ -55,36 +55,82 @@
 
     <!-- 投稿一覧 -->
     <div class="community-detail-posts">
-      <h2>コミュニティ投稿一覧</h2>
-      
-      <div class="new-post-link">
-        <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
-      </div>
+      <div class="community-detail-post">
+        <h2>コミュニティ投稿一覧</h2>
 
-      <div class="community-post">
-        <% if @community.posts.any? %>
-          <% @community.posts.each do |post| %>
-            <div class="post-item">
-              <!-- 投稿の説明文を表示 -->
-              <p><%= truncate(post.description, length: 100) %></p>
-              <!-- 投稿画像があれば表示 -->
-              <% if post.image.attached? %>
-                <div class="post-image">
-                  <%= image_tag post.image.variant(resize_to_fill: [300, 200]), loading: 'lazy', class: 'post-image' %>
-                </div>
-              <% end %>
+        <!-- 検索フォームの追加 -->
+        <div class="search-form">
+          <%= form_with url: community_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
+            <div class="search-input-container">
+              <%= form.text_field :search, placeholder: "投稿を検索", class: "form-control search-input" %>
+              <button type="submit" class="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i> <!-- Font Awesome の虫眼鏡アイコン -->
+              </button>
             </div>
           <% end %>
-        <% else %>
-          <p class="no-post">投稿がありません。</p>
-        <% end %>
+        </div>
+
+        <!-- エラーメッセージの表示 -->
+        <%= render 'shared/error_messages', resource: @post %>
+
+        <div class="new-post-link">
+          <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
+        </div>
+
+        <div class="community-post">
+          <% if @paginated_posts.any? %>
+            <% @paginated_posts.each do |post| %>
+              <div class="post-item">
+                <div class="post-detail-header">
+                  <!-- ユーザー情報の表示部分 -->
+                  <div class="left-section">
+                    <% if post.user.profile_image.attached? %>
+                      <%= image_tag post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "post-user-icon" %>
+                    <% else %>
+                      <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
+                    <% end %>
+                    <%= link_to post.user.username, user_path(post.user.id), class: 'post-detail-username' %>
+                  </div>
+
+                  <!-- 3点リーダー -->
+                  <div class="dropdown right-section">
+                    <div class="dropdown-toggle" data-post-id="<%= post.id %>">
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu-<%= post.id %>">
+                      <% if post.user == current_user %>
+                        <%= link_to '投稿を削除する', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
+                      <% else %>
+                        <p class="dropdown-item no-actions">可能な操作はありません</p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <!-- 投稿の説明文を表示 -->
+                <p class="post-detail-description"><%= post.description %></p>
+                <!-- 投稿画像があれば表示 -->
+                <% if post.image.attached? %>
+                  <p class="community-post-image">
+                    <%= image_tag post.display_image([400, 400]), loading: 'lazy', class: 'post-image' %>
+                  </p>
+                <% end %>
+                <!-- 投稿日時 -->
+                <p class="community-post-detail-date">
+                  <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+                </p>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="no-post">投稿がありません。</p>
+          <% end %>
+        </div>
+
+        <div class="pagination-empty">
+          <%= paginate @paginated_posts, theme: 'bootstrap4', total_pages: (@paginated_posts.total_pages > 1 ? @paginated_posts.total_pages : 2), class: 'pagination' %>
+        </div>
+
       </div>
-      
-      <div class="pagination-empty">
-        
-      </div>
-      
     </div>
-    
+
   </div>
 </div>

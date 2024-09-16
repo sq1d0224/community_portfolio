@@ -16,7 +16,7 @@ class CommunityPostsController < ApplicationController
     if @post.save
       redirect_to community_path(@community)
     else
-      render 'communities/show' # コミュニティ詳細画面にエラーを持ってリダイレクト
+      render :new
     end
   end
 
@@ -31,11 +31,11 @@ class CommunityPostsController < ApplicationController
     @community = Community.find(params[:community_id])
   end
 
-  # コミュニティに参加しているか、作成者かを確認する
+  # コミュニティに参加しているか、または作成者かを確認する
   def ensure_user_can_post
     unless current_user == @community.user || current_user.joined_community?(@community)
-      flash[:alert] = I18n.t('community.join.failure')
-      redirect_to community_path(@community)
+      flash.now[:alert] = "コミュニティに参加してください。" # エラーメッセージをフラッシュに設定
+      render 'communities/show' # コミュニティ詳細画面に戻る
     end
   end
 

@@ -39,6 +39,12 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  # 参加中のコミュニティを表示するアクション
+  def my_communities
+    @created_communities = current_user.communities
+    @joined_communities = current_user.joined_communities
+  end
 
   private
 

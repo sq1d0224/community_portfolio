@@ -48,10 +48,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to my_posts_posts_path }
-      format.json { head :no_content }
+    @post = Post.find(params[:id])
+
+    if @post.community_id.present?
+      # コミュニティに関連する投稿の場合はコミュニティ詳細ページにリダイレクト
+      community = @post.community
+      @post.destroy
+      redirect_to community_path(community)
+    else
+      # コミュニティに関連しない投稿の場合はマイ投稿一覧にリダイレクト
+      @post.destroy
+      redirect_to my_posts_posts_path
     end
   end
 

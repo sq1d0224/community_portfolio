@@ -87,7 +87,7 @@
       <div class="comment-form-wrapper">
         <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
           <div class="comment-form">
-            <%= form.text_area :content, class: "form-control comment-input", placeholder: "コメントする(1000文字以内)" %>
+            <%= form.text_area :content, class: "form-control comment-input", placeholder: "1000文字以内" %>
             <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn', data: { confirm: '本当にコメントしますか？' } %>
           </div>
         <% end %>

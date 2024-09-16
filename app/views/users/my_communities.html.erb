@@ -1,0 +1,33 @@
+<div class="page-background">
+  <div class="my-communities-page">
+    <h1>参加中のコミュニティ一覧</h1>
+
+    <h2>作成したコミュニティ</h2>
+    <% if @created_communities.any? %>
+      <% @created_communities.each do |community| %>
+        <div class="community-item">
+          <%= link_to community_path(community) do %>
+            <%= image_tag community.image.variant(resize_to_fill: [100, 100]), class: 'community-icon' %>
+            <span><%= community.title %></span>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだコミュニティを作成していません。</p>
+    <% end %>
+
+    <h2>参加中のコミュニティ</h2>
+    <% if @joined_communities.any? %>
+      <% @joined_communities.each do |community| %>
+        <div class="community-item">
+          <%= link_to community_path(community) do %>
+            <%= image_tag community.image.variant(resize_to_fill: [100, 100]), class: 'community-icon' %>
+            <span><%= community.title %></span>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだ参加しているコミュニティがありません。</p>
+    <% end %>
+  </div>
+</div>

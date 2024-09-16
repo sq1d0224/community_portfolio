@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'pages#privacy_policy'
   get 'terms_of_service', to: 'pages#terms_of_service', as: 'terms_of_service'
   get 'contact', to: 'pages#contact', as: 'contact'
+  
+  # 参加中のコミュニティ一覧ページ
+  get 'my_communities', to: 'users#my_communities', as: 'my_communities'
 
   # トップページ
   get 'top', to: 'users#top', as: 'top'

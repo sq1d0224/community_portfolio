@@ -1,15 +1,15 @@
 <% if resource.present? && resource.errors.any? %>
   <div id="error_explanation">
-    <!--<h2>-->
-      <!--<%= pluralize(resource.errors.count, "エラー") %>が発生しました:-->
-    <!--</h2>-->
     <ul>
       <% resource.errors.each do |attr, message| %>
-        <li>
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <%= message %>
-        </li>
+        <li><i class="fa-solid fa-triangle-exclamation"></i><%= message %></li>
       <% end %>
+    </ul>
+  </div>
+<% elsif flash[:alert].present? %>
+  <div id="error_explanation">
+    <ul>
+      <li><i class="fa-solid fa-triangle-exclamation"></i> <%= flash[:alert] %></li>
     </ul>
   </div>
 <% end %>

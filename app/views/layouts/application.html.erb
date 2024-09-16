@@ -45,8 +45,9 @@
               </li>
               <ul id="dropdown-menu-user-profile" class="dropdown-menu">
                 <li><%= link_to 'プロフィール', user_path(current_user) %></li>
-                <li><%= link_to 'あなたの投稿一覧', my_posts_posts_path %></li>
-                <li><%= link_to 'コメントした投稿一覧', commented_posts_posts_path %></li>
+                <li><%= link_to 'あなたの投稿', my_posts_posts_path %></li>
+                <li><%= link_to 'コメントした投稿', commented_posts_posts_path %></li>
+                <li><%= link_to '参加中のコミュニティ', my_communities_path %></li>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", turbolinks: false } %></li>
               </ul>
             </div>
