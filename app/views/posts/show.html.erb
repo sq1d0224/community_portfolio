@@ -37,43 +37,49 @@
     <!--<% end %>-->
 
     <p class="post-detail-date"><%= @post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
+    
 
     <div class="comments-section">
       <h2>コメント一覧(<%= @comments_count %>)</h2>
-      <% @post.comments.each do |comment| %>
-        <div class="comment-container">
-          <div class="comment-header">
-            <div class="left-section">
-              <% if comment.user.profile_image.attached? %>
-                <%= image_tag comment.user.profile_image.variant(resize_to_fill: [30, 30]), class: "comment-user-icon" %>
-              <% else %>
-                <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
-              <% end %>
-              <%= link_to comment.user.username, user_path(comment.user), class: 'comment-username' %>
-            </div>
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <div class="comment-container">
+            <div class="comment-header">
+              <div class="left-section">
+                <% if comment.user.profile_image.attached? %>
+                  <%= image_tag comment.user.profile_image.variant(resize_to_fill: [30, 30]), class: "comment-user-icon" %>
+                <% else %>
+                  <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
+                <% end %>
+                <%= link_to comment.user.username, user_path(comment.user), class: 'comment-username' %>
+              </div>
 
-            <div class="right-section">
-              <div class="dropdown">
-                <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
-                <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
-                  <% if comment.user == current_user %>
-                    <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
-                  <% else %>
-                    <p class="dropdown-item no-actions">可能な操作はありません</p>
-                  <% end %>
+              <div class="right-section">
+                <div class="dropdown">
+                  <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
+                  <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
+                    <% if comment.id.present? && comment.user == current_user %>
+                      <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                    <% else %>
+                      <p class="dropdown-item no-actions">可能な操作はありません</p>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="comment-content">
+              <p><%= comment.content %></p>
+                <p class="comment-date"><%= comment.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
+            </div>
           </div>
-
-          <div class="comment-content">
-            <p><%= comment.content %></p>
-            <p class="comment-date"><%= comment.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
-          </div>
-        </div>
-
+        <% end %>
+      <% else %>
+        <p class="no-posts">コメントはまだありません。</p>
       <% end %>
     </div>
+    
+    <!-- エラーメッセージの表示 -->
+    <%= render 'shared/error_messages', resource: @comment %>
 
     <div class="comment-form-container">
       <div class="user-icon-wrapper">

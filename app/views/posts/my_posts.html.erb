@@ -1,6 +1,22 @@
 <div class="page-background">
   <div class="posts-page">
     <h1 class="posts-title">あなたの投稿一覧</h1>
+    
+    <!-- 検索フォームの追加 -->
+    <div class="search-form">
+      <%= form_with url: my_posts_posts_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
+        <div class="search-input-container">
+          <%= form.text_field :search, placeholder: "コミュニティを検索", class: "form-control search-input" %>
+          <button type="submit" class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i> <!-- Font Awesome の虫眼鏡アイコン -->
+          </button>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="communities-actions">
+      <%= link_to '投稿一覧', posts_path, class: 'btn btn-primary' %>
+    </div>
 
     <div class="new-post-link">
       <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>

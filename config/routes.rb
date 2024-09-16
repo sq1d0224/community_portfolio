@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       post 'join', to: 'communities#join'
       delete 'leave', to: 'communities#leave'
     end
+    resources :posts, only: [:new, :create]
   end
 
   # 静的ページ
@@ -37,8 +38,11 @@ Rails.application.routes.draw do
   get 'terms_of_service', to: 'pages#terms_of_service', as: 'terms_of_service'
   get 'contact', to: 'pages#contact', as: 'contact'
   
-  # 参加中のコミュニティ一覧ページ
+  # 作成したコミュニティ一覧
   get 'my_communities', to: 'users#my_communities', as: 'my_communities'
+
+  # 参加中のコミュニティ一覧
+  get 'joined_communities', to: 'users#joined_communities', as: 'joined_communities'
 
   # トップページ
   get 'top', to: 'users#top', as: 'top'

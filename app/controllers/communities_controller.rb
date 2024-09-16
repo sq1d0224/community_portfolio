@@ -2,12 +2,18 @@ class CommunitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :authorize_community_owner!, only: [:edit, :update, :destroy]
-  
+
   def index
-    @communities = Community.includes(:user, :users).page(params[:page]).per(10)
-  
+    # コミュニティを新しく作成された順に取得
     if params[:search].present?
-      @communities = @communities.where("title LIKE ?", "%#{params[:search]}%")
+      @communities = Community.where("title LIKE ?", "%#{params[:search]}%")
+                              .order(created_at: :desc)
+                              .page(params[:page])
+                              .per(10)
+    else
+      @communities = Community.order(created_at: :desc)
+                              .page(params[:page])
+                              .per(10)
     end
   end
 
@@ -18,25 +24,28 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.user = current_user # current_userを明示的に設定
-    
-    # デバッグ用にcurrent_userと@community.userを確認
-  logger.debug "current_user: #{current_user.inspect}"
-  logger.debug "@community.user: #{@community.user.inspect}"
 
-    
     if @community.save
-      redirect_to community_path
+      redirect_to community_path(@community)
     else
       render :new
     end
   end
-  
+
   def show
     # @communityはbefore_actionでセットされます
     # @community.posts にページネーションを適用
-    @paginated_posts = @community.posts.order(created_at: :desc).page(params[:page]).per(10)
+    # 検索機能
+    if params[:search].present?
+      @paginated_posts = @community.posts.where("description LIKE ?", "%#{params[:search]}%")
+                                         .order(created_at: :desc)
+                                         .page(params[:page])
+                                         .per(10)
+    else
+      @paginated_posts = @community.posts.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
-  
+
   def edit
     # 編集フォームを表示
   end
@@ -48,7 +57,7 @@ class CommunitiesController < ApplicationController
       render :edit
     end
   end
-  
+
   # コミュニティに参加するアクション
   def join
     unless current_user.communities.include?(@community)
@@ -70,9 +79,17 @@ class CommunitiesController < ApplicationController
     end
     redirect_to @community
   end
+  
+  def destroy
+    if @community.destroy
+      redirect_to communities_path
+    else
+      redirect_to community_path(@community)
+    end
+  end
 
   private
-  
+
   def set_community
     @community = Community.find(params[:id])
   end
@@ -80,12 +97,12 @@ class CommunitiesController < ApplicationController
   def community_params
     params.require(:community).permit(:title, :description, :category, :image)
   end
-  
+
   # 管理者かどうかを確認するメソッド
   def authorize_community_owner!
     unless current_user == @community.user
       redirect_to community_path
     end
   end
-  
+
 end

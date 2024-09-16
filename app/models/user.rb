@@ -3,6 +3,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:login]
+         
+  has_many :comments, dependent: :destroy
 
   # アソシエーション
   has_many :posts, dependent: :destroy   # ユーザーが削除されたら、関連する投稿も削除
@@ -13,6 +15,9 @@ class User < ApplicationRecord
   has_many :communities, through: :memberships # 参加しているコミュニティ
   has_many :owned_communities, class_name: 'Community' # 管理しているコミュニティ
   has_many :joined_communities, through: :memberships, source: :community # 参加しているコミュニティ
+  
+  # ユーザーが作成したコミュニティを表す関連付け
+  has_many :created_communities, class_name: 'Community', foreign_key: 'user_id'
 
   # ユーザーが特定のコミュニティに参加しているかどうかを確認するメソッド
   def joined_community?(community)

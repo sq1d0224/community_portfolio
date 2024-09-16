@@ -1,10 +1,10 @@
 <div class="page-background">
   <div class="communities-page">
-    <h1 class="communities-title">作成したコミュニティ一覧</h1>
+    <h1 class="communities-title">参加中のコミュニティ一覧</h1>
     
     <!-- 検索フォームの追加 -->
     <div class="search-form">
-      <%= form_with url: my_communities_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
+      <%= form_with url: joined_communities_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
         <div class="search-input-container">
           <%= form.text_field :search, placeholder: "コミュニティを検索", class: "form-control search-input" %>
           <button type="submit" class="search-button">
@@ -20,8 +20,8 @@
 
     <!-- コミュニティのリスト表示 -->
     <div class="communities-list">
-      <% if @created_communities.any? %>
-        <% @created_communities.each do |community| %>
+      <% if @joined_communities.any? %>
+        <% @joined_communities.each do |community| %>
           <div class="community-item">
             <div class="community-icon-container">
               <%= link_to community_path(community.id) do %>
@@ -56,13 +56,13 @@
         <% end %>
       <% else %>
         <div class="no-comment">
-          <p class="no-posts">コミュニティを作成していません。</p>
+          <p class="no-posts">参加しているコミュニティがありません。</p>
         </div>
       <% end %>
     </div>
     <!-- ページネーション -->
     <div class="pagination-empty">
-      <%= paginate @created_communities, theme: 'bootstrap4', total_pages: (@created_communities.total_pages > 1 ? @created_communities.total_pages : 2), class: 'pagination' %>
+      <%= paginate @joined_communities, theme: 'bootstrap4', total_pages: (@joined_communities.total_pages > 1 ? @joined_communities.total_pages : 2), class: 'pagination' %>
     </div>
   </div>
 </div>

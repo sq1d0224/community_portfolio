@@ -18,4 +18,18 @@ class Post < ApplicationRecord
   def display_image(size = [300, 300])
     image.variant(resize_to_limit: size).processed
   end
+  
+  # 仮想属性として remove_image を定義
+  attr_accessor :remove_image
+
+  # remove_image が '1' の場合、画像を削除する
+  before_save :purge_image, if: -> { remove_image == '1' }
+
+  private
+
+  # 画像削除の処理
+  def purge_image
+    image.purge if image.attached?
+  end
+  
 end

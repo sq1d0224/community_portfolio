@@ -24,7 +24,7 @@
             <%= image_tag @post.display_image, alt: "現在の画像", class: "img-fluid current-post-image" %>
           </div>
           <div class="remove-image-option">
-            <%= form.check_box :remove_image %> 画像を削除する
+            <%= form.check_box :remove_image, {}, '1', '0' %> 画像を削除する
           </div>
         <% end %>
       </div>

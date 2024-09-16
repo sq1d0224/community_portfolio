@@ -40,10 +40,27 @@ class UsersController < ApplicationController
     end
   end
   
-  # 参加中のコミュニティを表示するアクション
+  # 作成したコミュニティの一覧
   def my_communities
-    @created_communities = current_user.communities
+    # ユーザーが作成したコミュニティをページネーション付きで取得
+    @created_communities = current_user.created_communities
+                                      .order(created_at: :desc)  # 新しい順に並び替え
+                                      .page(params[:page])       # Kaminariによるページネーション
+                                      .per(10)                  # 1ページあたり10件表示
+    if params[:search].present?
+      @created_communities = @created_communities.where("title LIKE ?", "%#{params[:search]}%")
+    end
+  end
+
+  # 参加中のコミュニティの一覧
+  def joined_communities
     @joined_communities = current_user.joined_communities
+                                      .order(created_at: :desc)  # 新しい順に並び替え
+                                      .page(params[:page])       # Kaminariによるページネーション
+                                      .per(10)                  # 1ページあたり10件表示
+    if params[:search].present?
+      @joined_communities = @joined_communities.where("title LIKE ?", "%#{params[:search]}%")
+    end
   end
 
   private

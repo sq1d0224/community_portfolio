@@ -40,6 +40,7 @@
         <% if current_user == @community.user %>
           <!-- コミュニティ作成者には「参加する」リンクを表示しない -->
           <%= link_to 'コミュニティを編集', edit_community_path(@community), class: 'btn btn-secondary' %>
+          <%= link_to 'コミュニティを削除', community_path(@community), method: :delete, data: { confirm: '本当にこのコミュニティを削除しますか？コミュニティ内の投稿もすべて削除されます' }, class: 'btn btn-danger' %>
         <% elsif current_user && current_user.joined_community?(@community) %>
           <%= link_to 'コミュニティから退会する', leave_community_path(@community), data: { confirm: '本当にコミュニティから退会しますか？' }, class: 'btn btn-danger', method: :delete %>
         <% else %>
@@ -60,7 +61,7 @@
 
         <!-- 検索フォームの追加 -->
         <div class="search-form">
-          <%= form_with url: community_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
+          <%= form_with url: community_path(@community), method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
             <div class="search-input-container">
               <%= form.text_field :search, placeholder: "投稿を検索", class: "form-control search-input" %>
               <button type="submit" class="search-button">

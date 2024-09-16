@@ -167,6 +167,7 @@ nav ul li a.active {
   text-align: center;
   font-size: 36px;
   color: #34495e; /* 文字色 */
+  margin-bottom: 30px;
 }
 
 .posts-grid {
@@ -864,6 +865,7 @@ nav ul li a.active {
 
 /* 画像削除オプション */
 .remove-image-option {
+  text-align: center;
   margin-bottom: 25px; /* 余白を少し広めに */
 }
 
@@ -935,6 +937,7 @@ nav ul li a.active {
 
 
 .comments-section {
+  margin-bottom: 10px;
   border-top: 2px dotted #333;
   border-bottom: 2px dotted #333;
   padding-top: 20px;
@@ -1097,7 +1100,7 @@ nav ul li a.active {
   padding: 20px;
   border-radius: 10px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -1107,6 +1110,7 @@ nav ul li a.active {
   text-align: center;
   font-size: 36px;
   color: #34495e;
+  margin-bottom: 30px;
 }
 
 /* ユーザーリストのスタイル */
@@ -1473,4 +1477,9 @@ nav ul li a.active {
 
 .community-post-image {
   margin: 0 auto;
+}
+
+.communities-actions {
+  text-align: center;
+  margin-bottom: 10px;
 }

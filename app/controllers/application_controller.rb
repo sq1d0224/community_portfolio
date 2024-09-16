@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  # すでにログインしている場合にdeviseのフラッシュメッセージをクリアする
+  before_action :clear_devise_flash, if: -> { user_signed_in? }
 
   protected
 
@@ -15,6 +18,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
+  end
+  
+  private
+
+  def clear_devise_flash
+    if flash[:alert] == I18n.t('devise.failure.already_authenticated')
+      flash.delete(:alert)
+    end
   end
 
 end

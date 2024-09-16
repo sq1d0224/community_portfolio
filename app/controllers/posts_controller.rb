@@ -20,7 +20,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments_count = @post.comments.count
+    @post = Post.find(params[:id])
+    @comments = @post.comments.order(created_at: :asc) # ここでコメントを取得
+    @comments_count = @comments.size
   end
 
   def new
@@ -90,6 +92,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :user_id)
+    params.require(:post).permit(:title, :description, :image, :user_id, :remove_image)
   end
 end
