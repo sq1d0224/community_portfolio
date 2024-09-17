@@ -57,6 +57,39 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+  
+  # 退会済みユーザーかどうかを判定するメソッド
+  def deleted?
+    self.is_deleted
+  end
+  
+  # 退会済みなら「退会ユーザー」を返し、そうでない場合は通常のユーザーネームを返す
+  def display_name
+    deleted? ? '退会ユーザー' : username
+  end
+
+  # 退会済みユーザーのプロフィール画像を設定
+  def profile_image_or_default
+    if self.deleted?
+      'no_image_photo.jpg' # 退会済みか画像がない場合、デフォルト画像を使用
+    else
+      self.profile_image
+    end
+  end
+  
+  # 通知の送信を制御
+  def can_receive_notifications?
+    !self.deleted?
+  end
+  
+  def active_for_authentication?
+    super && !deleted?
+  end
+
+  def inactive_message
+    deleted? ? :deleted_account : super
+  end
+  
 
   # バリデーション
   validates :username, presence: true, uniqueness: { case_sensitive: false }  # ユーザーネームは必須で一意

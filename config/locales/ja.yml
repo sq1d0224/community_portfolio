@@ -9,7 +9,7 @@ ja:
         not_saved:
           one: "%{resource}を保存できませんでした: 1つのエラーがあります。"
           other: "%{resource}を保存できませんでした: %{count}つのエラーがあります。"
-          
+
       models:
         community:
           attributes:
@@ -24,8 +24,8 @@ ja:
             category:
               blank: "カテゴリを選択してください"
             image:
-              blank: "コミュニティ画像を選択してください"     
-              
+              blank: "コミュニティ画像を選択してください"
+
         user:
           attributes:
             username:
@@ -39,7 +39,7 @@ ja:
               blank: "パスワードを入力してください。"
               too_short: "パスワードは%{count}文字以上で入力してください。"
               confirmation: "パスワード（確認）が一致しません。"
-              
+
         post:
           attributes:
             title:
@@ -49,15 +49,16 @@ ja:
               blank: "説明文を入力してください。"
               too_long: "説明文は%{count}文字以内で入力してください。"
             image:
-              blank: "画像を選択してください。" 
-              
+              blank: "画像を選択してください。"
+
         comment:
           attributes:
             content:
               blank: "コメントを入力してください。"
-              
+
   devise:
     failure:
+      not_found_in_database: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
       already_authenticated: "すでにログインしています。"
       user:
         invalid: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
@@ -80,7 +81,7 @@ ja:
         confirmed: "メールアドレスが確認されました。"
         send_instructions: "確認メールを送信しました。"
         already_confirmed: "すでに確認済みです。"
-        
+
   errors:
     format: "%{message}"
     messages:
@@ -113,7 +114,7 @@ ja:
   time:
     formats:
       long: "%Y年%m月%d日 %H:%M"  # 例: 2024年08月24日 15:30
-      
+
   views:
     pagination:
       first: "<<"
@@ -121,7 +122,7 @@ ja:
       next: ">"
       previous: "<"
       truncate: "..."
-      
+
   community:
     join:
       failure: "コミュニティに参加してください。"

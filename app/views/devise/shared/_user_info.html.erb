@@ -1,0 +1,9 @@
+<!-- app/views/shared/_user_info.html.erb -->
+<div class="user-info">
+  <%= image_tag user.profile_image_or_default, class: "user-icon" %>
+  <% if user.deleted? %>
+    <span>退会ユーザー</span>
+  <% else %>
+    <%= link_to user.username, user_path(user) %>
+  <% end %>
+</div>

@@ -21,7 +21,7 @@
             <p><strong>カテゴリ:</strong> <%= @community.category %></p>
             <p><strong>管理人:</strong>
               <% if @community.user.present? %>
-                <%= link_to @community.user.username, user_path(@community.user), class: 'community-admin' %>
+                <%= link_to @community.user.display_name, user_path(@community.user), class: 'community-admin' %>
               <% else %>
                 <span>不明</span>
               <% end %>
@@ -90,7 +90,7 @@
                     <% else %>
                       <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
                     <% end %>
-                    <%= link_to post.user.username, user_path(post.user.id), class: 'post-detail-username' %>
+                    <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-detail-username' %>
                   </div>
 
                   <!-- 3点リーダー -->

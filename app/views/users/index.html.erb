@@ -33,7 +33,7 @@
 
             <div class="user-info-container">
               <div class="user-meta">
-                <span><%= link_to user.username, user_path(user.id), class: 'user-name' %></span>
+                <span><%= link_to user.display_name, user_path(user.id), class: 'user-name' %></span>
                 <div class="user-details"> <!-- 性別と年齢を新しいdivに配置 -->
                   <span class="user-gender">性別: <%= user.gender %></span>
                   <span class="user-age">年齢: <%= user.age %></span>

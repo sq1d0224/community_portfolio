@@ -37,7 +37,7 @@
                   <span class="community-creator">
                     管理人:
                     <% if community.user.present? %>
-                      <%= link_to community.user.username, user_path(community.user), class: 'community-creator-link' %>
+                      <%= link_to community.user.display_name, user_path(community.user), class: 'community-creator-link' %>
                     <% else %>
                       不明
                     <% end %>

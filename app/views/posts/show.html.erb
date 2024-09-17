@@ -9,7 +9,7 @@
         <% else %>
           <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
         <% end %>
-        <%= link_to @post.user.username, user_path(@post.user.id), class: 'post-detail-username' %>
+        <%= link_to @post.user.display_name, user_path(@post.user.id), class: 'post-detail-username' %>
       </div>
 
       <!-- 3点リーダー -->
@@ -51,7 +51,7 @@
                 <% else %>
                   <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
                 <% end %>
-                <%= link_to comment.user.username, user_path(comment.user), class: 'comment-username' %>
+                <%= link_to comment.user.display_name, user_path(comment.user), class: 'comment-username' %>
               </div>
 
               <div class="right-section">

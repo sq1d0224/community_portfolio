@@ -977,12 +977,13 @@ nav ul li a.active {
 
 .comment-username {
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 5px;
   text-decoration: none;
-  color: #2c3e50;
+  color: #007bff;
 }
 
 .comment-username:hover {
+  color: #c7511f;
   text-decoration: underline;
 }
 
@@ -1482,4 +1483,21 @@ nav ul li a.active {
 .communities-actions {
   text-align: center;
   margin-bottom: 10px;
+}
+
+.deactivate-description {
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  height: 300px;
+}
+
+.deactivate-link {
+  display: flex;
+  justify-content: center;
+}
+
+.alert-warning {
+  height: 400px;
 }

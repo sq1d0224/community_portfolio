@@ -6,6 +6,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resources :users, only: [:show] do
+    member do
+      get 'confirm_deactivation' # 退会確認ページ
+      delete 'deactivate' # 退会処理
+    end
+  end
+
   # 投稿に関するルーティング
   resources :posts do
     collection do

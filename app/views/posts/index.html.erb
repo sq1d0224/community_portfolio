@@ -34,7 +34,7 @@
                   <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
                 <% end %>
               <% end %>
-              <%= link_to post.user.username, user_path(post.user.id), class: 'post-username' %>
+              <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-username' %>
             </div>
             
             <h3 class="post-title"><%= link_to truncate(post.title, length: 20), post_path(post), class: 'post-title-link' %></h3>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:deactivate]
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def top
@@ -62,6 +63,20 @@ class UsersController < ApplicationController
       @joined_communities = @joined_communities.where("title LIKE ?", "%#{params[:search]}%")
     end
   end
+  
+  
+   # 退会処理アクション
+  def deactivate
+    current_user.update(
+      name: '退会ユーザー', # ユーザー名を「退会ユーザー」に変更
+      email: "deleted_#{current_user.id}@example.com", # メールアドレスを無効なものに変更
+      profile_image: nil, # プロフィール画像を削除
+      is_deleted: true # 退会フラグを立てる
+    )
+    sign_out current_user # ログアウト処理
+    redirect_to root_path, notice: 'アカウントを退会しました。'
+  end
+  
 
   private
 

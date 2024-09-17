@@ -1,45 +1,53 @@
+<!-- app/views/users/show.html.erb -->
 <div class="page-background">
   <div class="profile-page">
     <h1 class="profile-username">プロフィール</h1>
 
-    <div class="profile-image-container">
-      <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]), class: "profile-image" %>
-      <% else %>
-        <%= image_tag 'no_image_photo.jpg', size: "300x300", class: "profile-image" %>
-      <% end %>
-    </div>
-
-    <div class="profile-details">
-      <table class="profile-table">
-        <tr>
-          <th>ユーザーネーム</th>
-          <td><%= @user.username.presence || '未設定' %></td>
-        </tr>
-        <tr>
-          <th>性別</th>
-          <td><%= @user.gender.presence || '未設定' %></td>
-        </tr>
-        <tr>
-          <th>年齢</th>
-          <td><%= @user.age.presence || '未設定' %></td>
-        </tr>
-        <tr>
-          <th>誕生日</th>
-          <td><%= @user.birthdate.presence || '未設定' %></td>
-        </tr>
-        <tr>
-          <th>自己紹介</th>
-          <td><%= @user.bio.presence || '未設定' %></td>
-        </tr>
-      </table>
-    </div>
-
-    <% if current_user == @user %>
-      <div class="profile-actions">
-        <%= link_to 'プロフィールを編集', edit_user_path(@user.id), class: 'btn btn-primary' %>
+    <% if @user.deleted? %>
+      <!-- 退会済みユーザー向けのメッセージ -->
+      <div class="alert alert-warning">
+        このユーザーは既に退会しています。
       </div>
+    <% else %>
+      <!-- 通常のプロフィール情報 -->
+      <div class="profile-image-container">
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]), class: "profile-image" %>
+        <% else %>
+          <%= image_tag 'no_image_photo.jpg', size: "300x300", class: "profile-image" %>
+        <% end %>
+      </div>
+
+      <div class="profile-details">
+        <table class="profile-table">
+          <tr>
+            <th>ユーザーネーム</th>
+            <td><%= @user.username.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @user.gender.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+            <td><%= @user.age.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>誕生日</th>
+            <td><%= @user.birthdate.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= @user.bio.presence || '未設定' %></td>
+          </tr>
+        </table>
+      </div>
+
+      <% if current_user == @user %>
+        <div class="profile-actions">
+          <%= link_to 'プロフィールを編集', edit_user_path(@user.id), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-
 </div>
