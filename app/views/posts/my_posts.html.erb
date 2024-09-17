@@ -19,7 +19,11 @@
     </div>
 
     <div class="new-post-link">
-      <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+      <% if user_signed_in? %>
+        <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to '新規投稿', new_user_session_path, class: 'btn btn-primary', data: { confirm: '新規投稿するにはログインが必要です。' } %>
+      <% end %>
     </div>
 
     <div class="posts-grid">

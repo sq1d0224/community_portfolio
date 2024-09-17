@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+  
+  def guest_user?
+    current_user&.email == 'guest@example.com'
+  end
   
   # すでにログインしている場合にdeviseのフラッシュメッセージをクリアする
   before_action :clear_devise_flash, if: -> { user_signed_in? }

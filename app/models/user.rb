@@ -18,6 +18,36 @@ class User < ApplicationRecord
   
   # ユーザーが作成したコミュニティを表す関連付け
   has_many :created_communities, class_name: 'Community', foreign_key: 'user_id'
+  
+  def self.guest
+    # メールアドレスで既存のゲストユーザーを検索
+    user = find_by(email: 'guest@example.com')
+    
+    # 既存のゲストユーザーがあればそのまま返す
+    return user if user.present?
+    
+    # ゲストユーザーが存在しない場合のみ新規作成
+    create_guest_user
+  end
+
+  # ゲストユーザーを新規作成するメソッド
+  def self.create_guest_user
+    create!(
+      email: 'guest@example.com',
+      password: SecureRandom.urlsafe_base64,
+      username: "ゲストユーザー_#{SecureRandom.hex(5)}" # ユーザーネームをユニークにするためランダム文字列を追加
+    ).tap do |user|
+      user.profile_image.attach(
+        io: File.open(Rails.root.join('app/assets/images/no_image_photo.jpg')),
+        filename: 'no_image_photo.jpg'
+      )
+    end
+  end
+
+  # ゲストユーザーかどうかを確認するメソッド
+  def guest_user?
+    email == 'guest@example.com'
+  end
 
   # ユーザーが特定のコミュニティに参加しているかどうかを確認するメソッド
   def joined_community?(community)
@@ -97,7 +127,9 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 10000 }, allow_blank: true                 # 自己紹介は任意だが10000文字以内
   # パスワードのバリデーション
   validates :password, length: { minimum: 8 }, if: -> { password.present? }
-
+  
+  scope :active_users, -> { where(is_deleted: false).where.not(email: 'guest@example.com') }
+  
   private
 
   def purge_profile_image

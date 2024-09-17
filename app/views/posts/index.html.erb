@@ -1,7 +1,7 @@
 <div class="page-background">
   <div class="posts-page">
     <h1 class="posts-title">投稿一覧</h1>
-    
+
     <!-- 検索フォームの追加 -->
     <div class="search-form">
       <%= form_with url: posts_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
@@ -13,17 +13,21 @@
         </div>
       <% end %>
     </div>
-    
+
     <div class="new-post-link">
-      <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+      <% if user_signed_in? %>
+        <%= link_to '新規投稿', new_post_path, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to '新規投稿', new_user_session_path, class: 'btn btn-primary', data: { confirm: '新規投稿するにはログインが必要です。' } %>
+      <% end %>
     </div>
 
     <div class="posts-grid">
       <% if @posts.any? %>
         <% @posts.each do |post| %>
-        
+
           <div class="post-item">
-            
+
             <div class="post-user-info">
               <% if post.user.profile_image.attached? %>
                 <%= link_to user_path(post.user.id) do %>
@@ -36,9 +40,9 @@
               <% end %>
               <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-username' %>
             </div>
-            
+
             <h3 class="post-title"><%= link_to truncate(post.title, length: 20), post_path(post), class: 'post-title-link' %></h3>
-            
+
             <p class="post-description"><%= truncate(post.description, length: 90) %></p>
 
             <% if post.image.attached? %>
@@ -54,7 +58,7 @@
                 <% end %>
               </p>
             <% end %>
-            
+
             <div class="post-footer">
               <p class="post-date">
                 <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
@@ -63,7 +67,7 @@
                 <%= link_to "コメント(#{post.comments.count})", post_path(post, anchor: 'comments') %>
               </p>
             </div>
-            
+
           </div>
         <% end %>
       <% else %>
@@ -72,7 +76,7 @@
         </div>
       <% end %>
     </div>
-    
+
     <div class="pagination-empty">
       <%= paginate @posts, theme: 'bootstrap4', total_pages: (@posts.total_pages > 1 ? @posts.total_pages : 2), class: 'pagination' %>
     </div>

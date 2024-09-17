@@ -91,11 +91,15 @@
       </div>
 
       <div class="comment-form-wrapper">
-        <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-          <div class="comment-form">
-            <%= form.text_area :content, class: "form-control comment-input", placeholder: "1000文字以内" %>
-            <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn', data: { confirm: '本当にコメントしますか？' } %>
-          </div>
+        <% if user_signed_in? %>
+          <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+            <div class="comment-form">
+              <%= form.text_area :content, class: "form-control comment-input", placeholder: "1000文字以内" %>
+              <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn', data: { confirm: '本当にコメントしますか？' } %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>コメントを投稿するには<a href="<%= new_user_session_path %>">ログイン</a>が必要です。</p>
         <% end %>
       </div>
     </div>
