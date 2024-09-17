@@ -66,19 +66,40 @@ class PostsController < ApplicationController
 
   # 自分の投稿一覧
   def my_posts
-    @posts = current_user.posts.where(community_id: nil) # コミュニティに属さない投稿のみ
-                               .order(created_at: :desc)
-                               .page(params[:page])
-                               .per(20)
+    if params[:search].present?
+      @posts = current_user.posts.where(community_id: nil) # コミュニティに属さない投稿のみ
+                                 .where("title LIKE ?", "%#{params[:search]}%")
+                                 .or(current_user.posts.where("description LIKE ?", "%#{params[:search]}%"))
+                                 .order(created_at: :desc)
+                                 .page(params[:page])
+                                 .per(20)
+    else
+      @posts = current_user.posts.where(community_id: nil) # コミュニティに属さない投稿のみ
+                                 .order(created_at: :desc)
+                                 .page(params[:page])
+                                 .per(20)
+    end
   end
 
   # コメントした投稿一覧を表示するアクション
   def commented_posts
-    @posts = Post.joins(:comments)
-                 .where(comments: { user_id: current_user.id }, community_id: nil) # コミュニティに属さない投稿のみ
-                 .order('posts.created_at DESC')
-                 .distinct.page(params[:page])
-                 .per(20)
+    if params[:search].present?
+      @posts = Post.joins(:comments)
+                   .where(comments: { user_id: current_user.id }, community_id: nil)
+                   .where("posts.title LIKE ?", "%#{params[:search]}%")
+                   .or(Post.joins(:comments).where("posts.description LIKE ?", "%#{params[:search]}%").where(comments: { user_id: current_user.id }, community_id: nil))
+                   .order('posts.created_at DESC')
+                   .distinct
+                   .page(params[:page])
+                   .per(20)
+    else
+      @posts = Post.joins(:comments)
+                   .where(comments: { user_id: current_user.id }, community_id: nil)
+                   .order('posts.created_at DESC')
+                   .distinct
+                   .page(params[:page])
+                   .per(20)
+    end
   end
 
   private
