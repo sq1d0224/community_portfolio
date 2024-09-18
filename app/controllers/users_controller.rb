@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :deactivate] # 編集・更新などはログイン必須
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :restrict_guest_user, only: [:edit, :update, :destroy, :my_communities, :joined_communities]
 
   def top
 
@@ -90,12 +89,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path
-    end
-  end
-
-  def restrict_guest_user
-    if guest_user?
-      redirect_to new_user_session_path, alert: '新規登録または、ログインしてください。'
     end
   end
 

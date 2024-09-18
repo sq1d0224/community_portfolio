@@ -10,7 +10,7 @@
       </div>
     <% end %>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
       <div class="field">
         <%= f.label :login, 'ユーザーネームまたはメールアドレス' %><br />
         <%= f.text_field :login, autofocus: true, autocomplete: "username" %>
@@ -33,10 +33,6 @@
       </div>
     <% end %>
     
-    <div class="new-registration-link">
-      <%= link_to 'ゲストログイン', guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
-    </div>
-
     <div class="new-registration-link">
       <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
     </div>

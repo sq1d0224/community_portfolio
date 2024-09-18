@@ -2,7 +2,6 @@ class CommunityPostsController < ApplicationController
   before_action :set_community
   before_action :authenticate_user!
   before_action :ensure_user_can_post, only: [:new, :create]
-  before_action :restrict_guest_user, only: [:new, :create]
 
   # コミュニティ内での新規投稿画面を表示
   def new
@@ -36,14 +35,16 @@ class CommunityPostsController < ApplicationController
   def ensure_user_can_post
     unless current_user == @community.user || current_user.joined_community?(@community)
       flash.now[:alert] = "コミュニティに参加してください。" # エラーメッセージをフラッシュに設定
+      # コミュニティ詳細ページに必要なインスタンス変数を設定
+      set_community_show_data
       render 'communities/show' # コミュニティ詳細画面に戻る
     end
   end
-  
-  def restrict_guest_user
-    if guest_user?
-      redirect_to new_user_session_path, alert: '新規登録または、ログインしてください。'
-    end
+
+  # コミュニティ詳細ページに必要なデータをセット
+  def set_community_show_data
+    @paginated_posts = @community.posts.page(params[:page]) # ページネーションしている場合
+    # 他にも必要な変数があればここで設定
   end
 
 end

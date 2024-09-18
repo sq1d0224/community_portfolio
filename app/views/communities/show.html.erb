@@ -79,11 +79,7 @@
         <%= render 'shared/error_messages', resource: @post %>
 
         <div class="new-post-link">
-          <% if user_signed_in? %>
-            <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
-          <% else %>
-            <%= link_to '新規投稿', new_user_session_path, class: 'btn btn-primary', data: { confirm: '新規投稿するにはログインが必要です。' } %>
-          <% end %>
+          <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
         </div>
 
         <div class="community-post">

@@ -15,11 +15,7 @@
     </div>
 
     <div class="new_community_link">
-      <% if user_signed_in? %>
-        <%= link_to 'コミュニティを作成', new_community_path, class: 'btn btn-primary' %>
-      <% else %>
-        <%= link_to 'コミュニティを作成', new_user_session_path, class: 'btn btn-primary', data: { confirm: 'コミュニティを作成するにはログインが必要です。' } %>
-      <% end %>
+      <%= link_to 'コミュニティを作成', new_community_path, class: 'btn btn-primary' %>
     </div>
 
     <!-- コミュニティのリスト表示 -->

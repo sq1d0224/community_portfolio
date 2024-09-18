@@ -1,18 +1,16 @@
 <div class="home-background">
   <div class="content">
     <h2 class="log">新規登録</h2>
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     
-      <% if resource.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% resource.errors.full_messages.each do |message| %>
-              <li><i class="fa-solid fa-triangle-exclamation"></i><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <% if flash[:alert].present? %>
+      <div id="error_explanation">
+        <ul>
+          <li><i class="fa-solid fa-triangle-exclamation"></i><%= flash[:alert] %></li>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
     
       <div class="field">
         <%= f.label :username, 'ユーザーネーム' %><br />

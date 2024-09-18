@@ -57,6 +57,5 @@ Rails.application.routes.draw do
   # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do
     root to: 'devise/sessions#new'
-    post 'guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 end

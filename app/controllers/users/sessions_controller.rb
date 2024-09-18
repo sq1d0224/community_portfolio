@@ -11,11 +11,13 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
   
-  
-  def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to user_path(user)
+  # ログイン済みユーザーがログインページにアクセスしようとした際のリダイレクト設定
+  def new
+    if user_signed_in?
+      redirect_to user_path # ログイン済みの場合トップページにリダイレクト
+    else
+      super
+    end
   end
 
 end

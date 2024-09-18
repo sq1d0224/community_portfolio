@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :my_posts, :commented_posts]
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
-  before_action :restrict_guest_user, only: [:new, :create, :edit, :update, :destroy, :my_posts, :commented_posts]
 
   def index
     if params[:search].present?
@@ -115,12 +114,6 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :image, :user_id, :remove_image)
-  end
-  
-  def restrict_guest_user
-    if guest_user?
-      redirect_to new_user_session_path, alert: '新規登録または、ログインしてください。'
-    end
   end
   
 end

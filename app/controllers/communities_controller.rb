@@ -2,7 +2,6 @@ class CommunitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :authorize_community_owner!, only: [:edit, :update, :destroy]
-  before_action :restrict_guest_user, only: [:new, :create, :edit, :update, :destroy, :join, :leave]
 
   def index
     # コミュニティを新しく作成された順に取得
@@ -103,12 +102,6 @@ class CommunitiesController < ApplicationController
   def authorize_community_owner!
     unless current_user == @community.user
       redirect_to community_path
-    end
-  end
-  
-  def restrict_guest_user
-    if guest_user?
-      redirect_to new_user_session_path, alert: '新規登録または、ログインしてください。'
     end
   end
 

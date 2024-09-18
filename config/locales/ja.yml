@@ -58,20 +58,22 @@ ja:
 
   devise:
     failure:
+      user:
+        blank_username: "ユーザーネームを入力してください"
+        blank_email: "メールアドレスを入力してください"
+        blank_password: "パスワードを入力してください"
+        signed_in: "ログインしました。"
+        invalid: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
+      unauthenticated: "ログインしてください。"
+      blank: "入力してください"
+      invalid: "無効な値です"
       not_found_in_database: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
       already_authenticated: "すでにログインしています。"
-      user:
-        invalid: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
-    sessions:
-      user:
-        signed_in: "ログインしました。"
-        invalid: "ユーザーネームまたはパスワードが正しくありません。"
     registrations:
       user:
-        signed_up: "アカウント登録が完了しました。"
-        updated: "アカウント情報を更新しました。"
-        destroyed: "アカウントを削除しました。"
-        password_change: "パスワードを変更しました。"
+        blank_username: "ユーザーネームを入力してください"
+        blank_email: "メールアドレスを入力してください"
+        blank_password: "パスワードを入力してください"
     passwords:
       user:
         send_instructions: "パスワードリセットの案内を送信しました。"
@@ -81,6 +83,13 @@ ja:
         confirmed: "メールアドレスが確認されました。"
         send_instructions: "確認メールを送信しました。"
         already_confirmed: "すでに確認済みです。"
+
+  flash:
+    devise:
+      failure:
+        user:
+          blank_username_or_email: "ユーザーネームまたはメールアドレスを入力してください"
+          blank_password: "パスワードを入力してください"
 
   errors:
     format: "%{message}"

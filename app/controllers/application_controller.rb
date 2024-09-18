@@ -1,10 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
-
-  def guest_user?
-    current_user && current_user.email == 'guest@example.com'
-  end
 
   # すでにログインしている場合にdeviseのフラッシュメッセージをクリアする
   before_action :clear_devise_flash, if: -> { user_signed_in? }
@@ -16,22 +11,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email])
   end
-
+  
   def after_sign_in_path_for(resource)
-      user_path(current_user) # 通常ユーザーはプロフィールページにリダイレクト
-  end
-
-  def after_sign_out_path_for(resource_or_scope)
-    new_user_session_path
+    user_path(resource) # ログイン後はトップページにリダイレクト
   end
   
-  # ゲストユーザーのアクセスを制限するメソッド
-  def restrict_guest_user
-    if guest_user?
-      # ゲストユーザーはログインページにリダイレクト
-      redirect_to new_user_session_path, alert: 'ゲストユーザーではこの操作を行えません。ログインしてください。'
-    end
-  end
 
   private
 

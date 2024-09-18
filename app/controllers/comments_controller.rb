@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
-  before_action :restrict_guest_user, only: [:create, :destroy]
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -38,12 +37,6 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
-  end
-  
-  def restrict_guest_user
-    if guest_user?
-      redirect_to new_user_session_path, alert: '新規登録または、ログインしてください。'
-    end
   end
   
 end
