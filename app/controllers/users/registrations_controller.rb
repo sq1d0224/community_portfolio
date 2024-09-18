@@ -50,16 +50,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # 新規登録後にリダイレクトするパスを指定するメソッド
-  # 通常、Deviseでは `root_path` などにリダイレクトするが、ここではユーザープロフィールページへリダイレクト
-  # ログインしたユーザーのプロフィールページ（`user_path(current_user)`）に遷移
+  # サインアップ後のリダイレクト先をカスタマイズ
   def after_sign_up_path_for(resource)
-    user_path(current_user) # サインアップ後にプロフィールページにリダイレクト
+    if guest_user?(resource)
+      # ゲストユーザーの場合、サインイン画面にリダイレクト
+      new_user_session_path
+    else
+      # 通常のユーザーはプロフィールページにリダイレクト
+      user_path(resource)
+    end
   end
 
-  # アカウントが非アクティブ状態の場合（例: メール確認待ちなど）でもプロフィールページにリダイレクト
-  # `current_user` はまだアクティブでなくても存在するため、これを使ってリダイレクト
+  # 非アクティブサインアップ時のリダイレクト先をカスタマイズ
   def after_inactive_sign_up_path_for(resource)
-    user_path(current_user) # 非アクティブでもプロフィールページにリダイレクト
+    if guest_user?(resource)
+      # ゲストユーザーの場合、サインイン画面にリダイレクト
+      new_user_session_path
+    else
+      # 非アクティブユーザーもプロフィールページにリダイレクト
+      user_path(resource)
+    end
+  end
+
+  # ゲストユーザーかどうかを判定するメソッド
+  def guest_user?(user)
+    user.email == 'guest@example.com' # ゲストユーザーの判定条件（例: メールアドレスで判定）
   end
 end
