@@ -20,6 +20,7 @@ import "../stylesheets/application";
 import $ from 'jquery';
 window.$ = $;
 
+
 // Turbolinksのロード時に実行する処理
 document.addEventListener('turbolinks:load', () => {
   console.log("Turbolinks loaded!");

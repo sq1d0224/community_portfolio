@@ -53,9 +53,13 @@ Rails.application.routes.draw do
 
   # トップページ
   get 'top', to: 'users#top', as: 'top'
+  
+  # ゲストログイン専用ページ
+  get 'guest_dashboard', to: 'users#guest_dashboard', as: 'guest_dashboard'
 
   # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do
     root to: 'devise/sessions#new'
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 end

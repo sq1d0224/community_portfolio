@@ -2,6 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :authorize_community_owner!, only: [:edit, :update, :destroy]
+  before_action :restrict_guest_user, only: [:new, :create, :edit, :update, :destroy, :join, :leave]
 
   def index
     # コミュニティを新しく作成された順に取得
@@ -79,7 +80,7 @@ class CommunitiesController < ApplicationController
     end
     redirect_to @community
   end
-  
+
   def destroy
     if @community.destroy
       redirect_to communities_path

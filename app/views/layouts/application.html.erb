@@ -44,13 +44,18 @@
                 <i class="fa-solid fa-angles-down"></i>
               </li>
               <ul id="dropdown-menu-user-profile" class="dropdown-menu">
-                <li><%= link_to 'プロフィール', user_path(current_user) %></li>
-                <li><%= link_to 'あなたの投稿', my_posts_posts_path %></li>
-                <li><%= link_to 'コメントした投稿', commented_posts_posts_path %></li>
-                <li><%= link_to '作成したコミュニティ', my_communities_path %></li>
-                <li><%= link_to '参加中のコミュニティ', joined_communities_path %></li>
-                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", turbolinks: false } %></li>
-                <li><%= link_to 'GOLNAVIから退会する', confirm_deactivation_user_path(current_user), data: { confirm: "まだ退会できません。退会確認画面に移行します。" } %></li>
+                <% if guest_user? %>
+                  <li><%= link_to 'プロフィール', user_path(current_user) %></li>
+                  <li><%= link_to 'ログインする', destroy_user_session_path, method: :delete, data: { turbolinks: false } %></li>
+                <% else %>
+                  <li><%= link_to 'プロフィール', user_path(current_user) %></li>
+                  <li><%= link_to 'あなたの投稿', my_posts_posts_path %></li>
+                  <li><%= link_to 'コメントした投稿', commented_posts_posts_path %></li>
+                  <li><%= link_to '作成したコミュニティ', my_communities_path %></li>
+                  <li><%= link_to '参加中のコミュニティ', joined_communities_path %></li>
+                  <li><%= link_to 'GOLNAVIから退会する', confirm_deactivation_user_path(current_user), data: { confirm: "まだ退会できません。退会確認画面に移行します。" } %></li>
+                  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？", turbolinks: false } %></li>
+                <% end %>
               </ul>
             </div>
 

@@ -1,0 +1,20 @@
+<!-- app/views/users/guest_dashboard.html.erb -->
+<div class="page-background">
+  <div class="guest-dashboard">
+    <h1 class="guest-dashboard-title">ログインが必要です</h1>
+    <p class="guest-dashboard-description">下記機能を使用するには新規登録またはログインが必要です。</br>投稿やコメント等の閲覧は可能です。</p>
+    <div class="guest-dashboard-item">
+      <ul class="guest-dashboard-list">
+        <li>投稿機能</li>
+        <li>コメント機能</li>
+        <li>コミュニティ作成機能</li>
+        <li>コミュニティへの参加</li>
+        <li>コミュニティへの投稿</li>
+        <li>プロフィール編集機能</li>
+      </ul>
+    </div>
+    <div class="guest-dashboard-link">
+      <%= link_to 'ログインする', destroy_user_session_path, method: :delete, data: { turbolinks: false }, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

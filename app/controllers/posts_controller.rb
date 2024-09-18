@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :restrict_guest_user, only: [:new, :create, :edit, :update, :destroy, :my_posts, :commented_posts]
 
   def index
     if params[:search].present?

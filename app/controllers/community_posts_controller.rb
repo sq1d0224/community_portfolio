@@ -2,6 +2,7 @@ class CommunityPostsController < ApplicationController
   before_action :set_community
   before_action :authenticate_user!
   before_action :ensure_user_can_post, only: [:new, :create]
+  before_action :restrict_guest_user, only: [:new, :create]
 
   # コミュニティ内での新規投稿画面を表示
   def new

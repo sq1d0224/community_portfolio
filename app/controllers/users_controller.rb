@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :restrict_guest_user, only: [:edit, :update, :deactivate, :my_communities, :joined_communities]
 
   def top
 
@@ -63,6 +64,11 @@ class UsersController < ApplicationController
     if params[:search].present?
       @joined_communities = @joined_communities.where("title LIKE ?", "%#{params[:search]}%")
     end
+  end
+  
+  
+  def guest_dashboard
+    # ゲストユーザー専用のダッシュボードアクション
   end
 
 

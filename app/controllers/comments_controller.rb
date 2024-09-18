@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
+  before_action :restrict_guest_user, only: [:create, :destroy]
 
   def create
     @comment = @post.comments.build(comment_params)

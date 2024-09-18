@@ -99,7 +99,7 @@ ja:
       taken: "はすでに使用されています。"
       too_short: "は%{count}文字以上で入力してください。"
       too_long: "は%{count}文字以内で入力してください。"
-      confirmation: "と一致しません。"
+
       not_saved: "保存に失敗しました。"
   date:
     order:
