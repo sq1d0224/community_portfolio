@@ -15,11 +15,6 @@
   background-color: #AAA; /* ナビゲーションバーの背景色をシルバーに設定 */
 }
 
-/* コンテナ設定 */
-.container {
-  /* 現時点で特別なスタイルなし */
-}
-
 .navbar {
   display: flex;
   justify-content: space-between; /* タイトルとメニューを左右に配置 */

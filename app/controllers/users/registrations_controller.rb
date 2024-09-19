@@ -1,5 +1,18 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
+    
+    if params[:user][:username].blank?
+      flash[:alert] = I18n.t('devise.failure.user.blank_username')
+      redirect_to new_user_registration_path and return
+    elsif params[:user][:email].blank?
+      flash[:alert] = I18n.t('devise.failure.user.blank_email')
+      redirect_to new_user_registration_path and return
+    elsif params[:user][:password].blank?
+      flash[:alert] = I18n.t('devise.failure.user.blank_password')
+      redirect_to new_user_registration_path and return
+    end
+
+    
     # Deviseの標準の処理を継続
     build_resource(sign_up_params)
 
