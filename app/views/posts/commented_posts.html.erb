@@ -1,20 +1,9 @@
-<!-- app/views/posts/commented_posts.html.erb -->
 <div class="page-background">
   <div class="posts-page">
     <h1 class="posts-title">コメントした投稿一覧</h1>
-    
-    <!-- 検索フォームの追加 -->
-    <div class="search-form">
-      <%= form_with url: commented_posts_posts_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
-        <div class="search-input-container">
-          <%= form.text_field :search, placeholder: "コミュニティを検索", class: "form-control search-input" %>
-          <button type="submit" class="search-button">
-            <i class="fa-solid fa-magnifying-glass"></i> <!-- Font Awesome の虫眼鏡アイコン -->
-          </button>
-        </div>
-      <% end %>
-    </div>
-    
+
+    <%= render 'shared/search_form', search_path: commented_posts_posts_path %>
+
     <div class="communities-actions">
       <%= link_to '投稿一覧', posts_path, class: 'btn btn-primary' %>
     </div>
@@ -22,49 +11,7 @@
     <div class="posts-grid">
       <% if @posts.any? %>
         <% @posts.each do |post| %>
-        
-          <div class="post-item">
-            <div class="post-user-info">
-              <% if post.user.profile_image.attached? %>
-                <%= link_to user_path(post.user.id) do %>
-                  <%= image_tag post.user.profile_image.variant(resize_to_fill: [30, 30]), class: 'user-icon' %>
-                <% end %>
-              <% else %>
-                <%= link_to user_path(post.user.id) do %>
-                  <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
-                <% end %>
-              <% end %>
-              <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-username' %>
-            </div>
-
-            <h3 class="post-title"><%= link_to truncate(post.title, length: 20), post_path(post), class: 'post-title-link' %></h3>
-
-            <p class="post-description"><%= truncate(post.description, length: 90) %></p>
-
-            <% if post.image.attached? %>
-              <p class="post-image">
-                <%= link_to post_path(post) do %>
-                  <%= image_tag post.display_image([300, 300]), loading: 'lazy', class: 'post-img' %>
-                <% end %>
-              </p>
-            <% else %>
-              <p class="post-image">
-                <%= link_to post_path(post) do %>
-                  <%= image_tag 'no_image_photo3.jpg', class: 'post-img' %>
-                <% end %>
-              </p>
-            <% end %>
-            
-            <div class="post-footer">
-              <p class="post-date">
-                <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
-              </p>
-              <p class="post-comments">
-                <%= link_to "コメント(#{post.comments.count})", post_path(post, anchor: 'comments') %>
-              </p>
-            </div>
-            
-          </div>
+          <%= render 'shared/post_item', post: post %>
         <% end %>
       <% else %>
         <div class="no-comment">
@@ -73,8 +20,6 @@
       <% end %>
     </div>
 
-    <div class="pagination-empty">
-      <%= paginate @posts, theme: 'bootstrap4', total_pages: (@posts.total_pages > 1 ? @posts.total_pages : 2), class: 'pagination' %>
-    </div>
+    <%= render 'shared/pagination', items: @posts %>
   </div>
 </div>

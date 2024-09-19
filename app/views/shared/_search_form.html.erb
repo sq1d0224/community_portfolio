@@ -1,0 +1,10 @@
+<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
+    <div class="search-input-container">
+      <%= form.text_field :search, placeholder: "検索", class: "form-control search-input" %>
+      <button type="submit" class="search-button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  <% end %>
+</div>

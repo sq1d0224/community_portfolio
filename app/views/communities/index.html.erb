@@ -3,16 +3,7 @@
     <h1 class="communities-title">コミュニティ一覧</h1>
 
     <!-- 検索フォームの追加 -->
-    <div class="search-form">
-      <%= form_with url: communities_path, method: :get, local: true, html: { class: 'search-form-with-icon' } do |form| %>
-        <div class="search-input-container">
-          <%= form.text_field :search, placeholder: "コミュニティを検索", class: "form-control search-input" %>
-          <button type="submit" class="search-button">
-            <i class="fa-solid fa-magnifying-glass"></i> <!-- Font Awesome の虫眼鏡アイコン -->
-          </button>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'shared/search_form', search_path: communities_path %>
 
     <div class="new_community_link">
       <%= link_to 'コミュニティを作成', new_community_path, class: 'btn btn-primary' %>
@@ -62,8 +53,6 @@
     </div>
 
     <!-- ページネーション -->
-    <div class="pagination-empty">
-      <%= paginate @communities, theme: 'bootstrap4', total_pages: (@communities.total_pages > 1 ? @communities.total_pages : 2),  class: 'pagination' %>
-    </div>
+    <%= render 'shared/pagination', items: @communities %>
   </div>
 </div>
