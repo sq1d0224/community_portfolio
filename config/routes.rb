@@ -5,6 +5,18 @@ Rails.application.routes.draw do
     passwords: 'devise/passwords',
     registrations: 'users/registrations'
   }
+  
+  devise_for :admins, path: 'admin', skip: [:registrations], controllers: {
+    sessions: 'admin/sessions'
+  }
+  
+  namespace :admin do
+    root to: 'dashboard#index'  # 管理者用のダッシュボードのルート
+    resources :posts, only: [:index, :show, :edit, :update, :destroy]  # 投稿の一覧、詳細、削除
+    resources :users, only: [:index, :show, :edit, :update, :destroy]  # ユーザーの一覧、詳細、編集、削除
+    resources :communities, only: [:index, :show, :destroy]  # コミュニティの一覧、詳細、削除
+    resources :comments, only: [:destroy]  # コメントの削除
+  end
 
   resources :users, only: [:show] do
     member do
