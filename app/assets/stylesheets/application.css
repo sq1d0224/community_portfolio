@@ -5,6 +5,21 @@
   box-sizing: border-box; /* ボックスサイズをボーダーを含むように設定 */
 }
 
+html,body{
+  height: 100%;
+}
+
+.wrapper{
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+  overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
+}
+
+.inner{
+  padding-bottom: 72px; /*フッターの高さと同じにする*/
+}
+
 /* ヘッダー設定 */
 .header {
   position: fixed;
@@ -19,7 +34,6 @@
   display: flex;
   justify-content: space-between; /* タイトルとメニューを左右に配置 */
   align-items: center; /* 縦方向に中央揃え */
-  padding: 10px 20px; /* ナビゲーションバー内のパディング */
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
@@ -36,7 +50,7 @@ nav {
 /* タイトルスタイル */
 .navbar-title a {
   font-size: 24px; /* タイトルの文字サイズを設定 */
-  color: black; /* タイトルの文字色を黒に設定 */
+  color: Black; /* タイトルの文字色を黒に設定 */
   text-decoration: none; /* タイトルの下線を削除 */
   font-weight: bold; /* タイトルを太字に設定 */
 }
@@ -70,6 +84,7 @@ nav {
 
 nav ul li a {
   color: #333; /* リンクの文字色を濃い灰色に設定 */
+  font-weight: bold;
   text-decoration: none; /* リンクの下線を削除 */
   padding: 5px 10px; /* リンクのパディングを設定 */
   border-radius: 5px; /* リンクの角を丸く */
@@ -83,7 +98,7 @@ nav ul li a:hover {
 
 nav ul li a.active {
   text-decoration: underline; /* 現在のページのリンクに下線を追加 */
-  color: white; /* ホバー時の文字色を白に設定 */
+  color: #2E8B57; /* ホバー時の文字色を白に設定 */
 }
 
 /* ボタンスタイル */
@@ -101,7 +116,7 @@ nav ul li a.active {
 /* プライマリボタンのスタイル */
 .btn-primary {
   border: none;
-  background-color: #007bff; /* 背景色をブルーに設定 */
+  background-color: #2E8B57; /* 背景色をブルーに設定 */
   color: white; /* 文字色を白に設定 */
 }
 
@@ -138,12 +153,10 @@ nav ul li a.active {
 
 /* 背景画像を固定 */
 .page-background {
-  background-image: url('grass.jpg'); /* 背景画像を指定 */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding-top: 190px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
+  min-height: 100vh;
+  background-color: #2E8B57;
+  padding-top: 136px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 80px; /* フッターの高さを考慮して余白を調整 */
 }
 
 /* 投稿一覧のスクロール設定 */
@@ -216,7 +229,7 @@ nav ul li a.active {
 
 .post-username {
   font-size: 16px; /* ユーザーネームの文字サイズ */
-  color: #007bff; /* 文字色 */
+  color: #2E8B57; /* 文字色 */
   text-decoration: none; /* 下線を削除 */
 }
 
@@ -236,7 +249,7 @@ nav ul li a.active {
 
 .post-title-link {
   text-decoration: none;
-  color: #007bff; /* 文字色 */
+  color: #2E8B57; /* 文字色 */
 }
 
 .post-title-link:hover {
@@ -246,6 +259,7 @@ nav ul li a.active {
 
 /* 説明文を5行までに制限し、省略するスタイル */
 .post-description {
+  color: #34495e;
   font-size: 15px;
   display: -webkit-box;
   -webkit-line-clamp: 5; /* 表示する行数を5行に制限 */
@@ -298,7 +312,7 @@ nav ul li a.active {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding-top: 200px; /* ヘッダーの高さ + 追加余白分 */
+  padding-top: 250px; /* ヘッダーの高さ + 追加余白分 */
   padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
   display: flex;
   justify-content: center; /* 水平方向に中央揃え */
@@ -349,8 +363,8 @@ nav ul li a.active {
 }
 
 .actions .btn-primary {
-  background-color: #007bff; /* ボタンの背景色 */
-  border-color: #007bff; /* ボタンのボーダー色 */
+  background-color: #2E8B57; /* ボタンの背景色 */
+  border-color: #2E8B57; /* ボタンのボーダー色 */
   padding: 10px 20px; /* ボタン内のパディング */
   border-radius: 5px; /* 角を丸く */
   width: 100%; /* ボタンを幅いっぱいに設定 */
@@ -358,8 +372,8 @@ nav ul li a.active {
 }
 
 .actions .btn-primary:hover {
-  background-color: #0056b3; /* ホバー時の背景色 */
-  border-color: #004085; /* ホバー時のボーダー色 */
+  background-color: #2E8B57; /* ホバー時の背景色 */
+  border-color: #2E8B57; /* ホバー時のボーダー色 */
 }
 
 /* ログイン、新規登録の文字のスタイル */
@@ -391,11 +405,11 @@ nav ul li a.active {
 
 /* フッター設定 */
 .footer {
-  position: fixed;
+  height:72px;
+  position:absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* フッターを最前面に表示 */
   background-color: #AAA; /* フッターの背景色をシルバーに設定 */
   text-align: center; /* 全体のテキストを中央揃え */
 }
@@ -456,9 +470,9 @@ nav ul li a.active {
 /* セクションタイトルの設定 */
 .section-title {
   font-size: 28px; /* タイトルの文字サイズを大きく設定 */
-  color: #16a085; /* タイトルの文字色を緑色に設定 */
+  color: #2E8B57; /* タイトルの文字色を緑色に設定 */
   margin-bottom: 15px; /* 下部に余白を追加 */
-  border-left: 5px solid #16a085; /* 左側に緑色のボーダーを追加 */
+  border-left: 5px solid #2E8B57; /* 左側に緑色のボーダーを追加 */
   padding-left: 10px; /* ボーダーとタイトルの間に余白を追加 */
 }
 
@@ -589,13 +603,13 @@ nav ul li a.active {
 .pagination a {
   border-radius: 5px;
   text-decoration: none;
-  background-color: #007bff;
+  background-color: #2E8B57;
   color: white;
 }
 
 .pagination a:hover,
 .pagination .active span:hover {
-  background-color: #007bff;
+  background-color: #2E8B57;
   opacity: 0.8; /* ホバー時の透明度を設定 */
   color: white;
 }
@@ -763,7 +777,7 @@ nav ul li a.active {
   font-weight: bold;
   margin-right: 10px;
   text-decoration: none;
-  color: #007bff;
+  color: #2E8B57;
 }
 
 .post-detail-username:hover {
@@ -913,9 +927,9 @@ nav ul li a.active {
 .search-button {
   padding: 10px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #2E8B57;
   color: #fff;
-  border: 1px solid #007bff;
+  border: 1px solid #2E8B57;
   border-radius: 0 20px 20px 0; /* 右側の角を丸く */
   cursor: pointer;
   display: flex;
@@ -929,8 +943,8 @@ nav ul li a.active {
 
 .search-button:hover {
   opacity: 0.8; /* ホバー時の透明度を設定 */
-  background-color: #007bff;
-  border-color: #004085;
+  background-color: #2E8B57;
+  border-color: #2E8B57;
 }
 
 
@@ -943,7 +957,7 @@ nav ul li a.active {
 }
 
 .comments-section h2 {
-  color: #333;
+  color: #34495e;
   font-size: 20px;
   margin-bottom: 5px;
 }
@@ -1025,7 +1039,7 @@ nav ul li a.active {
 }
 
 .dropdown-item {
-  color: #4f96f6;
+  color: #2E8B57;
   text-decoration: none;
   padding: 8px 16px;
   cursor: pointer;
@@ -1147,7 +1161,7 @@ nav ul li a.active {
 .user-name {
   font-size: 20px;
   font-weight: bold;
-  color: #007bff; /* 例: ユーザー名のリンク色をパープルに変更 */
+  color: #2E8B57; /* 例: ユーザー名のリンク色をパープルに変更 */
   text-decoration: none;
 }
 
@@ -1187,7 +1201,7 @@ nav ul li a.active {
 
 .post-comments a {
   text-decoration: none;
-  color: #007bff;
+  color: #2E8B57;
 }
 
 .post-comments a:hover {
@@ -1207,7 +1221,7 @@ nav ul li a.active {
 }
 
 .dropdown-menu a {
-  color: #007bff;
+  color: #2E8B57;
   text-decoration: none;
   display: block;
   padding: 8px 16px;
@@ -1300,7 +1314,7 @@ nav ul li a.active {
 .community-name {
   font-size: 20px;
   font-weight: bold;
-  color: #007bff; /* 例: ユーザー名のリンク色をパープルに変更 */
+  color: #2E8B57; /* 例: ユーザー名のリンク色をパープルに変更 */
   text-decoration: none;
 }
 
@@ -1334,7 +1348,7 @@ nav ul li a.active {
 }
 
 .community-creator-link {
-  color: #007bff;
+  color: #2E8B57;
   text-decoration: none;
 }
 
@@ -1390,7 +1404,7 @@ nav ul li a.active {
 }
 
 .community-admin {
-  color: #007bff;
+  color: #2E8B57;
   text-decoration: none;
 }
 
@@ -1420,6 +1434,7 @@ nav ul li a.active {
 }
 
 .community-detail-posts h2 {
+  color: #34495e;
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
@@ -1497,7 +1512,7 @@ nav ul li a.active {
 }
 
 .alert-warning {
-  height: 400px;
+  height: 300px;
 }
 
 .alert {
