@@ -1,0 +1,38 @@
+<div class="page-background">
+  <div class="edit-post-page">
+    <h1 class="edit-post-page-title">投稿を編集する</h1>
+
+    <%= render 'shared/error_messages', resource: @post %>
+
+    <%= form_with(model: @post, url: admin_post_path(@post), method: :patch, local: true) do |form| %>
+
+      <div class="edit-post-title">
+        <%= form.label :title, 'タイトル', class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="edit-post-description">
+        <%= form.label :description, '説明文', class: 'form-label' %>
+        <%= form.text_area :description, class: 'form-control edit-post-textarea' %>
+      </div>
+
+      <div class="edit-post-image">
+        <%= form.label :image, '画像', class: 'form-label' %>
+        <%= form.file_field :image, class: 'form-control-file' %>
+        <% if @post.image.attached? %>
+          <div class="current-image">
+            <%= image_tag @post.display_image, alt: "現在の画像", class: "img-fluid current-post-image" %>
+          </div>
+          <div class="remove-image-option">
+            <%= form.check_box :remove_image, {}, '1', '0' %> 画像を削除する
+          </div>
+        <% end %>
+      </div>
+
+      <div class="edit-post-actions">
+        <%= form.submit '更新する', class: 'btn btn-primary', data: { confirm: '本当に更新しますか？' } %>
+        <%= link_to 'キャンセル', admin_post_path(@post), class: 'btn btn-secondary cancel-link' %>
+      </div>
+    <% end %>
+  </div>
+</div>

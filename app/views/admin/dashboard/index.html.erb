@@ -1,0 +1,24 @@
+<div class="page-background">
+<div class="dashboard">
+  <h1>管理者トップ</h1>
+
+  <ul>
+    <li>
+      <%= link_to '管理者: 投稿管理', admin_posts_path %>
+    </li>
+    <li>
+      <%= link_to '管理者: ユーザー管理', admin_users_path %>
+    </li>
+    <li>
+      <%= link_to '管理者: コミュニティ管理', admin_communities_path %>
+    </li>
+    <li>
+
+    </li>
+  </ul>
+  
+  <div class="admin-signout">
+    <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？", turbolinks: false }, class: 'btn btn-danger' %>
+  </div>
+  
+</div>

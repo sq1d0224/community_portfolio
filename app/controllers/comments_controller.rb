@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
-      redirect_to post_path(@post), notice: 'コメントが削除されました。'
+      redirect_to post_path(@post)
     else
       redirect_to post_path(@post)
     end

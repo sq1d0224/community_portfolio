@@ -1,0 +1,63 @@
+<div class="page-background">
+  <div class="posts-page">
+    <h1 class="posts-title">管理者用: 投稿一覧</h1>
+
+    <%= render 'shared/search_form', search_path: admin_posts_path %>
+
+    <div class="posts-grid">
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+
+          <div class="post-item">
+            <div class="post-user-info">
+              <% if post.user.profile_image.attached? %>
+                <%= link_to admin_user_path(post.user.id) do %>
+                  <%= image_tag post.user.profile_image.variant(resize_to_fill: [30, 30]), class: 'user-icon' %>
+                <% end %>
+              <% else %>
+                <%= link_to admin_user_path(post.user.id) do %>
+                  <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
+                <% end %>
+              <% end %>
+              <%= link_to post.user.display_name, admin_user_path(post.user.id), class: 'post-username' %>
+            </div>
+            <h3 class="post-title"><%= link_to truncate(post.title, length: 20), admin_post_path(post), class: 'post-title-link' %></h3>
+            <p class="post-description"><%= truncate(post.description, length: 90) %></p>
+            <% if post.image.attached? %>
+              <p class="post-image">
+                <%= link_to admin_post_path(post) do %>
+                  <%= image_tag post.display_image([250, 250]), loading: 'lazy', class: 'post-img' %>
+                <% end %>
+              </p>
+            <% else %>
+              <p class="post-image">
+                <%= link_to admin_post_path(post) do %>
+                  <%= image_tag 'no_image_photo3.jpg', class: 'post-img' %>
+                <% end %>
+              </p>
+            <% end %>
+            <div class="post-footer">
+               <p class="post-date">
+                <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+              </p>
+              <p class="post-comments">
+                <%= link_to "コメント(#{post.comments.count})", admin_post_path(post, anchor: 'comments') %>
+              </p>
+            </div>
+            <div class="admin-actions">
+              <%= link_to '編集', edit_admin_post_path(post), class: 'btn btn-secondary' %>
+              <%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+
+        <% end %>
+      <% else %>
+        <div class="no-comment">
+          <p class="no-posts">投稿がありません。</p>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render 'shared/pagination', items: @posts %>
+  </div>
+</div>

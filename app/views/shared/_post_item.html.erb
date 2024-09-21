@@ -16,7 +16,7 @@
   <% if post.image.attached? %>
     <p class="post-image">
       <%= link_to post_path(post) do %>
-        <%= image_tag post.display_image([300, 300]), loading: 'lazy', class: 'post-img' %>
+        <%= image_tag post.display_image([250, 250]), loading: 'lazy', class: 'post-img' %>
       <% end %>
     </p>
   <% else %>

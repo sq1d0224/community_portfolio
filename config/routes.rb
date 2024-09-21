@@ -5,17 +5,19 @@ Rails.application.routes.draw do
     passwords: 'devise/passwords',
     registrations: 'users/registrations'
   }
-  
+
   devise_for :admins, path: 'admin', skip: [:registrations], controllers: {
     sessions: 'admin/sessions'
   }
-  
+
   namespace :admin do
     root to: 'dashboard#index'  # 管理者用のダッシュボードのルート
     resources :posts, only: [:index, :show, :edit, :update, :destroy]  # 投稿の一覧、詳細、削除
     resources :users, only: [:index, :show, :edit, :update, :destroy]  # ユーザーの一覧、詳細、編集、削除
-    resources :communities, only: [:index, :show, :destroy]  # コミュニティの一覧、詳細、削除
-    resources :comments, only: [:destroy]  # コメントの削除
+    resources :communities, only: [:index, :show, :edit, :update,  :destroy]  # コミュニティの一覧、詳細、削除
+    resources :posts do
+      resources :comments, only: [:destroy]
+    end
   end
 
   resources :users, only: [:show] do
@@ -56,7 +58,7 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'pages#privacy_policy'
   get 'terms_of_service', to: 'pages#terms_of_service', as: 'terms_of_service'
   get 'contact', to: 'pages#contact', as: 'contact'
-  
+
   # 作成したコミュニティ一覧
   get 'my_communities', to: 'users#my_communities', as: 'my_communities'
 
@@ -65,7 +67,7 @@ Rails.application.routes.draw do
 
   # トップページ
   get 'top', to: 'users#top', as: 'top'
-  
+
   # ゲストログイン専用ページ
   get 'guest_dashboard', to: 'users#guest_dashboard', as: 'guest_dashboard'
 

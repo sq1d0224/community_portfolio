@@ -1573,3 +1573,18 @@ nav ul li a.active {
   margin-top: 10px;
   text-align: center;
 }
+
+.dashboard {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding-top: 30px; /* コンテンツの内側に余白を追加 */
+  padding-bottom: 30px; /* 下部の余白 */
+  border-radius: 10px; /* 角を丸く */
+  margin: 0 auto; /* 中央揃え */
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+  display: flex; /* フレックスボックスで整列 */
+  flex-direction: column; /* 縦方向に配置 */
+  align-items: center; /* 全体を中央揃えにする */
+  width: 100%;
+  max-width: 800px;
+}

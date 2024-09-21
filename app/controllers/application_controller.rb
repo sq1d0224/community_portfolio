@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # すでにログインしている場合にdeviseのフラッシュメッセージをクリアする
   before_action :clear_devise_flash, if: -> { user_signed_in? }
-  
+
+  # Deviseのヘルパーを使えるようにする
+  include Devise::Controllers::Helpers
+  helper_method :current_admin  # current_adminをビューで使えるようにする
+
   # 管理者権限がないユーザーのリダイレクト先
   def authenticate_admin!
     redirect_to root_path unless current_admin

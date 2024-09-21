@@ -53,7 +53,7 @@ class CommunitiesController < ApplicationController
 
   def update
     if @community.update(community_params)
-      redirect_to @community, notice: 'コミュニティが正常に更新されました。'
+      redirect_to @community
     else
       render :edit
     end
@@ -99,7 +99,7 @@ class CommunitiesController < ApplicationController
     params.require(:community).permit(:title, :description, :category, :image)
   end
 
-  # 管理者かどうかを確認するメソッド
+  # コミュニティの管理者かどうかを確認するメソッド
   def authorize_community_owner!
     unless current_user == @community.user
       redirect_to community_path

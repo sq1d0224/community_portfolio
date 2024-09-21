@@ -1,0 +1,50 @@
+<div class="page-background">
+
+  <%= form_with(model: @user, url: admin_user_path(@user), method: :patch, local: true, html: { class: 'edit-profile-form' }) do |f| %>
+    <h1 class="edit-profile-title">管理者用: ユーザープロフィールを編集</h1>
+    <%= render 'shared/error_messages', resource: @user %>
+
+    <div class="field username-field">
+      <strong><%= f.label :username, 'ユーザーネーム', class: 'form-label' %></strong>
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+
+    <div class="field gender-field">
+      <strong><%= f.label :gender, '性別', class: 'form-label' %></strong>
+      <%= f.select :gender, [['男性', '男性'], ['女性', '女性'], ['その他', 'その他']], include_blank: ' ', class: 'form-select' %>
+    </div>
+
+    <div class="field age-field">
+      <strong>年齢:</strong> 誕生日を設定すると自動計算されます。
+    </div>
+
+    <div class="field birthdate-field">
+      <strong><%= f.label :birthdate, '誕生日', class: 'form-label' %></strong>
+      <%= f.date_select :birthdate, start_year: 1900, end_year: Time.now.year, include_blank: '選択してください', class: 'form-select' %>
+    </div>
+
+    <div class="field bio-field">
+      <strong><%= f.label :bio, '自己紹介', class: 'form-label' %></strong>
+      <%= f.text_area :bio, placeholder: '10000文字以内', class: 'form-control bio-textarea', maxlength: 10000 %>
+    </div>
+
+    <div class="field profile-image-field">
+      <strong><%= f.label :profile_image, 'プロフィール画像', class: 'form-label' %></strong>
+      <%= f.file_field :profile_image, class: 'form-control' %>
+      <% if @user.profile_image.attached? %>
+        <div class="profile-image-preview-container">
+          <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]), class: 'profile-image-preview' %>
+          <div class="remove-profile-image-option">
+            <%= f.check_box :remove_profile_image %> プロフィール画像を削除
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="profile-actions">
+      <%= f.submit '更新する', data: { confirm: '本当に更新しますか？' }, class: 'btn btn-primary' %>
+    </div>
+    <%= link_to 'キャンセル', admin_user_path(@user), class: 'btn btn-secondary cancel-link' %>
+  <% end %>
+
+</div>

@@ -17,7 +17,7 @@
             <p><strong>カテゴリ:</strong> <%= @community.category %></p>
             <p><strong>管理人:</strong>
               <% if @community.user.present? %>
-                <%= link_to @community.user.display_name, user_path(@community.user), class: 'community-admin' %>
+                <%= link_to @community.user.display_name, admin_user_path(@community.user), class: 'community-admin' %>
               <% else %>
                 <span>不明</span>
               <% end %>
@@ -32,20 +32,9 @@
     <!-- コミュニティ参加ボタンと編集ボタン -->
     <div class="community-details-btn">
       <div class="community-actions">
-        <%= link_to 'コミュニティ一覧', communities_path, class: 'btn btn-primary' %>
-        <% if current_user == @community.user %>
-          <!-- コミュニティ作成者には「参加する」リンクを表示しない -->
-          <%= link_to 'コミュニティを編集', edit_community_path(@community), class: 'btn btn-secondary' %>
-          <%= link_to 'コミュニティを削除', community_path(@community), method: :delete, data: { confirm: '本当にこのコミュニティを削除しますか？コミュニティ内の投稿もすべて削除されます' }, class: 'btn btn-danger' %>
-        <% elsif current_user && current_user.joined_community?(@community) %>
-          <%= link_to 'コミュニティから退会する', leave_community_path(@community), data: { confirm: '本当にコミュニティから退会しますか？' }, class: 'btn btn-danger', method: :delete %>
-        <% else %>
-          <% if user_signed_in? %>
-            <%= link_to 'コミュニティに参加する', join_community_path(@community), data: { confirm: '本当にコミュニティに参加しますか？' }, class: 'btn btn-primary', method: :post %>
-          <% else %>
-            <%= link_to 'コミュニティに参加する', new_user_session_path, data: { confirm: 'コミュニティに参加するにはログインが必要です。' }, class: 'btn btn-primary' %>
-          <% end %>
-        <% end %>
+        <%= link_to 'コミュニティ一覧', admin_communities_path, class: 'btn btn-primary' %>
+        <%= link_to 'コミュニティを編集', edit_admin_community_path(@community), class: 'btn btn-secondary' %>
+        <%= link_to 'コミュニティを削除', admin_community_path(@community), method: :delete, data: { confirm: '本当にこのコミュニティを削除しますか？コミュニティ内の投稿もすべて削除されます' }, class: 'btn btn-danger' %>
       </div>
     </div>
 
@@ -53,7 +42,7 @@
     <div class="community-detail-description">
       <p><%= @community.description %></p>
     </div>
-
+    
     <!-- 投稿一覧 -->
     <div class="community-detail-posts">
       <div class="community-detail-post">
@@ -65,14 +54,6 @@
         <!-- エラーメッセージの表示 -->
         <%= render 'shared/error_messages', resource: @post %>
 
-        <div class="new-post-link">
-          <% if user_signed_in? %>
-            <%= link_to '新規投稿', new_community_post_path(@community), class: 'btn btn-primary' %>
-          <% else %>
-            <%= link_to '新規投稿', new_user_session_path, class: 'btn btn-primary', data: { confirm: '新規投稿するにはログインが必要です。' } %>
-          <% end %>
-        </div>
-
         <div class="community-post">
           <% if @paginated_posts.any? %>
             <% @paginated_posts.each do |post| %>
@@ -81,15 +62,15 @@
                   <!-- ユーザー情報の表示部分 -->
                   <div class="left-section">
                     <% if post.user.profile_image.attached? %>
-                      <%= link_to user_path(post.user.id) do %>
+                      <%= link_to admin_user_path(post.user.id) do %>
                         <%= image_tag post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "post-user-icon" %>
                       <% end %>
                     <% else %>
-                      <%= link_to user_path(post.user.id) do %>
+                      <%= link_to admin_user_path(post.user.id) do %>
                         <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
                       <% end %>
                     <% end %>
-                    <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-detail-username' %>
+                    <%= link_to post.user.display_name, admin_user_path(post.user.id), class: 'post-detail-username' %>
                   </div>
 
                   <!-- 3点リーダー -->
@@ -98,11 +79,7 @@
                       <i class="fa-solid fa-ellipsis"></i>
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu-<%= post.id %>">
-                      <% if post.user == current_user %>
-                        <%= link_to '投稿を削除する', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
-                      <% else %>
-                        <p class="dropdown-item no-actions">可能な操作はありません</p>
-                      <% end %>
+                      <%= link_to '投稿を削除する', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
                     </div>
                   </div>
                 </div>
@@ -118,6 +95,11 @@
                 <p class="community-post-detail-date">
                   <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
                 </p>
+                
+                <div class="admin-actions">
+                  <%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+                </div>
+                
               </div>
             <% end %>
           <% else %>
@@ -129,6 +111,5 @@
 
       </div>
     </div>
-
   </div>
 </div>

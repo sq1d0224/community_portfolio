@@ -2,30 +2,26 @@
   <div class="post-detail">
 
     <div class="post-detail-header">
-    <!-- ユーザー情報の表示部分 -->
+      <!-- ユーザー情報の表示部分 -->
       <div class="left-section">
         <% if @post.user.profile_image.attached? %>
-          <%= link_to user_path(@post.user.id) do %>
+          <%= link_to admin_user_path(@post.user.id) do %>
             <%= image_tag @post.user.profile_image.variant(resize_to_fill: [40, 40]), class: "post-user-icon" %>
           <% end %>
         <% else %>
-          <%= link_to user_path(@post.user.id) do %>
+          <%= link_to admin_user_path(@post.user.id) do %>
             <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
           <% end %>
         <% end %>
-        <%= link_to @post.user.display_name, user_path(@post.user.id), class: 'post-detail-username' %>
+        <%= link_to @post.user.display_name, admin_user_path(@post.user.id), class: 'post-detail-username' %>
       </div>
 
       <!-- 3点リーダー -->
       <div class="dropdown right-section">
         <div class="dropdown-toggle" data-comment-id="<%= @post.id %>"><i class="fa-solid fa-ellipsis"></i></div>
         <div class="dropdown-menu" id="dropdown-menu-<%= @post.id %>">
-          <% if @post.user == current_user %>
-            <%= link_to '投稿を編集する', edit_post_path(@post), class: 'dropdown-item edit-post-btn' %>
-            <%= link_to '投稿を削除する', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
-          <% else %>
-            <p class="dropdown-item no-actions">可能な操作はありません</p>
-          <% end %>
+          <%= link_to '投稿を編集する', edit_admin_post_path(@post), class: 'dropdown-item edit-post-btn' %>
+          <%= link_to '投稿を削除する', admin_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-post-btn' %>
         </div>
       </div>
 
@@ -48,26 +44,22 @@
             <div class="comment-header">
               <div class="left-section">
                 <% if comment.user.profile_image.attached? %>
-                  <%= link_to user_path(comment.user) do %>
+                  <%= link_to admin_user_path(comment.user) do %>
                     <%= image_tag comment.user.profile_image.variant(resize_to_fill: [30, 30]), class: "comment-user-icon" %>
                   <% end %>
                 <% else %>
-                  <%= link_to user_path(comment.user) do %>
+                  <%= link_to admin_user_path(comment.user) do %>
                     <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
                   <% end %>
                 <% end %>
-                <%= link_to comment.user.display_name, user_path(comment.user), class: 'comment-username' %>
+                <%= link_to comment.user.display_name, admin_user_path(comment.user), class: 'comment-username' %>
               </div>
 
               <div class="right-section">
                 <div class="dropdown">
                   <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
                   <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
-                    <% if comment.id.present? && comment.user == current_user %>
-                      <%= link_to 'コメントを削除する', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
-                    <% else %>
-                      <p class="dropdown-item no-actions">可能な操作はありません</p>
-                    <% end %>
+                    <%= link_to 'コメントを削除する', admin_post_comment_path(@post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
                   </div>
                 </div>
               </div>
@@ -82,28 +74,5 @@
         <p class="no-posts">コメントはまだありません。</p>
       <% end %>
     </div>
-
-    <!-- エラーメッセージの表示 -->
-    <%= render 'shared/error_messages', resource: @comment %>
-
-    <div class="comment-form-container">
-      <div class="user-icon-wrapper">
-        <% if current_user.profile_image.attached? %>
-          <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: "user-icon" %>
-        <% else %>
-          <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "user-icon" %>
-        <% end %>
-      </div>
-
-      <div class="comment-form-wrapper">
-        <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-        <div class="comment-form">
-          <%= form.text_area :content, class: "form-control comment-input", placeholder: "1000文字以内" %>
-          <%= form.submit 'コメントする', class: 'btn btn-primary comment-submit-btn', data: { confirm: '本当にコメントしますか？' } %>
-        </div>
-      <% end %>
-    </div>
-
   </div>
-
 </div>
