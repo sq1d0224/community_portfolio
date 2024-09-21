@@ -2,6 +2,9 @@
   <div class="communities-page">
     <h1 class="communities-title">管理者用: コミュニティ一覧</h1>
 
+    <!-- 検索フォームの追加 -->
+    <%= render 'shared/search_form', search_path: admin_communities_path %>
+
     <!-- コミュニティのリスト表示 -->
     <div class="communities-list">
       <% if @communities.any? %>

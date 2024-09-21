@@ -42,14 +42,14 @@
     <div class="community-detail-description">
       <p><%= @community.description %></p>
     </div>
-    
+
     <!-- 投稿一覧 -->
     <div class="community-detail-posts">
       <div class="community-detail-post">
         <h2>コミュニティ投稿一覧</h2>
 
         <!-- 検索フォームの追加 -->
-        <%= render 'shared/search_form', search_path: community_path(@community) %>
+        <%= render 'shared/search_form', search_path: admin_community_path(@community) %>
 
         <!-- エラーメッセージの表示 -->
         <%= render 'shared/error_messages', resource: @post %>
@@ -95,11 +95,11 @@
                 <p class="community-post-detail-date">
                   <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
                 </p>
-                
+
                 <div class="admin-actions">
                   <%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
                 </div>
-                
+
               </div>
             <% end %>
           <% else %>

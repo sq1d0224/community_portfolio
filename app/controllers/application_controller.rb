@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   # 管理者権限がないユーザーのリダイレクト先
   def authenticate_admin!
-    redirect_to root_path unless current_admin
+    redirect_to new_admin_session_path unless current_admin
   end
 
   # ビューでも使えるようにする
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   # ゲストユーザーのアクセスを制限するメソッド
   def restrict_guest_user
     if guest_user?
-      redirect_to new_user_session_path, alert: 'ゲストユーザーではこの操作を行えません。'
+      redirect_to new_user_session_path
     end
   end
 

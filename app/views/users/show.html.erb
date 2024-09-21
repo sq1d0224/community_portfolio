@@ -12,7 +12,7 @@
       <!-- 通常のプロフィール情報 -->
       <div class="profile-image-container">
         <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]), class: "profile-image" %>
+          <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]).processed, class: "profile-image" %>
         <% else %>
           <%= image_tag 'no_image_photo.jpg', size: "300x300", class: "profile-image" %>
         <% end %>

@@ -12,7 +12,7 @@
 
     <%= form_with(model: resource, url: session_path(resource_name), local: true, data: { turbo: false }) do |f| %>
       <div class="field">
-        <%= f.label :login, '管理者ユーザーネームまたはメールアドレス' %><br />
+        <%= f.label :login, '管理者用ユーザーネームまたはメールアドレス' %><br />
         <%= f.text_field :login, autofocus: true, autocomplete: "username", class: 'form-control' %>
       </div>
 

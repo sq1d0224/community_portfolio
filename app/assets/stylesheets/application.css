@@ -528,8 +528,6 @@ nav ul li a.active {
   height: 300px; /* コンテナの高さを固定 */
   border-radius: 50%; /* 円形の外枠 */
   border: 3px solid #AAA; /* グレーの縁を追加 */
-  padding: 3px; /* 画像と縁の間に余白を追加 */
-  background-color: white; /* 縁と画像の間に白い背景を追加 */
   overflow: hidden; /* 画像がはみ出さないように設定 */
   display: flex; /* フレックスボックスで整列 */
   align-items: center; /* 縦方向の中央揃え */
@@ -1575,6 +1573,21 @@ nav ul li a.active {
 }
 
 .dashboard {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding-top: 30px; /* コンテンツの内側に余白を追加 */
+  padding-bottom: 30px; /* 下部の余白 */
+  border-radius: 10px; /* 角を丸く */
+  margin: 0 auto; /* 中央揃え */
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+  display: flex; /* フレックスボックスで整列 */
+  flex-direction: column; /* 縦方向に配置 */
+  align-items: center; /* 全体を中央揃えにする */
+  width: 100%;
+  max-width: 800px;
+}
+
+.contact-page {
   background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
   padding-top: 30px; /* コンテンツの内側に余白を追加 */
   padding-bottom: 30px; /* 下部の余白 */

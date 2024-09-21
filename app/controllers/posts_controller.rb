@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     if params[:search].present?
       @posts = current_user.posts.where(community_id: nil) # コミュニティに属さない投稿のみ
                                  .where("title LIKE ?", "%#{params[:search]}%")
-                                 .or(current_user.posts.where("description LIKE ?", "%#{params[:search]}%"))
+                                 .or(Post.where("description LIKE ?", "%#{params[:search]}%").where(community_id: nil))
                                  .order(created_at: :desc)
                                  .page(params[:page])
                                  .per(20)

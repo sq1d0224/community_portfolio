@@ -6,7 +6,7 @@
     <%= render 'shared/error_messages', resource: @community %>
 
     <!-- コミュニティ編集フォーム -->
-    <%= form_with(model: @community, local: true, html: {multipart: true}) do |form| %>
+    <%= form_with(model: @community, url: admin_community_path(@community), local: true, html: {multipart: true}) do |form| %>
 
       <!-- タイトル編集 -->
       <div class="field community-field">

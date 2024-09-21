@@ -18,7 +18,6 @@ class Admin::CommunitiesController < ApplicationController
   end
 
   def show
-
     if params[:search].present?
       @paginated_posts = @community.posts.where("description LIKE ?", "%#{params[:search]}%")
                                          .order(created_at: :desc)

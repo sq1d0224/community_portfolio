@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'  # 管理者用のダッシュボードのルート
     resources :posts, only: [:index, :show, :edit, :update, :destroy]  # 投稿の一覧、詳細、削除
     resources :users, only: [:index, :show, :edit, :update, :destroy]  # ユーザーの一覧、詳細、編集、削除
-    resources :communities, only: [:index, :show, :edit, :update,  :destroy]  # コミュニティの一覧、詳細、削除
+    resources :communities, only: [:index, :show, :edit, :update, :destroy]  # 管理者用コミュニティルート
     resources :posts do
       resources :comments, only: [:destroy]
     end

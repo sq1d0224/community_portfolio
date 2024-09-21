@@ -30,6 +30,10 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      # プロフィール画像が削除される場合、削除を遅延して処理
+      if user_params[:remove_profile_image] == '1'
+        @user.profile_image.purge_later # ActiveStorage の purge_later メソッドを使う
+      end
       redirect_to admin_user_path(@user)
     else
       render :edit
