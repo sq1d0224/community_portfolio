@@ -9,26 +9,42 @@
       </div>
     <% else %>
       <!-- プロフィール情報 -->
-      <div class="profile-info">
-        <div class="profile-image">
-          <% if @user.profile_image.attached? %>
-            <%= image_tag @user.profile_image.variant(resize_to_fill: [150, 150]), class: "profile-user-icon" %>
-          <% else %>
-            <%= image_tag 'no_image_photo.jpg', size: "150x150", class: "profile-user-icon" %>
-          <% end %>
-        </div>
+      <div class="profile-image-container">
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]).processed, class: "profile-image" %>
+        <% else %>
+          <%= image_tag 'no_image_photo.jpg', size: "300x300", class: "profile-image" %>
+        <% end %>
+      </div>
 
-        <div class="profile-details">
-          <p>名前: <%= @user.display_name %></p>
-          <p>性別: <%= @user.gender %></p>
-          <p>年齢: <%= @user.age %></p>
-          <p>自己紹介: <%= @user.bio %></p>
-        </div>
+      <div class="profile-details">
+        <table class="profile-table">
+          <tr>
+            <th>ユーザーネーム</th>
+            <td><%= @user.username.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @user.gender.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+            <td><%= @user.age.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>誕生日</th>
+            <td><%= @user.birthdate.presence || '未設定' %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= @user.bio.presence || '未設定' %></td>
+          </tr>
+        </table>
+      </div>
 
-        <div class="admin-actions">
-          <%= link_to '編集', edit_admin_user_path(@user), class: 'btn btn-secondary' %>
-          <%= link_to '削除', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
-        </div>
+      <div class="admin-actions">
+        <%= link_to '編集', edit_admin_user_path(@user), class: 'btn btn-secondary' %>
+        <%= link_to '退会', confirm_deactivation_admin_user_path(@user), data: { confirm: 'まだ退会処理できません。最終確認画面に移行します。' }, class: 'btn btn-danger' %>
       </div>
     <% end %>
   </div>

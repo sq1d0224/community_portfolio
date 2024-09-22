@@ -1,0 +1,21 @@
+<!-- app/views/admin/users/confirm_deactivation.html.erb -->
+<div class="page-background">
+  <div class="deactivate-page">
+
+    <div class="deactivate-details">
+
+      <h1 class="deactivate-title">本当に <%= @user.username %> さんを退会させますか？</h1>
+      <p class="deactivate-description">
+        退会させると、そのユーザーの投稿やコメント、作成したコミュニティ、コミュニティ内の投稿も全て削除されます。この操作は取り消せません。
+      </p>
+
+      <div class="deactivate-link">
+        <%= form_with(url: deactivate_admin_user_path(@user), method: :delete) do %>
+          <%= submit_tag '退会させる', class: 'btn btn-danger', data: { confirm: '最終確認です。本当に退会させますか？' } %>
+          <%= link_to 'キャンセル', admin_user_path(@user), class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

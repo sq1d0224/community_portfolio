@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :joined_communities, through: :memberships, source: :community # 参加しているコミュニティ
   
   # ユーザーが作成したコミュニティを表す関連付け
-  has_many :created_communities, class_name: 'Community', foreign_key: 'user_id'
+  has_many :created_communities, class_name: 'Community', foreign_key: 'user_id', dependent: :destroy
   
   def self.guest
     # メールアドレスで既存のゲストユーザーを検索

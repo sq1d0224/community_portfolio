@@ -40,10 +40,38 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def confirm_deactivation
+    @user = User.find(params[:id])
+  end
+
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_path, notice: 'ユーザーが削除されました。'
+
+    ActiveRecord::Base.transaction do
+      # ユーザーが作成した投稿を削除
+      @user.posts.destroy_all
+
+      # ユーザーが作成したコメントを削除
+      @user.comments.destroy_all
+
+      # ユーザーが作成したコミュニティと、そのコミュニティに関連する投稿を削除
+      @user.created_communities.each do |community|
+        community.posts.destroy_all
+        community.destroy
+      end
+
+      # ユーザーが他のコミュニティに投稿した投稿を削除
+      CommunityPost.where(user_id: @user.id).destroy_all
+
+      # ユーザーの物理削除
+      @user.destroy
+    end
+
+    redirect_to admin_users_path, notice: 'ユーザーと関連データが削除されました。'
+  rescue => e
+    Rails.logger.error("退会処理中にエラーが発生しました: #{e.message}")
+    flash[:error] = '退会処理中にエラーが発生しました。'
+    redirect_to admin_user_path(@user)
   end
 
   private

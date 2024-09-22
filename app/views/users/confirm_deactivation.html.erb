@@ -1,11 +1,13 @@
 <!-- app/views/users/confirm_deactivation.html.erb -->
 <div class="page-background">
-  <div class="profile-page">
-    
-    <div class="profile-details">
-    
-      <h1 class="profile-username">本当に退会しますか？</h1>
-      <p class="deactivate-description">GOLNAVIを退会すると、アカウントは「退会ユーザー」として扱われます。投稿やコメント、作成したコミュニティや投稿は残りますが、プロフィール情報は表示されなくなります。</p>
+  <div class="deactivate-page">
+
+    <div class="deactivate-details">
+
+      <h1 class="deactivate-title">本当に退会しますか？</h1>
+      <p class="deactivate-description">
+        GOLNAVIを退会すると、アカウントは「退会ユーザー」として扱われます。投稿やコメント、作成したコミュニティや投稿は残りますが、プロフィール情報は表示されなくなります。この操作は取り消せません。
+      </p>
 
         <div class="deactivate-link">
           <%= form_with(url: deactivate_user_path(current_user), method: :delete) do %>
@@ -13,7 +15,7 @@
             <%= link_to 'キャンセル', user_path(current_user), class: 'btn btn-secondary' %>
           <% end %>
         </div>
-    
+
     </div>
   </div>
 </div>

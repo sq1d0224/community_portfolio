@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments, only: [:destroy]
     end
+    resources :users do
+      member do
+        get 'confirm_deactivation'
+        delete 'deactivate'
+      end
+    end
   end
 
   resources :users, only: [:show] do

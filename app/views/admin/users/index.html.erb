@@ -1,6 +1,6 @@
 <div class="page-background">
   <div class="users-page">
-    <h1 class="users-title">管理者用: ユーザー一覧</h1>
+    <h1 class="users-title">管理者用: ユーザーー覧</h1>
 
     <!-- 検索フォームの追加 -->
     <%= render 'shared/search_form', search_path: admin_users_path %>
@@ -35,7 +35,7 @@
               </div>
               <div class="admin-actions">
                 <%= link_to '編集', edit_admin_user_path(user), class: 'btn btn-secondary' %>
-                <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+                <%= link_to '退会', confirm_deactivation_admin_user_path(user), data: { confirm: 'まだ退会処理できません。最終確認画面に移行します。' }, class: 'btn btn-danger' %>
               </div>
             </div>
           </div>
