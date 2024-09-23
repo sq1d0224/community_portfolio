@@ -69,8 +69,8 @@ class UsersController < ApplicationController
       @joined_communities = @joined_communities.where("title LIKE ?", "%#{params[:search]}%")
     end
   end
-  
-  
+
+
   def guest_dashboard
     # ゲストユーザー専用のダッシュボードアクション
   end
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
       is_deleted: true # 退会フラグを立てる
     )
     sign_out current_user # ログアウト処理
-    redirect_to root_path, notice: 'アカウントを退会しました。'
+    redirect_to root_path
   end
 
 

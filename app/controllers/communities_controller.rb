@@ -63,9 +63,6 @@ class CommunitiesController < ApplicationController
   def join
     unless current_user.communities.include?(@community)
       current_user.communities << @community
-      flash[:notice] = "コミュニティに参加しました。"
-    else
-      flash[:alert] = "すでにこのコミュニティに参加しています。"
     end
     redirect_to @community
   end
@@ -74,9 +71,6 @@ class CommunitiesController < ApplicationController
   def leave
     if current_user.communities.include?(@community)
       current_user.communities.delete(@community)
-      flash[:notice] = "コミュニティを退会しました。"
-    else
-      flash[:alert] = "このコミュニティに参加していません。"
     end
     redirect_to @community
   end

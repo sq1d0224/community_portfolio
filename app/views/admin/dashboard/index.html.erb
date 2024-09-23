@@ -3,13 +3,16 @@
   <h1 class="dashboard-title">管理者トップ</h1>
 
     <div class="dashboard-link">
-      <%= link_to '管理者: 投稿管理', admin_posts_path, class: 'btn btn-primary' %>
+      <%= link_to '投稿管理', admin_posts_path, class: 'btn btn-primary' %>
     </div>
     <div class="dashboard-link">
-      <%= link_to '管理者: ユーザー管理', admin_users_path, class: 'btn btn-primary' %>
+      <%= link_to 'コメント管理', admin_comments_path, class: 'btn btn-primary' %>
     </div>
     <div class="dashboard-link">
-      <%= link_to '管理者: コミュニティ管理', admin_communities_path, class: 'btn btn-primary' %>
+      <%= link_to 'ユーザー管理', admin_users_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="dashboard-link">
+      <%= link_to 'コミュニティ管理', admin_communities_path, class: 'btn btn-primary' %>
     </div>
     <div class="dashboard-link">
       お問い合わせ内容確認

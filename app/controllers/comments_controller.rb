@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       # コメントが保存された場合
-      redirect_to post_path(@post), notice: 'コメントが追加されました。'
+      redirect_to post_path(@post)
     else
       # コメントの保存に失敗した場合、既存のコメントを再取得する
       @comments = @post.comments.order(created_at: :asc) # コメントが `nil` にならないように

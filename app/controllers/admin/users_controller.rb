@@ -67,7 +67,7 @@ class Admin::UsersController < ApplicationController
       @user.destroy
     end
 
-    redirect_to admin_users_path, notice: 'ユーザーと関連データが削除されました。'
+    redirect_to admin_users_path
   rescue => e
     Rails.logger.error("退会処理中にエラーが発生しました: #{e.message}")
     flash[:error] = '退会処理中にエラーが発生しました。'

@@ -59,7 +59,7 @@
                 <div class="dropdown">
                   <div class="dropdown-toggle" data-comment-id="<%= comment.id %>"><i class="fa-solid fa-ellipsis"></i></div>
                   <div class="dropdown-menu" id="dropdown-menu-<%= comment.id %>">
-                    <%= link_to 'コメントを削除する', admin_post_comment_path(@post, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
+                    <%= link_to 'コメントを削除する', admin_comment_path(comment, redirect_url: admin_post_path(@post)), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item delete-comment-btn' %>
                   </div>
                 </div>
               </div>

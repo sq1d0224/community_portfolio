@@ -1635,3 +1635,20 @@ nav ul li a.active {
   color: #34495e; /* 文字色 */
   margin-bottom: 30px;
 }
+
+.comments-title {
+  text-align: center;
+  font-size: 36px;
+  color: #34495e; /* 文字色 */
+  margin-bottom: 30px;
+}
+
+.comments-page {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

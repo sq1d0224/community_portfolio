@@ -1,0 +1,42 @@
+<div class="page-background">
+  <div class="comments-page">
+    <h1 class="comments-title">管理者用: コメント一覧</h1>
+
+    <!-- 検索フォーム -->
+    <%= render 'shared/search_form', search_path: admin_comments_path %>
+
+    <!-- コメント一覧の表示 -->
+    <div class="admin-comments-section">
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <div class="comment-container">
+            <div class="comment-header">
+              <div class="left-section">
+                <% if comment.user.profile_image.attached? %>
+                  <%= link_to admin_user_path(comment.user) do %>
+                    <%= image_tag comment.user.profile_image.variant(resize_to_fill: [30, 30]), class: "comment-user-icon" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to admin_user_path(comment.user) do %>
+                    <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
+                  <% end %>
+                <% end %>
+                <%= link_to comment.user.display_name, admin_user_path(comment.user), class: 'comment-username' %>
+              </div>
+            </div>
+            <div class="comment-content">
+              <p><%= comment.content %></p>
+              <p class="comment-date"><%= comment.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
+              <p><%= link_to '削除', admin_comment_path(comment, redirect_url: admin_comments_path), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="no-posts">コメントはありません。</p>
+      <% end %>
+    </div>
+
+    <!-- ページネーション -->
+    <%= render 'shared/pagination', items: @comments %>
+  </div>
+</div>

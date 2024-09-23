@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :edit, :update, :destroy]  # 投稿の一覧、詳細、削除
     resources :users, only: [:index, :show, :edit, :update, :destroy]  # ユーザーの一覧、詳細、編集、削除
     resources :communities, only: [:index, :show, :edit, :update, :destroy]  # 管理者用コミュニティルート
+    resources :comments, only: [:index, :destroy]
     resources :posts do
       resources :comments, only: [:destroy]
     end
