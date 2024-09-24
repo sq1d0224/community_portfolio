@@ -11,6 +11,17 @@ ja:
           other: "%{resource}を保存できませんでした: %{count}つのエラーがあります。"
 
       models:
+        inquiry:
+          attributes:
+            title:
+              blank: "タイトルを入力してください。"
+              too_long: "タイトルは%{count}文字以内で入力してください。"
+            category:
+              blank: "カテゴリーを選択してください。"
+            content:
+              blank: "内容を入力してください。"
+              too_long: "内容は%{count}文字以内で入力してください。"
+
         community:
           attributes:
             user:

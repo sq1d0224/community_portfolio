@@ -1,8 +1,35 @@
 <div class="page-background">
   <div class="contact-page">
 
-    <h1>お問い合わせ</h1>
-    <p>お問い合わせ機能実装予定</p>
-    
+    <h1 class="contact-title">お問い合わせフォーム</h1>
+    <h3 class="contact-subtitle">※個別の返信は行っておりません。</h3>
+
+
+    <%= render 'shared/error_messages', resource: @inquiry %>
+
+    <%= form_with(model: @inquiry, url: contact_path, local: true, html: { novalidate: true }) do |f| %>
+      <div class="field">
+        <%= f.label :title, '件名', class: 'contact-form-label' %>
+        <%= f.text_field :title, class: 'form-control', placeholder: '50文字以内', maxlength: 50, required: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :category, 'カテゴリー', class: 'contact-form-label' %>
+        <%= f.select :category, [['バグの報告', 'バグの報告'],
+                                 ['GOLNAVIの機能について', 'GOLNAVIの機能について'],
+                                 ['ご意見・ご要望', 'ご意見・ご要望'],
+                                 ['その他', 'その他']], class: 'form-control', required: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :content, '内容 (10000文字以内)', class: 'contact-form-label' %>
+        <%= f.text_area :content, class: 'form-control contact-textarea', placeholder: '10000文字以内', maxlength: 10000, required: true %>
+      </div>
+
+      <div class="contact-link">
+        <%= f.submit '送信', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
   </div>
 </div>

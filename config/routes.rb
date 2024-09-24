@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update, :destroy]  # ユーザーの一覧、詳細、編集、削除
     resources :communities, only: [:index, :show, :edit, :update, :destroy]  # 管理者用コミュニティルート
     resources :comments, only: [:index, :destroy]
+    resources :inquiries, only: [:index, :show]
     resources :posts do
       resources :comments, only: [:destroy]
     end
@@ -77,6 +78,10 @@ Rails.application.routes.draw do
 
   # ゲストログイン専用ページ
   get 'guest_dashboard', to: 'users#guest_dashboard', as: 'guest_dashboard'
+
+  # お問い合わせページ
+  get  'contact', to: 'pages#contact'
+  post 'contact', to: 'pages#contact'
 
   # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do

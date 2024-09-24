@@ -1,0 +1,8 @@
+<h1>お問い合わせ詳細</h1>
+
+<p><strong>タイトル:</strong> <%= @inquiry.title %></p>
+<p><strong>カテゴリー:</strong> <%= @inquiry.category %></p>
+<p><strong>内容:</strong> <%= @inquiry.content %></p>
+<p><strong>送信日時:</strong> <%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+
+<%= link_to '戻る', admin_inquiries_path, class: 'btn btn-secondary' %>

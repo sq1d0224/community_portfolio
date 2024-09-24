@@ -653,8 +653,9 @@ nav ul li a.active {
 
 /* ラベルのスタイル */
 .form-label {
-  font-size: 16px; /* ラベルのフォントサイズ */
-  margin-bottom: 5px; /* ラベルの下に余白を追加 */
+  font-weight: 600; /* ラベルのフォントウェイトを強調 */
+  margin-bottom: 5px;
+  display: block;
   color: #34495e; /* 文字色 */
 }
 
@@ -835,14 +836,6 @@ nav ul li a.active {
 
 .edit-post-actions {
   text-align: center;
-}
-
-/* ラベルのスタイル */
-.form-label {
-  font-weight: 600; /* ラベルのフォントウェイトを強調 */
-  margin-bottom: 5px;
-  display: block;
-  color: #34495e; /* 文字色 */
 }
 
 /* テキスト入力やテキストエリア */
@@ -1587,21 +1580,6 @@ nav ul li a.active {
   max-width: 800px;
 }
 
-.contact-page {
-  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
-  padding-top: 30px; /* コンテンツの内側に余白を追加 */
-  padding-bottom: 30px; /* 下部の余白 */
-  border-radius: 10px; /* 角を丸く */
-  margin: 0 auto; /* 中央揃え */
-  margin-bottom: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
-  display: flex; /* フレックスボックスで整列 */
-  flex-direction: column; /* 縦方向に配置 */
-  align-items: center; /* 全体を中央揃えにする */
-  width: 100%;
-  max-width: 800px;
-}
-
 .deactivate-page {
   background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
   padding-top: 30px; /* コンテンツの内側に余白を追加 */
@@ -1651,4 +1629,48 @@ nav ul li a.active {
   max-width: 800px;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-page {
+  background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
+  padding-top: 30px; /* コンテンツの内側に余白を追加 */
+  padding-bottom: 30px; /* 下部の余白 */
+  border-radius: 10px; /* 角を丸く */
+  margin: 0 auto; /* 中央揃え */
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を演出 */
+  display: flex; /* フレックスボックスで整列 */
+  flex-direction: column; /* 縦方向に配置 */
+  align-items: center; /* 全体を中央揃えにする */
+  width: 100%;
+  max-width: 600px;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 36px;
+  color: #34495e; /* 文字色 */
+  margin-bottom: 30px;
+}
+
+.contact-subtitle {
+  text-align: center;
+  font-size: 20px;
+  color: #34495e; /* 文字色 */
+  margin-bottom: 30px;
+}
+
+.contact-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.contact-link {
+  text-align: center;
+}
+
+.contact-form-label {
+  font-weight: 600; /* ラベルのフォントウェイトを強調 */
+  margin-bottom: 5px;
+  color: #34495e; /* 文字色 */
 }

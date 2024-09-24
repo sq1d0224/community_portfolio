@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_20_120614) do
+ActiveRecord::Schema.define(version: 2024_09_24_133347) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 2024_09_20_120614) do
     t.string "category"
     t.integer "user_id"
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "memberships", force: :cascade do |t|
