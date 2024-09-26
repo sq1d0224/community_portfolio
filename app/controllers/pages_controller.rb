@@ -16,11 +16,15 @@ class PagesController < ApplicationController
     if request.post?
       @inquiry = Inquiry.new(inquiry_params)
       if @inquiry.save
-        redirect_to root_path
+        redirect_to thank_you_path
       else
         render :contact
       end
     end
+  end
+
+  # 感謝ページのアクション
+  def thank_you
   end
 
   private

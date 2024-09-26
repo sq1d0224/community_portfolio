@@ -31,11 +31,12 @@
 
             <!-- 管理者用リンク -->
             <% if admin_signed_in? %>
-              <li class="navbar-menu-li"><%= link_to '管理者トップ', admin_root_path, class: ('active' if current_page?(admin_posts_path)) %></li>
+              <li class="navbar-menu-li"><%= link_to '管理者トップ', admin_root_path, class: ('active' if current_page?(admin_root_path)) %></li>
               <li class="navbar-menu-li"><%= link_to '投稿管理', admin_posts_path, class: ('active' if current_page?(admin_posts_path)) %></li>
               <li class="navbar-menu-li"><%= link_to 'コメント管理', admin_comments_path, class: ('active' if current_page?(admin_comments_path)) %></li>
               <li class="navbar-menu-li"><%= link_to 'ユーザー管理', admin_users_path, class: ('active' if current_page?(admin_users_path)) %></li>
               <li class="navbar-menu-li"><%= link_to 'コミュニティ管理', admin_communities_path, class: ('active' if current_page?(admin_communities_path)) %></li>
+              <li class="navbar-menu-li"><%= link_to 'お問い合わせ内容確認', admin_inquiries_path, class: ('active' if current_page?(admin_inquiries_path)) %></li>
               <li class="navbar-menu-li"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, data: { confirm: "ログアウトしますか？", turbolinks: false } %></li>
             <% else %>
 

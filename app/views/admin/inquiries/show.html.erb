@@ -1,8 +1,14 @@
-<h1>お問い合わせ詳細</h1>
+<div class="page-background">
+  <div class="contact-detail">
+    <h1 class="contact-title">お問い合わせ詳細</h1>
 
-<p><strong>タイトル:</strong> <%= @inquiry.title %></p>
-<p><strong>カテゴリー:</strong> <%= @inquiry.category %></p>
-<p><strong>内容:</strong> <%= @inquiry.content %></p>
-<p><strong>送信日時:</strong> <%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    <div class="contact-detail">
+        <h1 class="contact-detail-title"><%= @inquiry.title %></h1>
+        <p class="contact-detail-content"><%= @inquiry.content %></p>
+        <p class="contact-detail-category"><strong>カテゴリー:</strong> <%= @inquiry.category %></p>
+        <p class="contact-detail-date"><%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    </div>
 
-<%= link_to '戻る', admin_inquiries_path, class: 'btn btn-secondary' %>
+    <%= link_to '戻る', admin_inquiries_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

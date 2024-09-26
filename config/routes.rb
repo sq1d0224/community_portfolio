@@ -82,6 +82,8 @@ Rails.application.routes.draw do
   # お問い合わせページ
   get  'contact', to: 'pages#contact'
   post 'contact', to: 'pages#contact'
+  # 感謝ページのルート
+  get 'thank_you', to: 'pages#thank_you'
 
   # ログイン画面をrootに設定し、ログアウトルートも定義
   devise_scope :user do

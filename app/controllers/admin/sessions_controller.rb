@@ -1,6 +1,7 @@
 # app/controllers/admin/sessions_controller.rb
 class Admin::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
+  before_action :prevent_access_for_logged_in_users, only: [:new]
 
   # POST /admin/sign_in
   def create
@@ -23,6 +24,13 @@ class Admin::SessionsController < Devise::SessionsController
 
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password, :remember_me])
+  end
+
+  # 一般ユーザーがログインしている場合、/admin/sign_inにアクセスできないようにする
+  def prevent_access_for_logged_in_users
+    if user_signed_in? && !current_user.admin?
+      redirect_to root_path
+    end
   end
 
 end

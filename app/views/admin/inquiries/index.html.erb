@@ -1,24 +1,31 @@
-<h1>お問い合わせ一覧</h1>
+<div class="page-background">
+  <div class="contact-page">
+    <h1 class="contact-title">お問い合わせ一覧</h1>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>カテゴリー</th>
-      <th>送信日時</th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @inquiries.each do |inquiry| %>
-      <tr>
-        <td><%= inquiry.title %></td>
-        <td><%= inquiry.category %></td>
-        <td><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td><%= link_to '詳細', admin_inquiry_path(inquiry), class: 'btn btn-primary' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <!-- 検索フォームの追加 -->
+    <%= render 'shared/search_form', search_path: admin_inquiries_path %>
 
-<%= paginate @inquiries %>
+    <div class="contacts-list">
+      <% if @inquiries.any? %>
+        <% @inquiries.each do |inquiry| %>
+          <div class="contact-item">
+            <div class="contact-info-container">
+              <div class="contact-meta">
+              <div><%= link_to inquiry.title, admin_inquiry_path(inquiry), class: 'contact-name' %></div>
+              <div class="contact-category">カテゴリー: <%= inquiry.category %></div>
+              <div class="contact-date"><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+              <div class="contact-bio">
+                <%= link_to '詳細', admin_inquiry_path(inquiry), class: 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="no-comment">
+          <p class="no-posts">お問い合わせがありません。</p>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'shared/pagination', items: @inquiries %>
+  </div>
+</div>

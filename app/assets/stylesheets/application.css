@@ -1633,8 +1633,7 @@ nav ul li a.active {
 
 .contact-page {
   background-color: rgba(255, 255, 255, 0.8); /* 背景を少し透明にして見やすく */
-  padding-top: 30px; /* コンテンツの内側に余白を追加 */
-  padding-bottom: 30px; /* 下部の余白 */
+  padding: 30px; /* コンテンツの内側に余白を追加 */
   border-radius: 10px; /* 角を丸く */
   margin: 0 auto; /* 中央揃え */
   margin-bottom: 50px;
@@ -1673,4 +1672,98 @@ nav ul li a.active {
   font-weight: 600; /* ラベルのフォントウェイトを強調 */
   margin-bottom: 5px;
   color: #34495e; /* 文字色 */
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info-container {
+  flex: 1;
+}
+
+.contact-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2E8B57;
+  text-decoration: none;
+}
+
+.contact-name:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+.contact-category, .contact-date {
+  margin-top: 5px; /* ユーザー名と性別・年齢の間に少しスペースを追加 */
+  font-size: 15px;
+  color: #333;
+}
+
+.contact-detail {
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明の白背景 */
+  padding: 30px; /* 内側の余白 */
+  border-radius: 10px; /* 角を丸くする */
+  width: 100%;
+  max-width: 800px; /* 最大幅を800pxに設定 */
+  margin: 0 auto; /* 中央揃え */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ボックスシャドウを追加して立体感を演出 */
+}
+
+.contact-detail-title {
+  word-wrap: break-word; /* 長い単語を折り返し */
+  overflow-wrap: break-word; /* 長い単語を折り返し */
+  white-space: pre-wrap; /* テキストの折り返し */
+  word-break: break-all; /* 単語を途中で折り返す */
+  font-size: 23px;
+  color: #34495e; /* タイトル文字色 */
+  margin-bottom: 10px;
+}
+
+.contact-detail-content {
+  word-wrap: break-word; /* 長い単語を折り返し */
+  overflow-wrap: break-word; /* 長い単語を折り返し */
+  white-space: pre-wrap; /* テキストの折り返し */
+  word-break: break-all; /* 単語を途中で折り返す */
+  font-size: 17px;
+  color: #34495e; /* 説明文の文字色 */
+  margin-bottom: 10px;
+  white-space: pre-wrap; /* 自動改行 */
+}
+
+.contact-detail-category,
+.contact-detail-date {
+  font-size: 15px;
+  color: #777;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.thankyou-contact-detail {
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明の白背景 */
+  padding: 30px; /* 内側の余白 */
+  border-radius: 10px; /* 角を丸くする */
+  width: 100%;
+  max-width: 1000px; /* 最大幅を800pxに設定 */
+  margin: 0 auto; /* 中央揃え */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ボックスシャドウを追加して立体感を演出 */
+}
+
+.contact-detail-content, .contact-detail-link {
+  text-align: center;
 }
