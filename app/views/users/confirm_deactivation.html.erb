@@ -10,7 +10,7 @@
       </p>
 
         <div class="deactivate-link">
-          <%= form_with(url: deactivate_user_path(current_user), method: :delete) do %>
+          <%= form_with(url: deactivate_user_path(current_user), method: :patch) do %>
             <%= submit_tag '退会する', class: 'btn btn-danger', data: { confirm: '最終確認です。本当に退会しますか？' } %>
             <%= link_to 'キャンセル', user_path(current_user), class: 'btn btn-secondary' %>
           <% end %>

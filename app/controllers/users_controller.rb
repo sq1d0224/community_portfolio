@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :restrict_guest_user, only: [:edit, :update, :deactivate, :my_communities, :joined_communities]
+  before_action :correct_user, only: [:confirm_deactivation]
 
   def top
 
@@ -75,6 +76,10 @@ class UsersController < ApplicationController
     # ゲストユーザー専用のダッシュボードアクション
   end
 
+  def confirm_deactivation
+    # 退会確認画面用のアクション
+  end
+
 
    # 退会処理アクション
   def deactivate
@@ -99,6 +104,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path
+    end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to(root_path)
     end
   end
 

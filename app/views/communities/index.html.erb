@@ -34,7 +34,7 @@
                     <% end %>
                   </span>
                   <br>
-                  <span class="community-members">参加人数: <%= community.users.count %> 人</span>
+                  <span class="community-members">参加人数: <%= community.users.where(is_deleted: [false, nil]).count %> 人</span>
                   <br>
                   <span class="community-created-at">作成日: <%= community.created_at.strftime('%Y/%m/%d') %></span>
                 </div>

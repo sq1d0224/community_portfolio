@@ -13,25 +13,24 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#index'  # 管理者用のダッシュボードのルート
     resources :posts, only: [:index, :show, :edit, :update, :destroy]  # 投稿の一覧、詳細、削除
-    resources :users, only: [:index, :show, :edit, :update, :destroy]  # ユーザーの一覧、詳細、編集、削除
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      member do
+        get 'confirm_deactivation'
+        patch 'deactivate'  # 退会処理をPATCHに変更
+      end
+    end
     resources :communities, only: [:index, :show, :edit, :update, :destroy]  # 管理者用コミュニティルート
     resources :comments, only: [:index, :destroy]
     resources :inquiries, only: [:index, :show]
     resources :posts do
       resources :comments, only: [:destroy]
     end
-    resources :users do
-      member do
-        get 'confirm_deactivation'
-        delete 'deactivate'
-      end
-    end
   end
 
   resources :users, only: [:show] do
     member do
       get 'confirm_deactivation' # 退会確認ページ
-      delete 'deactivate' # 退会処理
+      patch 'deactivate' # 退会処理
     end
   end
 
