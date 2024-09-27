@@ -5,8 +5,8 @@ class Admin::BaseController < ApplicationController
   private
 
   def authenticate_admin!
-    unless current_user&.admin? # 管理者かどうかを確認
-      redirect_to root_path
+    unless current_admin  # current_admin で管理者かどうか確認
+      redirect_to new_admin_session_path
     end
   end
 end

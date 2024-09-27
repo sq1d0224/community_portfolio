@@ -11,11 +11,12 @@
           <div class="contact-item">
             <div class="contact-info-container">
               <div class="contact-meta">
-              <div><%= link_to inquiry.title, admin_inquiry_path(inquiry), class: 'contact-name' %></div>
-              <div class="contact-category">カテゴリー: <%= inquiry.category %></div>
-              <div class="contact-date"><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-              <div class="contact-bio">
-                <%= link_to '詳細', admin_inquiry_path(inquiry), class: 'btn btn-primary' %>
+                <div><%= link_to inquiry.title, admin_inquiry_path(inquiry), class: 'contact-name' %></div>
+                <div class="contact-category">カテゴリー: <%= inquiry.category %></div>
+                <div class="contact-date"><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+                <div class="contact-bio">
+                  <%= link_to '詳細', admin_inquiry_path(inquiry), class: 'btn btn-primary' %>
+                </div>
               </div>
             </div>
           </div>

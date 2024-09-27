@@ -2,9 +2,9 @@
   <div class="contact-detail">
     <h1 class="contact-title">お問い合わせ詳細</h1>
 
-    <div class="contact-detail">
+    <div>
         <h1 class="contact-detail-title"><%= @inquiry.title %></h1>
-        <p class="contact-detail-content"><%= @inquiry.content %></p>
+        <p class="contact-detail-discription"><%= @inquiry.content %></p>
         <p class="contact-detail-category"><strong>カテゴリー:</strong> <%= @inquiry.category %></p>
         <p class="contact-detail-date"><%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></p>
     </div>
