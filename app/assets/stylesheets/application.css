@@ -307,18 +307,13 @@ nav ul li a.active {
 
 /* ホーム画面背景設定 */
 .home-background {
-  background-image: image-url('golfcourse.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding-top: 250px; /* ヘッダーの高さ + 追加余白分 */
-  padding-bottom: 200px; /* フッターの高さを考慮して余白を調整 */
+  min-height: 100vh;
+  background-color: #2E8B57;
+  padding-top: 136px; /* ヘッダーの高さ + 追加余白分 */
+  padding-bottom: 80px; /* フッターの高さを考慮して余白を調整 */
   display: flex;
   justify-content: center; /* 水平方向に中央揃え */
   align-items: center; /* 垂直方向に中央揃え */
-  height: 100%;
-  width: 100%;
 }
 
 /* コンテンツボックスのスタイル */
