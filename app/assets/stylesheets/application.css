@@ -307,7 +307,7 @@ nav ul li a.active {
 
 /* ホーム画面背景設定 */
 .home-background {
-  background-image: image-url('golfcourse.jpg'); /* 画像のパスを指定 */
+  background-image: url('golfcourse.jpg'); /* 画像のパスを指定 */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
