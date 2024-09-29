@@ -2,36 +2,36 @@ ja:
   activerecord:
     errors:
       messages:
-        record_invalid: "バリデーションに失敗しました。: %{errors}"
+        record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
-          has_one: "削除できません。関連する%{record}が存在します。"
-          has_many: "削除できません。関連する%{record}が存在します。"
+          has_one: "削除できません。関連する%{record}が存在します"
+          has_many: "削除できません。関連する%{record}が存在します"
         not_saved:
-          one: "%{resource}を保存できませんでした: 1つのエラーがあります。"
-          other: "%{resource}を保存できませんでした: %{count}つのエラーがあります。"
+          one: "%{resource}を保存できませんでした: 1つのエラーがあります"
+          other: "%{resource}を保存できませんでした: %{count}つのエラーがあります"
 
       models:
         inquiry:
           attributes:
             title:
-              blank: "タイトルを入力してください。"
-              too_long: "タイトルは%{count}文字以内で入力してください。"
+              blank: "件名を入力してください"
+              too_long: "件名は%{count}文字以内で入力してください"
             category:
-              blank: "カテゴリーを選択してください。"
+              blank: "カテゴリーを選択してください"
             content:
-              blank: "内容を入力してください。"
-              too_long: "内容は%{count}文字以内で入力してください。"
+              blank: "内容を入力してください"
+              too_long: "内容は%{count}文字以内で入力してください"
 
         community:
           attributes:
             user:
-              required: "ユーザーが必要です。"
+              required: "ユーザーが必要です"
             title:
               blank: "コミュニティ名を入力してください"
               too_long: "コミュニティ名は%{count}文字以内で入力してください"
             description:
-              blank: "説明を入力してください"
-              too_long: "説明は%{count}文字以内で入力してください"
+              blank: "コミュニティ詳細を入力してください"
+              too_long: "コミュニティ詳細は%{count}文字以内で入力してください"
             category:
               blank: "カテゴリを選択してください"
             image:
@@ -40,32 +40,34 @@ ja:
         user:
           attributes:
             username:
-              blank: "ユーザーネームを入力してください。"
-              taken: "このユーザーネームはすでに使用されています。"
+              blank: "ユーザーネームを入力してください"
+              taken: "このユーザーネームはすでに使用されています"
             email:
-              blank: "メールアドレスを入力してください。"
-              invalid: "メールアドレスの形式が正しくありません。"
-              taken: "このメールアドレスはすでに使用されています。"
+              blank: "メールアドレスを入力してください"
+              invalid: "メールアドレスの形式が正しくありません"
+              taken: "このメールアドレスはすでに使用されています"
             password:
-              blank: "パスワードを入力してください。"
-              too_short: "パスワードは%{count}文字以上で入力してください。"
-              confirmation: "パスワード（確認）が一致しません。"
+              blank: "パスワードを入力してください"
+              too_short: "パスワードは%{count}文字以上で入力してください"
+              confirmation: "パスワード（確認）が一致しません"
+            password_confirmation:
+              confirmation: "パスワードの確認が一致しません"
 
         post:
           attributes:
             title:
-              blank: "タイトルを入力してください。"
-              too_long: "タイトルは%{count}文字以内で入力してください。"
+              blank: "タイトルを入力してください"
+              too_long: "タイトルは%{count}文字以内で入力してください"
             description:
-              blank: "説明文を入力してください。"
-              too_long: "説明文は%{count}文字以内で入力してください。"
+              blank: "説明文を入力してください"
+              too_long: "説明文は%{count}文字以内で入力してください"
             image:
-              blank: "画像を選択してください。"
+              blank: "画像を選択してください"
 
         comment:
           attributes:
             content:
-              blank: "コメントを入力してください。"
+              blank: "コメントを入力してください"
 
   devise:
     failure:
@@ -73,13 +75,15 @@ ja:
         blank_username: "ユーザーネームを入力してください"
         blank_email: "メールアドレスを入力してください"
         blank_password: "パスワードを入力してください"
-        signed_in: "ログインしました。"
-        invalid: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
-      unauthenticated: "ログインしてください。"
+        signed_in: "ログインしました"
+        invalid: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません"
+        deleted_account: "アカウントが削除されています"
+      unauthenticated: "ログインしてください"
       blank: "入力してください"
       invalid: "無効な値です"
-      not_found_in_database: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません。"
-      already_authenticated: "すでにログインしています。"
+      not_found_in_database: "ユーザーネーム・メールアドレスまたはパスワードが正しくありません"
+      already_authenticated: "すでにログインしています"
+      deleted_account: "アカウントが削除されています"
     registrations:
       user:
         blank_username: "ユーザーネームを入力してください"
@@ -87,13 +91,13 @@ ja:
         blank_password: "パスワードを入力してください"
     passwords:
       user:
-        send_instructions: "パスワードリセットの案内を送信しました。"
-        updated: "パスワードが変更されました。"
+        send_instructions: "パスワードリセットの案内を送信しました"
+        updated: "パスワードが変更されました"
     confirmations:
       user:
-        confirmed: "メールアドレスが確認されました。"
-        send_instructions: "確認メールを送信しました。"
-        already_confirmed: "すでに確認済みです。"
+        confirmed: "メールアドレスが確認されました"
+        send_instructions: "確認メールを送信しました"
+        already_confirmed: "すでに確認済みです"
 
   flash:
     devise:
@@ -105,13 +109,13 @@ ja:
   errors:
     format: "%{message}"
     messages:
-      blank: "を入力してください。"
-      invalid: "は不正な値です。"
-      taken: "はすでに使用されています。"
-      too_short: "は%{count}文字以上で入力してください。"
-      too_long: "は%{count}文字以内で入力してください。"
+      blank: "を入力してください"
+      invalid: "は不正な値です"
+      taken: "はすでに使用されています"
+      too_short: "は%{count}文字以上で入力してください"
+      too_long: "は%{count}文字以内で入力してください"
 
-      not_saved: "保存に失敗しました。"
+      not_saved: "保存に失敗しました"
   date:
     order:
       - :year
@@ -145,8 +149,8 @@ ja:
 
   community:
     join:
-      failure: "コミュニティに参加してください。"
+      failure: "コミュニティに参加してください"
   flash:
     posts:
       create:
-        failure: "投稿に失敗しました。詳細を確認してください。"
+        failure: "投稿に失敗しました。詳細を確認してください"

@@ -16,10 +16,14 @@
       <header class="header">
         <nav class="navbar">
           <div class="navbar-title">
-            <% if user_signed_in? %>
-            <%= link_to 'GOLNAVI', posts_path %> <!-- ログイン後はtop_pathに遷移 -->
+            <% if admin_signed_in? %>
+              <%= link_to 'GOLNAVI', admin_root_path %>
             <% else %>
-              <%= link_to 'GOLNAVI', new_user_session_path %> <!-- ログイン前はnew_user_session_pathに遷移 -->
+              <% if user_signed_in? %>
+              <%= link_to 'GOLNAVI', posts_path %>
+              <% else %>
+                <%= link_to 'GOLNAVI', new_user_session_path %> <!-- ログイン前はnew_user_session_pathに遷移 -->
+              <% end %>
             <% end %>
           </div>
 

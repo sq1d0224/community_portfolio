@@ -6,7 +6,7 @@
     <% if @user.deleted? %>
       <!-- 退会済みユーザー向けのメッセージ -->
       <div class="alert alert-warning">
-        このユーザーは既に退会しています。
+        <p class="no-posts">このユーザーは既に退会しています。</p>
       </div>
     <% else %>
       <!-- 通常のプロフィール情報 -->

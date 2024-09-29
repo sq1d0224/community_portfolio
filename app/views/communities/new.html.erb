@@ -1,7 +1,7 @@
 <div class="page-background">
   <div class="new-communities-page">
     <h1 class="community-form-title">新しいコミュニティを作成</h1>
-    
+
     <%= render 'shared/error_messages', resource: @community %>
 
     <%= form_with(model: @community, local: true, html: {multipart: true}) do |form| %>
@@ -11,7 +11,7 @@
       </div>
 
       <div class="field community-field">
-        <strong><%= form.label :description, 'コミュニティの詳細', class: 'form-label' %></strong>
+        <strong><%= form.label :description, 'コミュニティ詳細', class: 'form-label' %></strong>
         <%= form.text_area :description, class: 'form-control community-textarea', placeholder: '10000文字以内', maxlength: 10000 %>
       </div>
 

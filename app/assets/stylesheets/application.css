@@ -300,6 +300,10 @@ nav ul li a.active {
   height: 300px;
 }
 
+.no-communities {
+  height: 300px;
+}
+
 .no-posts {
   font-size: 18px;
   color: #7f8c8d;
@@ -974,10 +978,9 @@ nav ul li a.active {
 }
 
 .comment-username {
-  font-weight: bold;
   margin-right: 5px;
   text-decoration: none;
-  color: #007bff;
+  color: #2E8B57;
 }
 
 .comment-username:hover {
