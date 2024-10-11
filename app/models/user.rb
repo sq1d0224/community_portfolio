@@ -37,10 +37,8 @@ class User < ApplicationRecord
       password: SecureRandom.urlsafe_base64,
       username: "ゲストユーザー_#{SecureRandom.hex(5)}" # ユーザーネームをユニークにするためランダム文字列を追加
     ).tap do |user|
-      user.profile_image.attach(
-        io: File.open(Rails.root.join('app/assets/images/no_image_photo.jpg')),
-        filename: 'no_image_photo.jpg'
-      )
+      # ゲストユーザーのプロフィール画像は、静的な画像 'no_image_photo.jpg' を使用
+      user.profile_image_url = ActionController::Base.helpers.asset_path('no_image_photo.jpg')
     end
   end
 
