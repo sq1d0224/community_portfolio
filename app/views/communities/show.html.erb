@@ -86,7 +86,7 @@
                       <% end %>
                     <% else %>
                       <%= link_to user_path(post.user.id) do %>
-                        <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
+                        <%= image_tag asset_path('no_image_photo.jpg'), size: "40x40", class: "post-user-icon" %>
                       <% end %>
                     <% end %>
                     <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-detail-username' %>

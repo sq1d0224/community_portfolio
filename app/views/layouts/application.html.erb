@@ -54,7 +54,7 @@
                     <% if current_user.profile_image.attached? %>
                       <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: 'header-user-icon' %>
                     <% else %>
-                      <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'header-user-icon' %>
+                      <%= image_tag asset_path('no_image_photo.jpg'), size: "30x30", class: 'header-user-icon' %>
                     <% end %>
                     <i class="fa-solid fa-angles-down"></i>
                   </li>

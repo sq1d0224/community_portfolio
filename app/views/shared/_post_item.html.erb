@@ -6,7 +6,7 @@
       <% end %>
     <% else %>
       <%= link_to user_path(post.user.id) do %>
-        <%= image_tag 'no_image_photo.jpg', size: "30x30", class: 'user-icon' %>
+        <%= image_tag asset_path('no_image_photo.jpg'), size: "30x30", class: 'user-icon' %>
       <% end %>
     <% end %>
     <%= link_to post.user.display_name, user_path(post.user.id), class: 'post-username' %>
@@ -22,7 +22,7 @@
   <% else %>
     <p class="post-image">
       <%= link_to post_path(post) do %>
-        <%= image_tag 'no_image_photo3.jpg', class: 'post-img' %>
+        <%= image_tag asset_path('no_image_photo3.jpg'), class: 'post-img' %>
       <% end %>
     </p>
   <% end %>

@@ -10,7 +10,7 @@
           <% end %>
         <% else %>
           <%= link_to admin_user_path(@post.user.id) do %>
-            <%= image_tag 'no_image_photo.jpg', size: "40x40", class: "post-user-icon" %>
+            <%= image_tag asset_path('no_image_photo.jpg'), size: "40x40", class: "post-user-icon" %>
           <% end %>
         <% end %>
         <%= link_to @post.user.display_name, admin_user_path(@post.user.id), class: 'post-detail-username' %>
@@ -49,7 +49,7 @@
                   <% end %>
                 <% else %>
                   <%= link_to admin_user_path(comment.user) do %>
-                    <%= image_tag 'no_image_photo.jpg', size: "30x30", class: "comment-user-icon" %>
+                    <%= image_tag asset_path('no_image_photo.jpg'), size: "30x30", class: "comment-user-icon" %>
                   <% end %>
                 <% end %>
                 <%= link_to comment.user.display_name, admin_user_path(comment.user), class: 'comment-username' %>
