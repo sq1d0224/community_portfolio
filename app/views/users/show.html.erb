@@ -11,9 +11,14 @@
     <% else %>
       <!-- 通常のプロフィール情報 -->
       <div class="profile-image-container">
-        <% if @user.profile_image.attached? %>
+        <% if @user.guest_user? %>
+          <!-- ゲストユーザーの場合は静的な画像を表示 -->
+          <%= image_tag asset_path('no_image_photo.jpg'), size: "300x300", class: "profile-image" %>
+        <% elsif @user.profile_image.attached? %>
+          <!-- 通常ユーザーの場合は Active Storage で画像を表示 -->
           <%= image_tag @user.profile_image.variant(resize_to_fill: [300, 300]).processed, class: "profile-image" %>
         <% else %>
+          <!-- 通常ユーザーで画像が設定されていない場合も静的画像を表示 -->
           <%= image_tag asset_path('no_image_photo.jpg'), size: "300x300", class: "profile-image" %>
         <% end %>
       </div>

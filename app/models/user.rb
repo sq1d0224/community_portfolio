@@ -36,10 +36,7 @@ class User < ApplicationRecord
       email: 'guest@example.com',
       password: SecureRandom.urlsafe_base64,
       username: "ゲストユーザー_#{SecureRandom.hex(5)}" # ユーザーネームをユニークにするためランダム文字列を追加
-    ).tap do |user|
-      # ゲストユーザーのプロフィール画像は、静的な画像 'no_image_photo.jpg' を使用
-      user.profile_image_url = ActionController::Base.helpers.asset_path('no_image_photo.jpg')
-    end
+    )
   end
 
   # ゲストユーザーかどうかを確認するメソッド

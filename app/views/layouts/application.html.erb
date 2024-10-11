@@ -51,9 +51,14 @@
 
                 <div class="header-dropdown">
                   <li class="navbar-item header-user-profile dropdown-toggle" data-comment-id="user-profile">
-                    <% if current_user.profile_image.attached? %>
+                    <% if current_user.guest_user? %>
+                      <!-- ゲストユーザーは静的な画像を表示 -->
+                      <%= image_tag asset_path('no_image_photo.jpg'), size: "30x30", class: 'header-user-icon' %>
+                    <% elsif current_user.profile_image.attached? %>
+                      <!-- 通常ユーザーは Active Storage の画像を表示 -->
                       <%= image_tag current_user.profile_image.variant(resize_to_fill: [30, 30]), class: 'header-user-icon' %>
                     <% else %>
+                      <!-- 通常ユーザーで画像が設定されていない場合は静的画像を表示 -->
                       <%= image_tag asset_path('no_image_photo.jpg'), size: "30x30", class: 'header-user-icon' %>
                     <% end %>
                     <i class="fa-solid fa-angles-down"></i>
